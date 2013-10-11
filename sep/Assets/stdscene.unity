@@ -631,7 +631,7 @@ MonoBehaviour:
   moveSpeed: 3
   reachedPointEpsilon: 1
   startPoint: WayPoint0
-  waitAtPointTimeSeconds: 2
+  waitAtPointTimeSeconds: 0
 --- !u!1 &1155065738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1006,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousPoint: Waypoint1
   nextPoint: WayPoint3
+--- !u!1 &2083855308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2083855309}
+  - 114: {fileID: 2083855310}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2083855309
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083855308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .407731175, y: -7.54589081, z: -.923588395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &2083855310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083855308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852a0de49866ea545a89fe3ff88c394b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preFab: {fileID: 1016517461}
+  spawnDelay: 3
+  startWapoint: WayPoint0
 --- !u!1 &2140924072
 GameObject:
   m_ObjectHideFlags: 0
