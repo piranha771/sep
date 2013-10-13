@@ -55,6 +55,7 @@ public class ShootMonster : MonoBehaviour {
     void OnTriggerExit(Collider monster) {
 
         targetMonster = null;
+        scriptSC.stopShooting(towerTyp);
 
     }
 

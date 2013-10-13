@@ -32,6 +32,25 @@ public class ShootController : MonoBehaviour {
 
         }
 
+     
       
+    }
+
+    public void stopShooting(string towerTyp) {
+
+        switch (towerTyp) {
+
+            case "bulletTower":
+
+              
+                break;
+
+            case "lineBulletTower":
+                scriptSWL.stopShooting();
+                break;
+            default:
+                break;
+
+        }
     }
 }
