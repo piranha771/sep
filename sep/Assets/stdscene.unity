@@ -1134,6 +1134,8 @@ GameObject:
   - 23: {fileID: 1237853669}
   - 114: {fileID: 1237853673}
   - 54: {fileID: 1237853674}
+  - 114: {fileID: 1237853675}
+  - 114: {fileID: 1237853676}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1201,6 +1203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8244301f0165f7943b391d25669343ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 1
+  towerTyp: bulletTower
 --- !u!54 &1237853674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1216,6 +1220,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1237853675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237853668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a11ef8bc03486244b1b1a632d740da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1237853676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237853668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f115e51ab023f4c9207e1a3cba2164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1304980797
 GameObject:
   m_ObjectHideFlags: 0

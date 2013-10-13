@@ -41,20 +41,12 @@ public class Shoot : MonoBehaviour {
 
     void start_me() {
 
-        rotate(endPoint.position);
+        transform.LookAt(endPoint);
         walk();
 
 
     }
-    void rotate(Vector3 targetPos) {
-
-        Quaternion destRotation;
-        Vector3 relativePos;
-        relativePos = targetPos - transform.position;
-        destRotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, destRotation, ROTATESPEED * Time.deltaTime);
-
-    }
+   
     void walk() {
         
         Vector3 targetPosition = endPoint.position;

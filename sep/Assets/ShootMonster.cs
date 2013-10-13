@@ -6,20 +6,26 @@ using System;
 public class ShootMonster : MonoBehaviour {
 
     private float attackDelay = 0;
+    [SerializeField]
     private float delay = 1;
     private int monster_on_target = 1;
+    [SerializeField]
+    private string towerTyp;
 
-    private GameObject bullet;
+    
     private GameObject targetMonster;
     private GameObject towerWeapon;
+    private ShootController scriptSC;
 
 
+    public float Delay { get { return delay; } set { delay = value; } }
+
+    public string TowerTyp { get { return towerTyp; } set { towerTyp = value; } }
 	// Use this for initialization
 	void Start () {
-        Debug.Log("hallo");
-        
-        bullet = GameObject.Find("Bullet");
-        bullet.SetActive(false);
+
+
+        scriptSC = transform.GetComponent<ShootController>();
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
 	}
 	
@@ -59,12 +65,10 @@ public class ShootMonster : MonoBehaviour {
             targetMonster = null;
         if (attackDelay < 0 && monster != null) {
             if (monster.gameObject.tag == "EnemyMonster") {
-                
-                GameObject bullet_2 = (GameObject)Instantiate(bullet, towerWeapon.transform.position, towerWeapon.transform.rotation);
-                bullet_2.SetActive(true);
 
-                Shoot script_b = bullet_2.GetComponent<Shoot>();
-                script_b.set_start(towerWeapon.transform, monster.transform);
+
+                scriptSC.startShoot(monster.gameObject, towerWeapon, towerTyp);
+               
 
                 attackDelay = delay;
 
