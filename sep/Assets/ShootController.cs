@@ -3,9 +3,11 @@ using System.Collections;
 
 public class ShootController : MonoBehaviour {
     private ShootWithBullet scriptSWB;
+    private ShootWithLine scriptSWL;
 	// Use this for initialization
 	void Start () {
         scriptSWB = transform.GetComponent<ShootWithBullet>();
+        scriptSWL = transform.GetComponent<ShootWithLine>();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +22,10 @@ public class ShootController : MonoBehaviour {
             case "bulletTower":
                 
                 scriptSWB.shoot(monster, towerWeapon);
+                break;
+
+            case "lineBulletTower":
+                scriptSWL.shoot(monster, towerWeapon);
                 break;
             default:
                 break;
