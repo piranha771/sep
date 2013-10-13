@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WayPointRunner : MonoBehaviour {
 
@@ -10,25 +11,26 @@ public class WayPointRunner : MonoBehaviour {
     [SerializeField]
     private float reachedPointEpsilon = 0.2f; 
     [SerializeField]
-    private string startPoint = "invalid";
+    private List<Transform> waypoints;
     [SerializeField]
     private float waitAtPointTimeSeconds = 0f;
 
     private GameObject currentPoint;
     private float waitTime;
+    private int nextCounter = 1;
 
     public bool DoRun { get { return doRun; } set { doRun = value; } }
-    public string StartPoint { get { return startPoint; } set { startPoint = value; } }
+    public List<Transform> Waypoints { get { return waypoints; } set { waypoints = value; } }
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     public float WaitAtPointTimeSeconds { get { return waitAtPointTimeSeconds; } set { waitAtPointTimeSeconds = value; } }
 
 	void Start () {
         this.waitTime = waitAtPointTimeSeconds;
-        if (startPoint == "invalid") {
+        if (waypoints.Count == 0) {
             doRun = false;
             return;
         }
-        currentPoint = GameObject.Find(startPoint);
+        currentPoint = waypoints[0].gameObject;
         transform.LookAt(currentPoint.transform.position); 
 	}
 	
@@ -48,12 +50,13 @@ public class WayPointRunner : MonoBehaviour {
     private void reachedNext() {
         if (waitTime <= 0) {
             waitTime = waitAtPointTimeSeconds;
-            string next = currentPoint.GetComponent<WayPoint>().NextPoint;
-            if (next == "invalid") {
+            
+            if ( nextCounter >= waypoints.Count) {
                 doRun = false;
                 return;
             }
-            currentPoint = GameObject.Find(next);
+            currentPoint = waypoints[nextCounter].gameObject;
+            nextCounter++;
             transform.LookAt(currentPoint.transform.position);
         } else {
             waitTime -= Time.fixedDeltaTime;
