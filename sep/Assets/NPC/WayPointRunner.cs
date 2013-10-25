@@ -7,6 +7,8 @@ public class WayPointRunner : MonoBehaviour {
     [SerializeField]
     private bool doRun = false;
     [SerializeField]
+    private bool dieAtReachedEnd = false;
+    [SerializeField]
     private float moveSpeed = 3.0f;
     [SerializeField]
     private float reachedPointEpsilon = 0.2f; 
@@ -20,6 +22,7 @@ public class WayPointRunner : MonoBehaviour {
     private int nextCounter = 1;
 
     public bool DoRun { get { return doRun; } set { doRun = value; } }
+    public bool DieAtReachedEnd { get { return dieAtReachedEnd; } set { dieAtReachedEnd = value; } }
     public List<Transform> Waypoints { get { return waypoints; } set { waypoints = value; } }
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     public float WaitAtPointTimeSeconds { get { return waitAtPointTimeSeconds; } set { waitAtPointTimeSeconds = value; } }
@@ -53,6 +56,7 @@ public class WayPointRunner : MonoBehaviour {
             
             if ( nextCounter >= waypoints.Count) {
                 doRun = false;
+                reachedEnd();
                 return;
             }
             currentPoint = waypoints[nextCounter].gameObject;
@@ -61,5 +65,12 @@ public class WayPointRunner : MonoBehaviour {
         } else {
             waitTime -= Time.fixedDeltaTime;
         }
+    }
+
+    /// <summary>
+    /// Will be fired when runner hits the end
+    /// </summary>
+    private void reachedEnd() {
+        if (dieAtReachedEnd) Destroy(gameObject);
     }
 }
