@@ -3,26 +3,24 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class CreatMonster : MonoBehaviour {
+public class NPCTemplateSpawner : MonoBehaviour {
 
     [SerializeField]
-    private GameObject preFab;
-    private GameObject workMonster;
+    private GameObject templateNPC;
+    private GameObject currentNPC;
     [SerializeField]
     private float spawnDelay;
     private float delay;
     [SerializeField]
     private List<Transform> waypoints;
 
-
-
-    public GameObject PreFab {
-        get { return preFab; }
+    public GameObject TemplateNPC {
+        get { return templateNPC; }
         set {
-            if (null == preFab.GetComponent<WayPointRunner>()) {
-                throw new InvalidOperationException("preFab is invalid");
+            if (null == templateNPC.GetComponent<WayPointRunner>()) {
+                throw new InvalidOperationException("template is invalid! Missing component");
             }
-            preFab = value;
+            templateNPC = value;
         }
     }
 
@@ -32,12 +30,11 @@ public class CreatMonster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-        if (null == preFab.GetComponent<WayPointRunner>()) {
-            throw new InvalidOperationException("preFab is invalid");
+        if (null == templateNPC.GetComponent<WayPointRunner>()) {
+            throw new InvalidOperationException("template is invalid! Missing component");
         }
         //waypoints = new ArrayList();
-        preFab.SetActive(false);
+        templateNPC.SetActive(false);
         delay = spawnDelay;
 	}
 	
@@ -50,19 +47,14 @@ public class CreatMonster : MonoBehaviour {
         else {
             delay -= Time.deltaTime;
         }
-
 	}
 
     private void spawn() {
-
-        workMonster = (GameObject)Instantiate(preFab);
-        workMonster.SetActive(true);
-        workMonster.transform.position = waypoints[0].position;
-        WayPointRunner scriptWPR = workMonster.GetComponent<WayPointRunner>();
+        currentNPC = (GameObject)Instantiate(templateNPC);
+        currentNPC.SetActive(true);
+        currentNPC.transform.position = waypoints[0].position;
+        WayPointRunner scriptWPR = currentNPC.GetComponent<WayPointRunner>();
         scriptWPR.Waypoints = waypoints;
         scriptWPR.DoRun = true;
-
     }
-    
-    
 }

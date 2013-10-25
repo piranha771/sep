@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852a0de49866ea545a89fe3ff88c394b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preFab: {fileID: 2140924072}
+  templateNPC: {fileID: 2140924072}
   spawnDelay: 3
   waypoints:
   - {fileID: 1825490395}
@@ -2065,7 +2065,7 @@ GameObject:
   - 114: {fileID: 2140924078}
   - 54: {fileID: 2140924079}
   m_Layer: 8
-  m_Name: Monster
+  m_Name: NPC
   m_TagString: EnemyMonster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
