@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class ShootMonster : MonoBehaviour {
+public class ShootNPC : MonoBehaviour {
 
     private float attackDelay = 0;
     [SerializeField]
@@ -23,8 +23,6 @@ public class ShootMonster : MonoBehaviour {
     public string TowerTyp { get { return towerTyp; } set { towerTyp = value; } }
 	// Use this for initialization
 	void Start () {
-
-
         scriptSC = transform.GetComponent<ShootController>();
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
 	}
@@ -33,8 +31,6 @@ public class ShootMonster : MonoBehaviour {
 	void Update () {
 
         if (targetMonster != null) {
-            
-
             towerWeapon.transform.LookAt(targetMonster.transform);
             attack_monster(targetMonster.transform.collider);
 
