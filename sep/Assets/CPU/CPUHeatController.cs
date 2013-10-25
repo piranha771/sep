@@ -10,7 +10,7 @@ public class CPUHeatController : MonoBehaviour {
     [SerializeField]
     private float meltdownTemp = 120;
     [SerializeField]
-    private float cooldownRatePerSecond = 0.1f;
+    private float cooldownRatePerSecond = 1f;
     [SerializeField]
     private float currentTemp;
 
