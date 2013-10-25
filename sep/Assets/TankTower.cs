@@ -12,7 +12,7 @@ public class TankTower : MonoBehaviour {
     private float cooldownInSeconds = 1.5f;
 
     private GameObject currentEnemy;
-    private EnemyHealth enemyHealth;
+    private Health enemyHealth;
     private float cooldown;
 
     public bool IsActive { get { return isActive; } set { isActive = value; } }
@@ -54,7 +54,7 @@ public class TankTower : MonoBehaviour {
             if (distance < smallestDist) {
                 smallestDist = distance;
                 currentEnemy = go;
-                enemyHealth = go.GetComponent<EnemyHealth>();
+                enemyHealth = go.GetComponent<Health>();
                 if (enemyHealth == null) throw new Exception("Health for enemy was not found!");
             }
         }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyHealth : MonoBehaviour {
+public class Health : MonoBehaviour {
 
     [SerializeField]
     private int currentHealth = 100;
