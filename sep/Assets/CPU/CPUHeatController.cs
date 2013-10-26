@@ -54,10 +54,7 @@ public class CPUHeatController : MonoBehaviour {
             Color oldCol = obj.renderer.material.color;
             Color newCol =  new Color(oldCol.r * 1.1f, oldCol.g * 0.9f, oldCol.b * 0.9f);
             obj.renderer.material.color = newCol;
-            BloomObject bloom = obj.GetComponent<BloomObject>();
-            if (bloom != null) {
-                bloom.BloomColor = newCol;
-            }
+
         }
 
         Color oldCol2 = GetComponentInChildren<Light>().color;

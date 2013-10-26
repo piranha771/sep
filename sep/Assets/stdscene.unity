@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BloomColor: {r: .33088237, g: .778499186, b: 1, a: 1}
+  m_EditorClassIdentifier: 
 --- !u!1 &287054219
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,64 +708,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8244301f0165f7943b391d25669343ec, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
 --- !u!23 &449118041
@@ -1120,13 +1062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f000a0a3ea5f349ba4f2b7939fa707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Quality: 90
-  Smoothing: 0
-  SkyColor: {r: .0637435168, g: .0649599954, b: .0661764741, a: 1}
-  BloomMaterial: {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  RayMask:
-    serializedVersion: 2
-    m_Bits: 256
+  m_EditorClassIdentifier: 
 --- !u!1 &1237853668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BloomColor: {r: .183823526, g: .763590217, b: 1, a: 1}
+  m_EditorClassIdentifier: 
 --- !u!1 &1785922797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,7 +1710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BloomColor: {r: 0, g: 1, b: .0896551609, a: 1}
+  m_EditorClassIdentifier: 
 --- !u!1 &1988536455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BloomColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EditorClassIdentifier: 
 --- !u!114 &2140924078
 MonoBehaviour:
   m_ObjectHideFlags: 0
