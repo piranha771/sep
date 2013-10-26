@@ -341,7 +341,6 @@ GameObject:
   - 33: {fileID: 244823292}
   - 64: {fileID: 244823291}
   - 23: {fileID: 244823290}
-  - 114: {fileID: 244823294}
   m_Layer: 8
   m_Name: Plane
   m_TagString: cpuglowpart
@@ -398,18 +397,6 @@ Transform:
   m_LocalScale: {x: .0780000016, y: 2.5, z: .0780000016}
   m_Children: []
   m_Father: {fileID: 1785922801}
---- !u!114 &244823294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244823289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
 --- !u!1 &287054219
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +607,6 @@ GameObject:
   - 33: {fileID: 449118043}
   - 65: {fileID: 449118042}
   - 23: {fileID: 449118041}
-  - 114: {fileID: 449118040}
   - 54: {fileID: 449118039}
   - 114: {fileID: 449118037}
   - 120: {fileID: 449118038}
@@ -698,18 +684,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &449118040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 449118036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8244301f0165f7943b391d25669343ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
 --- !u!23 &449118041
 Renderer:
   m_ObjectHideFlags: 0
@@ -965,7 +939,6 @@ GameObject:
   - 124: {fileID: 973242234}
   - 81: {fileID: 973242233}
   - 114: {fileID: 973242238}
-  - 114: {fileID: 973242239}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1051,18 +1024,6 @@ MonoBehaviour:
   mouseBorder: .0500000007
   maxHeight: 40
   minHeight: 10
---- !u!114 &973242239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973242232}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f000a0a3ea5f349ba4f2b7939fa707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1237853668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,7 +1270,6 @@ GameObject:
   - 33: {fileID: 1453874905}
   - 65: {fileID: 1453874904}
   - 23: {fileID: 1453874903}
-  - 114: {fileID: 1453874906}
   m_Layer: 8
   m_Name: CPUFrame
   m_TagString: cpuglowpart
@@ -1365,18 +1325,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1453874901}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1453874906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1453874901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1785922797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1565,6 @@ GameObject:
   - 23: {fileID: 1906386307}
   - 114: {fileID: 1906386312}
   - 54: {fileID: 1906386311}
-  - 114: {fileID: 1906386313}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -1698,18 +1645,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9901b1eb426ea9344a376c454a8922d2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1906386313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1906386306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
 --- !u!1 &1988536455
 GameObject:
@@ -1835,7 +1770,6 @@ GameObject:
   - 33: {fileID: 2140924075}
   - 65: {fileID: 2140924074}
   - 23: {fileID: 2140924073}
-  - 114: {fileID: 2140924077}
   - 114: {fileID: 2140924078}
   - 54: {fileID: 2140924079}
   - 114: {fileID: 2140924080}
@@ -1896,18 +1830,6 @@ Transform:
   - {fileID: 1797970869}
   - {fileID: 1362465429}
   m_Father: {fileID: 0}
---- !u!114 &2140924077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2140924072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d551abcf145c14592a4150ebf68185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2140924078
 MonoBehaviour:
   m_ObjectHideFlags: 0
