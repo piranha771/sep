@@ -30,7 +30,6 @@ public class CPUHeatController : MonoBehaviour {
     public Color HeatColor { get { return heatColor; } set { heatColor = value; } }
 
 	void Start () {
-        
         currentTemp = normalTemp;
         // Get reference of the GUITemp Text
         guiCPUTempDisplay = GetComponentInChildren<GUIText>();
@@ -54,6 +53,8 @@ public class CPUHeatController : MonoBehaviour {
     public void Impact(GameObject npcEvilBit) {
         Health health = npcEvilBit.GetComponent<Health>();
         currentTemp += (health.CurrentHealth * NPCHealthMultiplier);
+
+
 
         GameObject[] go = GameObject.FindGameObjectsWithTag("cpuglowmodel");
         
