@@ -13,14 +13,21 @@ public class CPUHeatController : MonoBehaviour {
     private float cooldownRatePerSecond = 1f;
     [SerializeField]
     private float currentTemp;
+    [SerializeField]
+    private Color coolColor;
+    [SerializeField]
+    private Color heatColor;
 
     private GUIText guiCPUTempDisplay;
     private float deltaTime = 0;
+    private Color currentColor;
 
     public float NormalHeat { get { return normalTemp; } set { normalTemp = value; } }
     public float MeltdownTemp { get { return meltdownTemp; } set { meltdownTemp = value; } }
     public float CooldownRatePerSecond { get { return cooldownRatePerSecond; } set { cooldownRatePerSecond = value; } }
     public float CurrentTemp { get { return currentTemp; } set { currentTemp = value; } }
+    public Color CoolColor { get { return coolColor; } set { coolColor = value; } }
+    public Color HeatColor { get { return heatColor; } set { heatColor = value; } }
 
 	void Start () {
         
@@ -45,16 +52,24 @@ public class CPUHeatController : MonoBehaviour {
     /// </summary>
     /// <param name="npcEvilBit"></param>
     public void Impact(GameObject npcEvilBit) {
-        Debug.Log("impact");
         Health health = npcEvilBit.GetComponent<Health>();
         currentTemp += (health.CurrentHealth * NPCHealthMultiplier);
 
-        GameObject[] go = GameObject.FindGameObjectsWithTag("cpuglowpart");
+        GameObject[] go = GameObject.FindGameObjectsWithTag("cpuglowmodel");
+        
         foreach (var obj in go) {
             Color oldCol = obj.renderer.material.color;
             Color newCol =  new Color(oldCol.r * 1.1f, oldCol.g * 0.9f, oldCol.b * 0.9f);
             obj.renderer.material.color = newCol;
-
+        
+        }
+        go = GameObject.FindGameObjectsWithTag("cpuglowparticle");
+        Debug.Log("NUM: " + go.Length);
+        foreach (var obj in go) {
+            Color oldCol = obj.renderer.material.GetColor("_TintColor");
+            Color newCol = new Color(oldCol.r * 1.1f, oldCol.g * 0.9f, oldCol.b * 0.9f);
+            obj.renderer.material.SetColor("_TintColor", newCol);
+            Debug.Log("Old" + oldCol.ToString() + " New " + newCol);
         }
 
         Color oldCol2 = GetComponentInChildren<Light>().color;
