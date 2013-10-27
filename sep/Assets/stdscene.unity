@@ -539,7 +539,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cbf02f88670402449b15c5d27dfe5a7c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -712,6 +712,7 @@ GameObject:
   - 114: {fileID: 449118037}
   - 120: {fileID: 449118038}
   - 114: {fileID: 449118045}
+  - 114: {fileID: 449118040}
   m_Layer: 0
   m_Name: Tower2
   m_TagString: Untagged
@@ -765,7 +766,7 @@ LineRenderer:
     endWidth: .100000001
     m_StartColor:
       serializedVersion: 2
-      rgba: 4279762688
+      rgba: 4278255379
     m_EndColor:
       serializedVersion: 2
       rgba: 4278255379
@@ -785,6 +786,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &449118040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 449118036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d919516a89bb504fb6820356b4689a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  towerTyp: lineBulletTower
 --- !u!23 &449118041
 Renderer:
   m_ObjectHideFlags: 0
@@ -829,7 +843,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 449118036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.32424831, y: 0, z: 11.8475189}
+  m_LocalPosition: {x: -.724971771, y: 0, z: 13.2537298}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 301355053}
@@ -1675,6 +1689,7 @@ GameObject:
   - 54: {fileID: 1237853674}
   - 114: {fileID: 1237853675}
   - 114: {fileID: 1237853676}
+  - 114: {fileID: 1237853673}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1711,7 +1726,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 7, z: 7}
-  m_Center: {x: 2, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1237853671
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1726,11 +1741,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1237853668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.93168163, y: 0, z: 7.86994839}
+  m_LocalPosition: {x: 5.13557339, y: .47936058, z: 7.86994839}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 229547673}
   m_Father: {fileID: 0}
+--- !u!114 &1237853673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237853668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d919516a89bb504fb6820356b4689a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: .100000001
+  towerTyp: bulletTower
 --- !u!54 &1237853674
 Rigidbody:
   m_ObjectHideFlags: 0
