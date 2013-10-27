@@ -280,6 +280,7 @@ GameObject:
   - 33: {fileID: 229547676}
   - 65: {fileID: 229547675}
   - 23: {fileID: 229547674}
+  - 114: {fileID: 229547677}
   m_Layer: 0
   m_Name: TowerWeapon
   m_TagString: Untagged
@@ -335,6 +336,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 229547672}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &229547677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 229547672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a11ef8bc03486244b1b1a632d740da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &244823289
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +521,8 @@ GameObject:
   - 33: {fileID: 301355056}
   - 65: {fileID: 301355055}
   - 23: {fileID: 301355054}
+  - 120: {fileID: 301355057}
+  - 114: {fileID: 301355058}
   m_Layer: 0
   m_Name: TowerWeapon
   m_TagString: Untagged
@@ -564,6 +578,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 301355052}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!120 &301355057
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 301355052}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  m_Parameters:
+    startWidth: .100000001
+    endWidth: .100000001
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4278255379
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4278255379
+  m_UseWorldSpace: 1
+--- !u!114 &301355058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 301355052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1260f32bc822a4992086de566164ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &360306862
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,9 +775,9 @@ GameObject:
   - 23: {fileID: 449118041}
   - 54: {fileID: 449118039}
   - 114: {fileID: 449118037}
+  - 114: {fileID: 449118040}
   - 120: {fileID: 449118038}
   - 114: {fileID: 449118045}
-  - 114: {fileID: 449118040}
   m_Layer: 0
   m_Name: Tower2
   m_TagString: Untagged
@@ -743,33 +808,27 @@ LineRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
-  - {fileID: 2100000, guid: 7d634edf5b7353f45bf8a5b9dc6d2dce, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
+  m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     startWidth: .100000001
     endWidth: .100000001
     m_StartColor:
       serializedVersion: 2
-      rgba: 4278255379
+      rgba: 4294967295
     m_EndColor:
       serializedVersion: 2
-      rgba: 4278255379
+      rgba: 4294967295
   m_UseWorldSpace: 1
 --- !u!54 &449118039
 Rigidbody:
@@ -856,7 +915,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 449118036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1260f32bc822a4992086de566164ce, type: 3}
+  m_Script: {fileID: 11500000, guid: dd65e525943753b46aa9e7fc20d857ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &504642309
@@ -1749,9 +1808,10 @@ GameObject:
   - 65: {fileID: 1237853670}
   - 23: {fileID: 1237853669}
   - 54: {fileID: 1237853674}
-  - 114: {fileID: 1237853675}
   - 114: {fileID: 1237853676}
   - 114: {fileID: 1237853673}
+  - 120: {fileID: 1237853675}
+  - 114: {fileID: 1237853677}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1836,17 +1896,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1237853675
-MonoBehaviour:
+--- !u!120 &1237853675
+LineRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1237853668}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a11ef8bc03486244b1b1a632d740da9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: .100000001
+    endWidth: .100000001
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
 --- !u!114 &1237853676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1856,6 +1939,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f115e51ab023f4c9207e1a3cba2164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1237853677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237853668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd65e525943753b46aa9e7fc20d857ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1304980797

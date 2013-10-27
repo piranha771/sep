@@ -22,6 +22,7 @@ public class TowerAttackRadius : MonoBehaviour {
 
         Vector3 maxPointOfCollider = colliderTower.bounds.max;
         Vector3 sizeOfCollider = colliderTower.size/2;
+        
         maxPointOfCollider.y = maxPointOfCollider.y - (sizeOfCollider.y/2);
         attackRadius.SetPosition(0,maxPointOfCollider);
         maxPointOfCollider.z = maxPointOfCollider.z - sizeOfCollider.z;
