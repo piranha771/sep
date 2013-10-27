@@ -9,7 +9,6 @@ public class CPUIncomeController : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider collider) {
-        Debug.Log("HIT!");
         //TODO check if evil!
         gameObject.GetComponent<CPUHeatController>().Impact(collider.gameObject);
     }

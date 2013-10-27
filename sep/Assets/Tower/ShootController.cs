@@ -16,7 +16,6 @@ public class ShootController : MonoBehaviour {
 	}
 
     public void startShoot(GameObject monster, GameObject towerWeapon, string towerTyp) {
-        Debug.Log("Hit Hit");
         switch (towerTyp) {
             
             case "bulletTower":

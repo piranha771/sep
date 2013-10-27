@@ -15,11 +15,6 @@ public class ShootWithLine : MonoBehaviour {
 	}
 
     public void shoot(GameObject monster, GameObject towerWeapon){
-
-
-
-        Debug.Log("Hit Hit");
-            
             lineBullet.SetPosition(0, towerWeapon.transform.position);
             lineBullet.SetPosition(1, monster.transform.position);
 
