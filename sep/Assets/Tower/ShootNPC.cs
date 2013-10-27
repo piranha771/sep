@@ -49,7 +49,7 @@ public class ShootNPC : MonoBehaviour {
     }
 
     void OnTriggerExit(Collider monster) {
-
+        Debug.Log("Target is Exit!");
         targetMonster = null;
         scriptSC.stopShooting(towerTyp);
 

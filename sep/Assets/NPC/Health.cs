@@ -14,8 +14,14 @@ public class Health : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (currentHealth == 0) {
+      
+        if (currentHealth < 0) {
+            
             Destroy(gameObject);
         }
 	}
+
+    public void tackeDamage(int damage) {
+        currentHealth -= damage;
+    }
 }
