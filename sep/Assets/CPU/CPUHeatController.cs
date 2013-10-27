@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CPUHeatController : MonoBehaviour {
 
-    public readonly float NPCHealthMultiplier = 0.1f; 
+    public readonly float NPCHealthMultiplier = 0.5f; 
 
     [SerializeField]
     private float normalTemp = 40;
@@ -52,7 +52,7 @@ public class CPUHeatController : MonoBehaviour {
     /// <param name="npcEvilBit"></param>
     public void Impact(GameObject npcEvilBit) {
         Health health = npcEvilBit.GetComponent<Health>();
-        currentTemp += (health.CurrentHealth * NPCHealthMultiplier);
+        currentTemp += 10;//(health.CurrentHealth * NPCHealthMultiplier);
 
 
 

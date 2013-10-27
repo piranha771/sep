@@ -29,30 +29,23 @@ public class ShootNPC : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         if (targetMonster != null) {
             towerWeapon.transform.LookAt(targetMonster.transform);
             attack_monster(targetMonster.transform.collider);
-
         }
-
 	}
 
     void OnTriggerStay(Collider monster) {
-      
+    
         if (targetMonster == null) {
-
             targetMonster = monster.gameObject;
-
         }
-
     }
 
     void OnTriggerExit(Collider monster) {
         Debug.Log("Target is Exit!");
         targetMonster = null;
         scriptSC.stopShooting(towerTyp);
-
     }
 
     void attack_monster(Collider monster) {
@@ -62,18 +55,9 @@ public class ShootNPC : MonoBehaviour {
             targetMonster = null;
         if (attackDelay < 0 && monster != null) {
             if (monster.gameObject.tag == "EnemyMonster") {
-
-
                 scriptSC.startShoot(monster.gameObject, towerWeapon, towerTyp);
-               
-
                 attackDelay = delay;
-
-                
-
             }
         }
-
     }
-
 }
