@@ -40,7 +40,7 @@ public class ShootController : MonoBehaviour {
         switch (towerTyp) {
 
             case "bulletTower":
-
+                scriptSWB.stopShooting();
               
                 break;
 
