@@ -6,8 +6,8 @@ public class ShootController : MonoBehaviour {
     private ShootWithLine scriptSWL;
 	// Use this for initialization
 	void Start () {
-        scriptSWB = transform.GetComponent<ShootWithBullet>();
-        scriptSWL = transform.GetComponent<ShootWithLine>();
+        scriptSWB = transform.GetChild(0).GetComponent<ShootWithBullet>();
+        scriptSWL = transform.GetChild(0).GetComponent<ShootWithLine>();
 	}
 	
 	// Update is called once per frame
