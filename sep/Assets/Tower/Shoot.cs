@@ -10,7 +10,7 @@ public class Shoot : MonoBehaviour {
     private Transform endPoint;
     private Transform startPoint;
     private int next = 0;
-    private int SPEED = 500;
+    private int SPEED = 1500;
     private float ROTATESPEED = 2000;
     private int reachTarget = 0;
 
