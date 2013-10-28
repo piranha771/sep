@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CPUHeatController : MonoBehaviour {
 
-    public readonly float NPCHealthMultiplier = 0.5f; 
+    public readonly float NPCHealthMultiplier = 2f; 
 
     [SerializeField]
     private float normalTemp = 40;
