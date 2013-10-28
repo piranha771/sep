@@ -864,7 +864,7 @@ GameObject:
   - 23: {fileID: 97725808}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: spawnarea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -895,7 +895,7 @@ BoxCollider:
   m_GameObject: {fileID: 97725807}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1106,7 +1106,7 @@ MeshCollider:
   m_GameObject: {fileID: 154814032}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -2867,7 +2867,7 @@ MeshCollider:
   m_GameObject: {fileID: 518413075}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -3012,7 +3012,7 @@ MeshCollider:
   m_GameObject: {fileID: 533084377}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -3480,7 +3480,7 @@ MeshCollider:
   m_GameObject: {fileID: 621040876}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -4927,7 +4927,7 @@ MeshCollider:
   m_GameObject: {fileID: 996590179}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -5395,7 +5395,7 @@ MeshCollider:
   m_GameObject: {fileID: 1161357643}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -5473,7 +5473,7 @@ MeshCollider:
   m_GameObject: {fileID: 1162301517}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -7702,6 +7702,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1601326882}
+  - 114: {fileID: 1601326883}
   m_Layer: 9
   m_Name: BackGround
   m_TagString: Untagged
@@ -7725,6 +7726,17 @@ Transform:
   - {fileID: 1807418860}
   - {fileID: 1204439981}
   m_Father: {fileID: 0}
+--- !u!114 &1601326883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601326881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526526aa9e1dbb9408b86a627eed2e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1606321223
 GameObject:
   m_ObjectHideFlags: 0
@@ -9253,7 +9265,7 @@ MeshCollider:
   m_GameObject: {fileID: 1994428755}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
