@@ -71,6 +71,11 @@ public class Shoot : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Transfer startponit and endpoint for bulletflight
+    /// </summary>
+    /// <param name="st">startpoint</param>
+    /// <param name="en">endpont</param>
     public void set_start(Transform st, Transform en) {
         endPoint = en;
         startPoint = st;

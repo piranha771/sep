@@ -3,13 +3,17 @@ using System.Collections;
 
 public class TowerAttackRadius : MonoBehaviour {
 
-    private LineRenderer attackRadius;
+
     private BoxCollider colliderTower;
+    private GameObject towerRadius;
 
 	// Use this for initialization
 	void Start () {
-        attackRadius = transform.GetComponent<LineRenderer>();
+    
         colliderTower = transform.GetComponent<BoxCollider>();
+        GameObject workRadius = GameObject.Find("TowerRadius");
+        towerRadius = (GameObject) Instantiate(workRadius);
+        towerRadius.SetActive(false);
         updateRadius();
 	}
 	
@@ -17,21 +21,12 @@ public class TowerAttackRadius : MonoBehaviour {
 	void Update () {
 	
 	}
-
+    /// <summary>
+    /// Update radius renderer. Is equal to colliderbox size
+    /// </summary>
     public void updateRadius() {
-
-        Vector3 maxPointOfCollider = colliderTower.bounds.max;
-        Vector3 sizeOfCollider = colliderTower.size/2;
-     
-        maxPointOfCollider.y = maxPointOfCollider.y - (sizeOfCollider.y/2) + 0.2f;
-        attackRadius.SetPosition(0,maxPointOfCollider);
-        maxPointOfCollider.z = maxPointOfCollider.z - sizeOfCollider.z;
-        attackRadius.SetPosition(1,  maxPointOfCollider);
-        maxPointOfCollider.x = maxPointOfCollider.x - sizeOfCollider.x;
-        attackRadius.SetPosition(2,  maxPointOfCollider);
-        maxPointOfCollider.z = maxPointOfCollider.z + sizeOfCollider.z;
-        attackRadius.SetPosition(3, maxPointOfCollider);
-        maxPointOfCollider.x = maxPointOfCollider.x + sizeOfCollider.x;
-        attackRadius.SetPosition(4,  maxPointOfCollider);
+        towerRadius.transform.position = transform.position;
+        towerRadius.transform.localScale = (colliderTower.size/2);
+        towerRadius.SetActive(true);
     }
 }
