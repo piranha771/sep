@@ -36,12 +36,9 @@ public class buttons : MonoBehaviour {
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 	RaycastHit hit;
  
-    if(Physics.Raycast(ray, out hit) && hit.collider.tag == "spawnarea")
-    {
- 	Instantiate(building,hit.point,Quaternion.identity);
- 
- 
-    
-           }
+    if(Physics.Raycast(ray, out hit) && hit.collider.tag == "spawnarea"){
+ 	if(building != null)Instantiate(building,hit.point,Quaternion.identity);
+    building = null;
+         }
         }
 }}

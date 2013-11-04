@@ -27,7 +27,10 @@ public class TowerAttackRadius : MonoBehaviour {
     public void updateRadius() {
         if (towerRadius == null) towerRadius = (GameObject)Instantiate(prefabSource.getRadiusRenderer());
         towerRadius.transform.position = transform.position;
-        towerRadius.transform.localScale = (colliderTower.size/2);
+        Vector3 workScale = new Vector3(0,0,0);
+        workScale.y = colliderTower.size.z;
+        workScale.x = colliderTower.size.x;
+        towerRadius.transform.localScale = (workScale/2);
        
     }
 
@@ -42,7 +45,7 @@ public class TowerAttackRadius : MonoBehaviour {
                 updateRadius();
                 towerRadius.SetActive(true);
             } else {
-                towerRadius.SetActive(false);
+                if(towerRadius != null) towerRadius.SetActive(false);
             }
         }
 
