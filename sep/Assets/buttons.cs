@@ -15,8 +15,7 @@ public class buttons : MonoBehaviour {
  
  
  
-    void OnGUI () 
-    {
+    void OnGUI (){
         if (GUI.Button (new Rect (10,10, 50, 50),"1" )) 
         { building = GameObject.Find("TowerBullet");
 		}
@@ -31,8 +30,7 @@ public class buttons : MonoBehaviour {
     void Update () {
  
  
-    if(Input.GetMouseButtonDown(0)&& !isHoverGUI)
-    {
+    if(Input.GetMouseButtonDown(0)&& !isHoverGUI){
  
  //   var hit = RaycastHit;
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

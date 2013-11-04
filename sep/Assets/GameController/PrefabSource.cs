@@ -3,10 +3,13 @@ using System.Collections;
 
 public class PrefabSource : MonoBehaviour {
     private GameObject bullet;
+    private GameObject radiusRenderer;
 
 	// Use this for initialization
 	void Start () {
         bullet = GameObject.Find("Bullet");
+        radiusRenderer = GameObject.Find("TowerRadius");
+        radiusRenderer.SetActive(false);
         bullet.SetActive(false);
 	}
 	
@@ -20,5 +23,12 @@ public class PrefabSource : MonoBehaviour {
     /// <returns>Return a gameobject</returns>
     public GameObject getBullet() {
         return bullet;
+    }
+    /// <summary>
+    /// Return a gameobject what should be radius renderer of tower
+    /// </summary>
+    /// <returns>Return a gameobject</returns>
+    public GameObject getRadiusRenderer() {
+        return radiusRenderer;    
     }
 }

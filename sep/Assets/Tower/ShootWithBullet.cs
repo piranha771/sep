@@ -9,11 +9,11 @@ public class ShootWithBullet : MonoBehaviour {
     private int weaponDamage = 15;
     private Quaternion startRotation;
     private PrefabSource prefabSource;
-    private GameObject gameController;
+
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
 	// Use this for initialization
 	void Start () {
-        gameController = GameObject.Find("GameController");
+        GameObject gameController = GameObject.Find("GameController");
         prefabSource = gameController.GetComponent<PrefabSource>();
         startRotation = transform.rotation;
 	}
