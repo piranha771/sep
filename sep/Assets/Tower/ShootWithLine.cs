@@ -21,7 +21,11 @@ public class ShootWithLine : MonoBehaviour {
 
         if (npc == null) stopShooting();
 	}
-
+    /// <summary>
+    /// Initialize single shoot
+    /// </summary>
+    /// <param name="monster">target</param>
+    /// <param name="towerWeapon">weapon</param>
     public void shoot(GameObject monster, GameObject towerWeapon){
             npc = monster;
             npcHealth = monster.GetComponent<Health>();

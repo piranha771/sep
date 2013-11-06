@@ -3,35 +3,51 @@ using System.Collections;
 
 public class TowerAttackRadius : MonoBehaviour {
 
-    private LineRenderer attackRadius;
+
     private BoxCollider colliderTower;
+    private GameObject towerRadius;
+    private PrefabSource prefabSource;
 
 	// Use this for initialization
 	void Start () {
-        attackRadius = transform.GetComponent<LineRenderer>();
+    
         colliderTower = transform.GetComponent<BoxCollider>();
-        updateRadius();
+        GameObject gameCOntroller = GameObject.Find("GameController");
+        prefabSource = gameCOntroller.GetComponent<PrefabSource>();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+        isMouseOnMeClicked();
 	}
-
+    /// <summary>
+    /// Update radius renderer. Is equal to colliderbox size
+    /// </summary>
     public void updateRadius() {
+        if (towerRadius == null) towerRadius = (GameObject)Instantiate(prefabSource.getRadiusRenderer());
+        towerRadius.transform.position = transform.position;
+        Vector3 workScale = new Vector3(0,0,0);
+        workScale.y = colliderTower.size.z;
+        workScale.x = colliderTower.size.x;
+        towerRadius.transform.localScale = (workScale/2);
+       
+    }
 
-        Vector3 maxPointOfCollider = colliderTower.bounds.max;
-        Vector3 sizeOfCollider = colliderTower.size/2;
-     
-        maxPointOfCollider.y = maxPointOfCollider.y - (sizeOfCollider.y/2) + 0.2f;
-        attackRadius.SetPosition(0,maxPointOfCollider);
-        maxPointOfCollider.z = maxPointOfCollider.z - sizeOfCollider.z;
-        attackRadius.SetPosition(1,  maxPointOfCollider);
-        maxPointOfCollider.x = maxPointOfCollider.x - sizeOfCollider.x;
-        attackRadius.SetPosition(2,  maxPointOfCollider);
-        maxPointOfCollider.z = maxPointOfCollider.z + sizeOfCollider.z;
-        attackRadius.SetPosition(3, maxPointOfCollider);
-        maxPointOfCollider.x = maxPointOfCollider.x + sizeOfCollider.x;
-        attackRadius.SetPosition(4,  maxPointOfCollider);
+    void isMouseOnMeClicked() {
+    
+        if(Input.GetMouseButtonDown(0)){
+            
+            
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "tower" && hit.transform == transform)) {
+                updateRadius();
+                towerRadius.SetActive(true);
+            } else {
+                if(towerRadius != null) towerRadius.SetActive(false);
+            }
+        }
+
     }
 }
