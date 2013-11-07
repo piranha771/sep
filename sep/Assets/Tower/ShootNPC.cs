@@ -15,23 +15,34 @@ public class ShootNPC : MonoBehaviour {
     
     private GameObject targetMonster;
     private GameObject towerWeapon;
-    private ShootController scriptSC;
+    private IShootWith scriptSC;
 
-
+    /// <summary>
+    /// Setter and getter for delay of attack.  
+    /// </summary>
     public float Delay { get { return delay; } set { delay = value; } }
 
+    /// <summary>
+    /// Setter and getter for tower typ. Not in use. 
+    /// Delete?
+    /// </summary>
     public string TowerTyp { get { return towerTyp; } set { towerTyp = value; } }
+
+    /// <summary>
+    /// Setter and getter fpr damage of weapon. Send method to IShootWith.
+    /// </summary>
+    public int WeaponDamage { get { return scriptSC.WeaponDamage; } set { scriptSC.WeaponDamage = value; } }
 	// Use this for initialization
 	void Start () {
-        scriptSC = transform.GetComponent<ShootController>();
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
+        scriptSC = (IShootWith)towerWeapon.GetComponent(typeof(IShootWith));
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (targetMonster != null) {
             towerWeapon.transform.LookAt(targetMonster.transform);
-            attack_monster(targetMonster.transform.collider);
+             AttackMonster(targetMonster.transform.collider);
         }
 	}
 
@@ -45,19 +56,22 @@ public class ShootNPC : MonoBehaviour {
     void OnTriggerExit(Collider monster) {
         Debug.Log("Target is Exit!");
         targetMonster = null;
-        scriptSC.stopShooting(towerTyp);
+        scriptSC.StopShooting();
     }
 
-    void attack_monster(Collider monster) {
+    void AttackMonster(Collider monster) {
 
         attackDelay -= Time.deltaTime;
         if (monster == null)
             targetMonster = null;
         if (attackDelay < 0 && monster != null) {
             if (monster.gameObject.tag == "EnemyMonster") {
-                scriptSC.startShoot(monster.gameObject, towerWeapon, towerTyp);
+                scriptSC.Shoot(monster.gameObject, transform.gameObject);
                 attackDelay = delay;
             }
         }
     }
+
+
+
 }

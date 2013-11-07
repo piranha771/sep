@@ -21,14 +21,14 @@ public class PrefabSource : MonoBehaviour {
     /// Return a gameobject what should be bullet.
     /// </summary>
     /// <returns>Return a gameobject</returns>
-    public GameObject getBullet() {
+    public GameObject Bullet() {
         return bullet;
     }
     /// <summary>
     /// Return a gameobject what should be radius renderer of tower
     /// </summary>
     /// <returns>Return a gameobject</returns>
-    public GameObject getRadiusRenderer() {
+    public GameObject RadiusRenderer() {
         return radiusRenderer;    
     }
 }

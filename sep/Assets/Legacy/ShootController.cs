@@ -4,10 +4,12 @@ using System.Collections;
 public class ShootController : MonoBehaviour {
     private ShootWithBullet scriptSWB;
     private ShootWithLine scriptSWL;
+    private ShootWithBurrelGun scriptSWG;
 	// Use this for initialization
 	void Start () {
         scriptSWB = transform.GetChild(0).GetComponent<ShootWithBullet>();
         scriptSWL = transform.GetChild(0).GetComponent<ShootWithLine>();
+        scriptSWG = transform.GetChild(0).GetComponent<ShootWithBurrelGun>();
 	}
 	
 	// Update is called once per frame
@@ -20,16 +22,19 @@ public class ShootController : MonoBehaviour {
     /// <param name="npcEnemy"> target </param>
     /// <param name="towerWeapon"> weapon </param>
     /// <param name="towerTyp"> weapon typ </param>
-    public void startShoot(GameObject npcEnemy, GameObject towerWeapon, string towerTyp) {
+    public void StartShoot(GameObject npcEnemy, GameObject towerWeapon, string towerTyp) {
         switch (towerTyp) {
             
             case "bulletTower":
                 
-                scriptSWB.shoot(npcEnemy, towerWeapon);
+                scriptSWB.Shoot(npcEnemy, towerWeapon);
                 break;
 
             case "lineBulletTower":
-                scriptSWL.shoot(npcEnemy, towerWeapon);
+                scriptSWL.Shoot(npcEnemy, towerWeapon);
+                break;
+            case "gatlingTower":
+                scriptSWG.Shoot(npcEnemy, towerWeapon);
                 break;
             default:
                 break;
@@ -40,17 +45,20 @@ public class ShootController : MonoBehaviour {
       
     }
 
-    public void stopShooting(string towerTyp) {
+    public void StopShooting(string towerTyp) {
 
         switch (towerTyp) {
 
             case "bulletTower":
-                scriptSWB.stopShooting();
+                scriptSWB.StopShooting();
               
                 break;
 
             case "lineBulletTower":
-                scriptSWL.stopShooting();
+                scriptSWL.StopShooting();
+                break;
+            case "gatlingTower":
+                scriptSWG.StopShooting();
                 break;
             default:
                 break;
