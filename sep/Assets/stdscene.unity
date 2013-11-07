@@ -4651,7 +4651,7 @@ MonoBehaviour:
   zoomSpeed: 2000
   useKeys: 0
   useMouse: 1
-  mouseBorder: .0500000007
+  mouseBorder: .00999999978
   maxHeight: 40
   minHeight: 10
 --- !u!1 &996590179
