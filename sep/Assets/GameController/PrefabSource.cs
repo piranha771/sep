@@ -17,6 +17,7 @@ public class PrefabSource : MonoBehaviour {
 	void Update () {
 	
 	}
+
     /// <summary>
     /// Return a gameobject what should be bullet.
     /// </summary>
