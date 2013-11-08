@@ -24,8 +24,8 @@ public class TowerAttackRadius : MonoBehaviour {
     /// <summary>
     /// Update radius renderer. Is equal to colliderbox size
     /// </summary>
-    public void updateRadius() {
-        if (towerRadius == null) towerRadius = (GameObject)Instantiate(prefabSource.getRadiusRenderer());
+    public void UpdateRadius() {
+        if (towerRadius == null) towerRadius = (GameObject)Instantiate(prefabSource.RadiusRenderer());
         towerRadius.transform.position = transform.position;
         Vector3 workScale = new Vector3(0,0,0);
         workScale.y = colliderTower.size.z;
@@ -42,7 +42,7 @@ public class TowerAttackRadius : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "tower" && hit.transform == transform)) {
-                updateRadius();
+                UpdateRadius();
                 towerRadius.SetActive(true);
             } else {
                 if(towerRadius != null) towerRadius.SetActive(false);

@@ -24,7 +24,9 @@ public class Health : MonoBehaviour {
 	}
 
     public void tackeDamage(int damage) {
-        npcParticle.Play();
+        if (npcParticle != null) {
+            npcParticle.Play();
+        }
         currentHealth -= damage;
     }
 }

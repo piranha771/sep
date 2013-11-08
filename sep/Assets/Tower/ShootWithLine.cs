@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithLine : MonoBehaviour {
+public class ShootWithLine : MonoBehaviour, IShootWith {
     LineRenderer lineBullet;
     private Health npcHealth;
     private GameObject npc;
@@ -19,23 +19,23 @@ public class ShootWithLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (npc == null) stopShooting();
+        if (npc == null) StopShooting();
 	}
     /// <summary>
     /// Initialize single shoot
     /// </summary>
     /// <param name="monster">target</param>
     /// <param name="towerWeapon">weapon</param>
-    public void shoot(GameObject monster, GameObject towerWeapon){
+    public void Shoot(GameObject monster, GameObject towerWeapon){
             npc = monster;
             npcHealth = monster.GetComponent<Health>();
-            lineBullet.SetPosition(0, towerWeapon.transform.position);
+            lineBullet.SetPosition(0, transform.position);
             lineBullet.SetPosition(1, monster.transform.position);
             npcHealth.tackeDamage(weaponDamage);
        
     }
 
-    public void stopShooting() {
+    public void StopShooting() {
         transform.rotation = startRotation;
         lineBullet.SetPosition(0, transform.position);
         lineBullet.SetPosition(1, transform.position);

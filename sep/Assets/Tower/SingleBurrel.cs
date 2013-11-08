@@ -1,27 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithBullet : MonoBehaviour, IMakeDamage, IShootWith {
-
+public class SingleBurrel : MonoBehaviour, IMakeDamage {
     private GameObject bullet;
     private Health npcHealth;
     private GameObject npc;
-    private int weaponDamage = 15;
+    private int weaponDamage = 1;
     private Quaternion startRotation;
     private PrefabSource prefabSource;
 
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         GameObject gameController = GameObject.Find("GameController");
         prefabSource = gameController.GetComponent<PrefabSource>();
         startRotation = transform.rotation;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (npc == null) StopShooting();
-	}
+    }
+
+    // Update is called once per frame
+    void Update() {
+        
+    }
     /// <summary>
     /// Initialize single shoot to one NPC
     /// </summary>
@@ -30,25 +29,20 @@ public class ShootWithBullet : MonoBehaviour, IMakeDamage, IShootWith {
     public void Shoot(GameObject npcEnemy, GameObject towerWeapon) {
         bullet = prefabSource.Bullet();
         npc = npcEnemy;
-        npcHealth = npcEnemy.GetComponent<Health>();
-        GameObject bulletCopy = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
-        bulletCopy.SetActive(true);
-
-        Shoot script_b = bulletCopy.GetComponent<Shoot>();
-        script_b.SetStart(transform, npcEnemy.transform, transform.gameObject); 
         
-        }
-    /// <summary>
-    /// Initialize shooting stop
-    /// </summary>
-    public void StopShooting() {
-        transform.rotation = startRotation;
+        npcHealth = npcEnemy.GetComponent<Health>();
+        GameObject bullet_2 = (GameObject)Instantiate(bullet, transform.position, towerWeapon.transform.rotation);
+        bullet_2.SetActive(true);
+     
+        Shoot script_b = bullet_2.GetComponent<Shoot>();
+        script_b.SetStart(transform, npcEnemy.transform, transform.gameObject);
+       
     }
 
-    /// <summary>
-    /// Make damage on target. Target must have Health-Script with tackeDamage-Method.
-    /// </summary>
     public void MakeDamage() {
+
         npcHealth.tackeDamage(weaponDamage);
+
     }
+    
 }
