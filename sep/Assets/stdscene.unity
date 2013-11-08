@@ -1497,6 +1497,7 @@ GameObject:
   - 33: {fileID: 203485485}
   - 135: {fileID: 203485484}
   - 23: {fileID: 203485483}
+  - 114: {fileID: 203485487}
   m_Layer: 0
   m_Name: TowerWeapon
   m_TagString: tower
@@ -1548,10 +1549,21 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 203485482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.59652758, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children: []
   m_Father: {fileID: 463117673}
+--- !u!114 &203485487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203485482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72291aab3d3e79043950e0380e44e731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &218545256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,7 +3098,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 7, y: 3, z: 7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &463117672
 MeshFilter:
@@ -3102,7 +3114,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 463117669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.73380947, y: .62476635, z: 7.65305805}
+  m_LocalPosition: {x: 3.14432812, y: .62476635, z: 13.1831474}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 203485486}
@@ -3118,7 +3130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d919516a89bb504fb6820356b4689a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  delay: 0
   towerTyp: 
 --- !u!114 &463117676
 MonoBehaviour:
