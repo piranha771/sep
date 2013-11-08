@@ -8,6 +8,8 @@ TagManager:
   - EnemyMonster
   - spawnarea
   - tower
+  - evilmodel
+  - goodmodel
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
