@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Applies a RTS style movement for a camera
 /// </summary>
-public class CameraMod : MonoBehaviour {
+public class CameraController : MonoBehaviour {
     [SerializeField]
     private float moveSpeed = 20.0f;
     [SerializeField]
