@@ -4,7 +4,7 @@ using System.Collections;
 public class ShootWithNova : MonoBehaviour, IShootWith {
     private GameObject npc;
     private int weaponDamage = 15;
-    private bool npcState = false;
+    private bool npcState = true;
     private float radiusDelay = 1f;
     private float delay = 1f;
 	// Use this for initialization
@@ -21,14 +21,15 @@ public class ShootWithNova : MonoBehaviour, IShootWith {
 
     public void Shoot(GameObject npcEnemy, GameObject towerWeapon) {
 
-        makeRadius();
+       if(npcState) makeRadius();
         
     }
 
     public void StopShooting() {
-        npcState = false;
-        Vector3 oldScale = new Vector3(0.1f,0.1f,0.1f);
-        transform.localScale = oldScale; 
+        if (npcState) {
+            Vector3 oldScale = new Vector3(0.1f, 0.1f, 0.1f);
+            transform.localScale = oldScale;
+        }
     }
 
     public int WeaponDamage {
@@ -41,8 +42,9 @@ public class ShootWithNova : MonoBehaviour, IShootWith {
     }
 
     private void makeRadius() {
-
+        
         while (radiusDelay > 0) {
+            npcState = false;
             radiusDelay -= Time.deltaTime;
             Vector3 newScale = new Vector3(0.0025f, 0.0025f, 0.0025f);
 
@@ -50,5 +52,6 @@ public class ShootWithNova : MonoBehaviour, IShootWith {
         }
         radiusDelay = delay;
 
+        npcState = true;
     }
 }

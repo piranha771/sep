@@ -16,13 +16,25 @@ public class buttons : MonoBehaviour {
  
  
     void OnGUI (){
-        if (GUI.Button (new Rect (10,10, 50, 50),"1" )) 
-        { building = GameObject.Find("TowerBullet");
+        if (GUI.Button (new Rect (10,10, 50, 50),"TB" )) 
+        { building = (GameObject)Resources.Load("Towers/TowerBullet");
 		}
 		
-		if (GUI.Button (new Rect (60,10, 50, 50),"2" )) 
-        { building = GameObject.Find("TowerLaser");
+		if (GUI.Button (new Rect (60,10, 50, 50),"TL" )) {
+            building = (GameObject)Resources.Load("Towers/TowerLaser");
 		}
+
+        if (GUI.Button(new Rect(110, 10, 50, 50), "TG")) {
+            building = (GameObject)Resources.Load("Towers/TowerGatling");
+        }
+
+        if (GUI.Button(new Rect(160, 10, 50, 50), "T4B")) {
+            building = (GameObject)Resources.Load("Towers/TowerFourBurrelGun");
+        }
+
+        if (GUI.Button(new Rect(210, 10, 50, 50), "TN")) {
+            building = (GameObject)Resources.Load("Towers/TowerNova");
+        }
  
      isHoverGUI = rect.Contains( Event.current.mousePosition );
     }

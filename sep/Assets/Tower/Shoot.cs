@@ -11,7 +11,7 @@ public class Shoot : MonoBehaviour {
     private Transform startPoint;
     private GameObject towerWeapon;
     private int next = 0;
-    private int SPEED = 1000;
+    private int SPEED = 1500;
     private float ROTATESPEED = 2000;
     private int reachTarget = 0;
 
