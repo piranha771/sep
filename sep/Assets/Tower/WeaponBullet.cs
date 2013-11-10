@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithBullet : MonoBehaviour, IMakeDamage, IShootWith {
+public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
 
     private GameObject bullet;
     private Health npcHealth;

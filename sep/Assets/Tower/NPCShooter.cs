@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class ShootNPC : MonoBehaviour {
+public class NPCShooter : MonoBehaviour {
 
     private float attackDelay = 0;
     [SerializeField]
@@ -15,7 +15,7 @@ public class ShootNPC : MonoBehaviour {
     
     private GameObject targetMonster;
     private GameObject towerWeapon;
-    private IShootWith scriptSC;
+    private IWeapon scriptSC;
 
     /// <summary>
     /// Setter and getter for delay of attack.  
@@ -35,7 +35,7 @@ public class ShootNPC : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
-        scriptSC = (IShootWith)towerWeapon.GetComponent(typeof(IShootWith));
+        scriptSC = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
 	}
 	
 	// Update is called once per frame

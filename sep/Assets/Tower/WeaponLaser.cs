@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithLine : MonoBehaviour, IShootWith {
+public class WeaponLaser : MonoBehaviour, IWeapon {
     LineRenderer lineBullet;
     private Health npcHealth;
     private GameObject npc;
@@ -29,6 +29,7 @@ public class ShootWithLine : MonoBehaviour, IShootWith {
     public void Shoot(GameObject monster, GameObject towerWeapon){
             npc = monster;
             npcHealth = monster.GetComponent<Health>();
+            lineBullet.enabled = true;
             lineBullet.SetPosition(0, transform.position);
             lineBullet.SetPosition(1, monster.transform.position);
             npcHealth.tackeDamage(weaponDamage);
@@ -37,8 +38,9 @@ public class ShootWithLine : MonoBehaviour, IShootWith {
 
     public void StopShooting() {
         transform.rotation = startRotation;
-        lineBullet.SetPosition(0, transform.position);
-        lineBullet.SetPosition(1, transform.position);
+        lineBullet.enabled = false;
+        //lineBullet.SetPosition(0, transform.position);
+        //lineBullet.SetPosition(1, transform.position);
     }
 
 }

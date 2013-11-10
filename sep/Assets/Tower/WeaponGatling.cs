@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithGatling : MonoBehaviour, IMakeDamage, IShootWith {
+public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
     private GameObject bullet;
     private Health npcHealth;
     private GameObject npc;
@@ -11,7 +11,7 @@ public class ShootWithGatling : MonoBehaviour, IMakeDamage, IShootWith {
     private GatlingControll gatlingControll;
     private float rotateSpeed;
     private bool npcState = true;
-    private ShootNPC shootNPC ;
+    private NPCShooter shootNPC ;
 
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
 	// Use this for initialization
@@ -19,7 +19,7 @@ public class ShootWithGatling : MonoBehaviour, IMakeDamage, IShootWith {
         GameObject gameController = GameObject.Find("GameController");
         prefabSource = gameController.GetComponent<PrefabSource>();
         gatlingControll = transform.GetComponentInChildren<GatlingControll>();
-        shootNPC = transform.parent.GetComponent<ShootNPC>();
+        shootNPC = transform.parent.GetComponent<NPCShooter>();
 
         startRotation = transform.rotation;
 	}

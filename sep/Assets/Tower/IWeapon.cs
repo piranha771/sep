@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IShootWith  {
+public interface IWeapon {
 
     void Shoot(GameObject npcEnemy, GameObject towerWeapon);
     
