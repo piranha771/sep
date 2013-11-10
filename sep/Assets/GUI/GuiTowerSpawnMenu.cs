@@ -13,6 +13,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     private GameObject towerFourBurrelGun;
     [SerializeField]
     private GameObject towerNova;
+    [SerializeField]
+    private GameObject towerDetector;
 
     private GameObject selectedTower;
     private bool isHoverGUI = false;
@@ -23,17 +25,18 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     public GameObject TowerGatling { get { return towerGatling; } set { towerGatling = value; } }
     public GameObject TowerFourBurrelGun { get { return towerFourBurrelGun; } set { towerFourBurrelGun = value; } }
     public GameObject TowerNova { get { return towerNova; } set { towerNova = value; } }
+    public GameObject TowerDetector { get { return towerDetector; } set { towerDetector = value; } }
 
 
     void OnGUI() {
 
         if (GUI.Button(new Rect(10, 10, 50, 50), "TB")) {
             selectedTower = towerBullet;
-        }
-
+		}
+		
         if (GUI.Button(new Rect(60, 10, 50, 50), "TL")) {
             selectedTower = towerLaser;
-        }
+		}
 
         if (GUI.Button(new Rect(110, 10, 50, 50), "TG")) {
             selectedTower = towerGatling;
@@ -46,20 +49,24 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
         if (GUI.Button(new Rect(210, 10, 50, 50), "TN")) {
             selectedTower = towerNova;
         }
-
-        isHoverGUI = rect.Contains(Event.current.mousePosition);
+ 
+        if (GUI.Button(new Rect(260, 10, 50, 50), "TD")) {
+            selectedTower = towerDetector;
+        }
+ 
+        isHoverGUI = rect.Contains( Event.current.mousePosition );
     }
-
+ 
     void Update() {
         if (Input.GetMouseButtonDown(0) && !isHoverGUI) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
+	        RaycastHit hit;
+ 
             if (Physics.Raycast(ray, out hit) && hit.collider.tag == "spawnarea") {
                 Vector3 towerPosition = hit.point;
                 towerPosition.y += 0.4f;
                 if (selectedTower != null) Instantiate(selectedTower, towerPosition, Quaternion.identity);
-                selectedTower = null;
+                    selectedTower = null;
             }
         }
     }

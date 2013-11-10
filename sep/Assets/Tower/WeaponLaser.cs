@@ -26,7 +26,7 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
     /// </summary>
     /// <param name="monster">target</param>
     /// <param name="towerWeapon">weapon</param>
-    public void Shoot(GameObject monster, GameObject towerWeapon){
+    public void Shoot(GameObject monster){
             npc = monster;
             npcHealth = monster.GetComponent<Health>();
             lineBullet.enabled = true;

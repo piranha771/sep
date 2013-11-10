@@ -54,7 +54,6 @@ public class NPCShooter : MonoBehaviour {
     }
 
     void OnTriggerExit(Collider monster) {
-        Debug.Log("Target is Exit!");
         targetMonster = null;
         scriptWeapon.StopShooting();
     }
@@ -66,12 +65,9 @@ public class NPCShooter : MonoBehaviour {
             targetMonster = null;
         if (attackDelay < 0 && monster != null) {
             if (monster.gameObject.tag == "EnemyMonster") {
-                scriptWeapon.Shoot(monster.gameObject, transform.gameObject);
+                scriptWeapon.Shoot(monster.gameObject);
                 attackDelay = delay;
             }
         }
     }
-
-
-
 }
