@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithBurrelGun : MonoBehaviour, IShootWith {
+public class WeaponBurrelGun : MonoBehaviour, IWeapon {
     private SingleBurrel[] burrelsScripts;
     private Quaternion startRotation;
     

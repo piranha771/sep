@@ -18,7 +18,6 @@ public class CPUHeatController : MonoBehaviour {
     [SerializeField]
     private Color heatColor;
 
-    private GUIText guiCPUTempDisplay;
     private float deltaTime = 0;
     private Color currentColor;
 
@@ -31,8 +30,6 @@ public class CPUHeatController : MonoBehaviour {
 
 	void Start () {
         currentTemp = normalTemp;
-        // Get reference of the GUITemp Text
-        guiCPUTempDisplay = GetComponentInChildren<GUIText>();
 	}
 	
 	void Update () {
@@ -42,7 +39,6 @@ public class CPUHeatController : MonoBehaviour {
 
             currentTemp -= cooldownRatePerSecond;
             currentTemp = Mathf.Max(currentTemp, normalTemp);
-            tempDisplay();
         }
 	}
 
@@ -74,11 +70,8 @@ public class CPUHeatController : MonoBehaviour {
         Color oldCol2 = GetComponentInChildren<Light>().color;
         GetComponentInChildren<Light>().color =  new Color(oldCol2.r + 0.1f, oldCol2.g * 0.9f, oldCol2.b * 0.9f);
     }
-
-    /// <summary>
-    /// Rewrites the text on the GUI for temperature
-    /// </summary>
-    private void tempDisplay() {
-        guiCPUTempDisplay.text = "CPU Heat\r\n"+currentTemp+" °C";
-    }
+	
+	public float getCurrentTemp(){
+		return currentTemp;
+	}
 }

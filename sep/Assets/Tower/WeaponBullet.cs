@@ -1,56 +1,55 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithGatling : MonoBehaviour, IMakeDamage, IShootWith {
+public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
+
     private GameObject bullet;
     private Health npcHealth;
     private GameObject npc;
-    private int weaponDamage = 1;
+    private int weaponDamage = 15;
     private Quaternion startRotation;
     private PrefabSource prefabSource;
-    private GatlingControll gatlingControll;
-    private float rotateSpeed;
-    private bool npcState = true;
-    private ShootNPC shootNPC ;
 
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
 	// Use this for initialization
 	void Start () {
         GameObject gameController = GameObject.Find("GameController");
         prefabSource = gameController.GetComponent<PrefabSource>();
-        gatlingControll = transform.GetComponentInChildren<GatlingControll>();
-        shootNPC = transform.parent.GetComponent<ShootNPC>();
-
         startRotation = transform.rotation;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if ((shootNPC.Delay > 0.045f && shootNPC.Delay < 0.21f) && npcState) shootNPC.Delay = shootNPC.Delay + 0.01f;
-        if (gatlingControll.RotateSpeed > 0f && npcState) gatlingControll.RotateSpeed = gatlingControll.RotateSpeed - 0.1f;
-        if (npc == null) {            
-            StopShooting();
-        }
+        if (npc == null) StopShooting();
 	}
 
+    /// <summary>
+    /// Initialize single shoot to one NPC
+    /// </summary>
+    /// <param name="npcEnemy"> target </param>
+    /// <param name="towerWeapon"> weapon typ </param>
     public void Shoot(GameObject npcEnemy) {
-        npcState = false;
         bullet = prefabSource.Bullet();
         npc = npcEnemy;
         npcHealth = npcEnemy.GetComponent<Health>();
         GameObject bulletCopy = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
         bulletCopy.SetActive(true);
+
         Shoot script_b = bulletCopy.GetComponent<Shoot>();
-        script_b.SetStart(transform, npcEnemy.transform, transform.gameObject);
-        if (gatlingControll.RotateSpeed < 15f)gatlingControll.RotateSpeed = gatlingControll.RotateSpeed + 1f;
-        if (shootNPC.Delay <= 0.22f && shootNPC.Delay > 0.05f) shootNPC.Delay = shootNPC.Delay - 0.01f;
+        script_b.SetStart(transform, npcEnemy.transform, transform.gameObject); 
+        
     }
 
+    /// <summary>
+    /// Initialize shooting stop
+    /// </summary>
     public void StopShooting() {
-        npcState = true;
         transform.rotation = startRotation;
     }
 
+    /// <summary>
+    /// Make damage on target. Target must have Health-Script with tackeDamage-Method.
+    /// </summary>
     public void MakeDamage() {
         npcHealth.tackeDamage(weaponDamage);
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootWithNova : MonoBehaviour, IShootWith {
+public class WeaponNova : MonoBehaviour, IWeapon {
     private GameObject npc;
     private int weaponDamage = 15;
     private bool npcState = true;
