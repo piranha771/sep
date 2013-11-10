@@ -4,13 +4,11 @@ using System.Collections;
 public class PrefabSource : MonoBehaviour {
     [SerializeField]
     private GameObject bullet;
+    [SerializeField]
     private GameObject radiusRenderer;
 
 	// Use this for initialization
 	void Start () {
-        radiusRenderer = GameObject.Find("TowerRadius");
-        radiusRenderer.SetActive(false);
-        //bullet.SetActive(false);
 	}
 	
 	// Update is called once per frame

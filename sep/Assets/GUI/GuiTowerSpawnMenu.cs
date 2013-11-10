@@ -27,13 +27,14 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     public GameObject TowerNova { get { return towerNova; } set { towerNova = value; } }
     public GameObject TowerDetector { get { return towerDetector; } set { towerDetector = value; } }
 
-    void OnGUI (){
 
-        if (GUI.Button (new Rect (10,10, 50, 50), "TB")) {
+    void OnGUI() {
+
+        if (GUI.Button(new Rect(10, 10, 50, 50), "TB")) {
             selectedTower = towerBullet;
 		}
 		
-		if (GUI.Button (new Rect (60,10, 50, 50),"TL" )) {
+        if (GUI.Button(new Rect(60, 10, 50, 50), "TL")) {
             selectedTower = towerLaser;
 		}
 
@@ -48,7 +49,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
         if (GUI.Button(new Rect(210, 10, 50, 50), "TN")) {
             selectedTower = towerNova;
         }
-
+ 
         if (GUI.Button(new Rect(260, 10, 50, 50), "TD")) {
             selectedTower = towerDetector;
         }
@@ -56,13 +57,15 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
         isHoverGUI = rect.Contains( Event.current.mousePosition );
     }
  
-    void Update () {
-        if(Input.GetMouseButtonDown(0)&& !isHoverGUI) {
+    void Update() {
+        if (Input.GetMouseButtonDown(0) && !isHoverGUI) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 	        RaycastHit hit;
  
-            if(Physics.Raycast(ray, out hit) && hit.collider.tag == "spawnarea") {
- 	            if(selectedTower != null)Instantiate(selectedTower,hit.point,Quaternion.identity);
+            if (Physics.Raycast(ray, out hit) && hit.collider.tag == "spawnarea") {
+                Vector3 towerPosition = hit.point;
+                towerPosition.y += 0.4f;
+                if (selectedTower != null) Instantiate(selectedTower, towerPosition, Quaternion.identity);
                     selectedTower = null;
             }
         }
