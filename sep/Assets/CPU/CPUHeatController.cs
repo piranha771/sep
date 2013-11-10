@@ -70,8 +70,4 @@ public class CPUHeatController : MonoBehaviour {
         Color oldCol2 = GetComponentInChildren<Light>().color;
         GetComponentInChildren<Light>().color =  new Color(oldCol2.r + 0.1f, oldCol2.g * 0.9f, oldCol2.b * 0.9f);
     }
-	
-	public float getCurrentTemp(){
-		return currentTemp;
-	}
 }

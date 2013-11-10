@@ -4,7 +4,9 @@ using System.Collections;
 public class CPUIncomeController : MonoBehaviour {
 	[SerializeField]
     private int availableComputingTime;
-	// Use this for initialization
+
+    public int AavailableComputingTime { get { return availableComputingTime; } set { availableComputingTime = value; } }
+
 	void Start () {
 		availableComputingTime = 0;
 	}
@@ -18,9 +20,5 @@ public class CPUIncomeController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
-	
-	public int getComputingTime(){
-		return availableComputingTime;
 	}
 }

@@ -5,7 +5,7 @@ public class GuiCPUHeat : MonoBehaviour {
 	
 	void OnGUI (){
 		CPUHeatController controller = GameObject.Find("CPU").GetComponent<CPUHeatController>();
-		string heat = controller.getCurrentTemp().ToString("0.0");
+		string heat = controller.CurrentTemp.ToString("0.0");
 		string displayText = "CPU Heat\r\n" + heat + " C°";
 		var centeredStyle = GUI.skin.GetStyle("Label");
 		centeredStyle.alignment = TextAnchor.UpperCenter;
