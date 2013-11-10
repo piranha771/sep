@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeaponDetector : MonoBehaviour, IShootWith {
+public class WeaponDetector : MonoBehaviour, IWeapon {
 
     [SerializeField]
     private float animationLength;
@@ -27,7 +27,6 @@ public class WeaponDetector : MonoBehaviour, IShootWith {
             if (currentAnimationLength < animationLength) {
                 currentAnimationLength += Time.deltaTime;
                 PlayAnimation();
-                Debug.Log(currentAnimationLength);
             } else {
                 ApplyAction();
                 StopShooting();

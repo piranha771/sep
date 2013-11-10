@@ -13,6 +13,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     private GameObject towerFourBurrelGun;
     [SerializeField]
     private GameObject towerNova;
+    [SerializeField]
+    private GameObject towerDetector;
 
     private GameObject selectedTower;
     private bool isHoverGUI = false;
@@ -23,7 +25,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     public GameObject TowerGatling { get { return towerGatling; } set { towerGatling = value; } }
     public GameObject TowerFourBurrelGun { get { return towerFourBurrelGun; } set { towerFourBurrelGun = value; } }
     public GameObject TowerNova { get { return towerNova; } set { towerNova = value; } }
-
+    public GameObject TowerDetector { get { return towerDetector; } set { towerDetector = value; } }
 
     void OnGUI (){
 
@@ -45,6 +47,10 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 
         if (GUI.Button(new Rect(210, 10, 50, 50), "TN")) {
             selectedTower = towerNova;
+        }
+
+        if (GUI.Button(new Rect(260, 10, 50, 50), "TD")) {
+            selectedTower = towerDetector;
         }
  
         isHoverGUI = rect.Contains( Event.current.mousePosition );

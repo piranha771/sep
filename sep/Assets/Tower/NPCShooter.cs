@@ -31,7 +31,7 @@ public class NPCShooter : MonoBehaviour {
     /// <summary>
     /// Setter and getter fpr damage of weapon. Send method to IShootWith.
     /// </summary>
-    public int WeaponDamage { get { return shootController.WeaponDamage; } set { shootController.WeaponDamage = value; } }
+    public int WeaponDamage { get { return scriptSC.WeaponDamage; } set { scriptSC.WeaponDamage = value; } }
 	// Use this for initialization
 	void Start () {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
@@ -55,7 +55,7 @@ public class NPCShooter : MonoBehaviour {
 
     void OnTriggerExit(Collider monster) {
         targetMonster = null;
-        shootController.StopShooting();
+        scriptSC.StopShooting();
     }
 
     void AttackMonster(Collider monster) {
@@ -65,7 +65,7 @@ public class NPCShooter : MonoBehaviour {
             targetMonster = null;
         if (attackDelay < 0 && monster != null) {
             if (monster.gameObject.tag == "EnemyMonster") {
-                shootController.Shoot(monster.gameObject);
+                scriptSC.Shoot(monster.gameObject);
                 attackDelay = delay;
             }
         }
