@@ -15,7 +15,7 @@ public class NPCShooter : MonoBehaviour {
     
     private GameObject targetMonster;
     private GameObject towerWeapon;
-    private IWeapon scriptSC;
+    private IWeapon scriptWeapon;
 
     /// <summary>
     /// Setter and getter for delay of attack.  
@@ -31,11 +31,11 @@ public class NPCShooter : MonoBehaviour {
     /// <summary>
     /// Setter and getter fpr damage of weapon. Send method to IShootWith.
     /// </summary>
-    public int WeaponDamage { get { return scriptSC.WeaponDamage; } set { scriptSC.WeaponDamage = value; } }
+    public int WeaponDamage { get { return scriptWeapon.WeaponDamage; } set { scriptWeapon.WeaponDamage = value; } }
 	// Use this for initialization
 	void Start () {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
-        scriptSC = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
+        scriptWeapon = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
 	}
 	
 	// Update is called once per frame
@@ -56,7 +56,7 @@ public class NPCShooter : MonoBehaviour {
     void OnTriggerExit(Collider monster) {
         Debug.Log("Target is Exit!");
         targetMonster = null;
-        scriptSC.StopShooting();
+        scriptWeapon.StopShooting();
     }
 
     void AttackMonster(Collider monster) {
@@ -66,7 +66,7 @@ public class NPCShooter : MonoBehaviour {
             targetMonster = null;
         if (attackDelay < 0 && monster != null) {
             if (monster.gameObject.tag == "EnemyMonster") {
-                scriptSC.Shoot(monster.gameObject, transform.gameObject);
+                scriptWeapon.Shoot(monster.gameObject, transform.gameObject);
                 attackDelay = delay;
             }
         }

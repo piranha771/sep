@@ -11,7 +11,7 @@ public class TowerAttackRadius : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     
-        colliderTower = transform.GetComponent<BoxCollider>();
+        colliderTower = transform.parent.GetComponent<BoxCollider>();
         GameObject gameCOntroller = GameObject.Find("GameController");
         prefabSource = gameCOntroller.GetComponent<PrefabSource>();
         

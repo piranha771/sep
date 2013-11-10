@@ -7007,10 +7007,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerBullet: {fileID: 100002, guid: 8209b2f5f901ec247a269163242744e6, type: 2}
-  towerLaser: {fileID: 100002, guid: c0c2e94d2bf4cf445bf28d0244cb24ef, type: 2}
-  towerGatling: {fileID: 100002, guid: 640204b09ff9f2044b562b46e58ac32a, type: 2}
-  towerFourBurrelGun: {fileID: 100004, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
-  towerNova: {fileID: 100002, guid: 3f7042ff98ca5734a8d2b8ba149cb385, type: 2}
+  towerLaser: {fileID: 100004, guid: c0c2e94d2bf4cf445bf28d0244cb24ef, type: 2}
+  towerGatling: {fileID: 100014, guid: 640204b09ff9f2044b562b46e58ac32a, type: 2}
+  towerFourBurrelGun: {fileID: 100012, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
+  towerNova: {fileID: 100004, guid: 3f7042ff98ca5734a8d2b8ba149cb385, type: 2}
 --- !u!1 &1606321223
 GameObject:
   m_ObjectHideFlags: 0
