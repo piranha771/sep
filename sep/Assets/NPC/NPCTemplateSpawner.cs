@@ -30,11 +30,9 @@ public class NPCTemplateSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        templateNPC = (GameObject) Resources.Load("NPC/NPCBit");
         if (null == templateNPC.GetComponent<WayPointRunner>()) {
             throw new InvalidOperationException("template is invalid! Missing component");
         }
-        //waypoints = new ArrayList();
         templateNPC.SetActive(false);
         delay = spawnDelay;
 	}

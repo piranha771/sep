@@ -65,12 +65,10 @@ public class CPUHeatController : MonoBehaviour {
         
         }
         go = GameObject.FindGameObjectsWithTag("cpuglowparticle");
-        Debug.Log("NUM: " + go.Length);
         foreach (var obj in go) {
             Color oldCol = obj.renderer.material.GetColor("_TintColor");
             Color newCol = new Color(oldCol.r * 1.1f, oldCol.g * 0.9f, oldCol.b * 0.9f);
             obj.renderer.material.SetColor("_TintColor", newCol);
-            Debug.Log("Old" + oldCol.ToString() + " New " + newCol);
         }
 
         Color oldCol2 = GetComponentInChildren<Light>().color;
