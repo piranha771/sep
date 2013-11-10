@@ -27,7 +27,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 
     void OnGUI (){
 
-        if (GUI.Button (new Rect (10,10, 50, 50),"TB" )) {
+        if (GUI.Button (new Rect (10,10, 50, 50), "TB")) {
             selectedTower = towerBullet;
 		}
 		

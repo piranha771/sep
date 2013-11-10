@@ -19,7 +19,7 @@ public class ShootWithNova : MonoBehaviour, IShootWith {
 	
 	}
 
-    public void Shoot(GameObject npcEnemy, GameObject towerWeapon) {
+    public void Shoot(GameObject npcEnemy) {
 
        if(npcState) makeRadius();
         

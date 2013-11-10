@@ -52,8 +52,40 @@ public class NPCTemplateSpawner : MonoBehaviour {
         currentNPC = (GameObject)Instantiate(templateNPC);
         currentNPC.SetActive(true);
         currentNPC.transform.position = waypoints[0].position;
-        WayPointRunner scriptWPR = currentNPC.GetComponent<WayPointRunner>();
-        scriptWPR.Waypoints = waypoints;
-        scriptWPR.DoRun = true;
+        WayPointRunner wpr = currentNPC.GetComponent<WayPointRunner>();
+        wpr.Waypoints = waypoints;
+        wpr.DoRun = true;
     }
+
+    /* SAVED Code from GuiTowerSpawnMenu
+     *         Rect box = new Rect(Screen.width / 2f - (Screen.width * 0.25f) / 2f, Screen.height * 0.85f, Screen.width * 0.22f, Screen.height * 0.10f);
+        GUI.Box(box, "Towers");
+
+        Rect lastButton = new Rect(box.xMin + box.width * 0.05f, box.yMin + box.height * 0.30f, box.height * 0.60f, box.height * 0.60f);
+        if (GUI.Button(lastButton, "TB")) {
+            selectedTower = towerBullet;
+		}
+
+        lastButton = new Rect(lastButton.xMax + box.width * 0.05f, lastButton.yMin, lastButton.width, lastButton.height);
+		if (GUI.Button (lastButton,"TL" )) {
+            selectedTower = towerLaser;
+		}
+
+        lastButton = new Rect(lastButton.xMax + box.width * 0.05f, lastButton.yMin, lastButton.width, lastButton.height);
+        if (GUI.Button(lastButton, "TG")) {
+            selectedTower = towerGatling;
+        }
+
+        lastButton = new Rect(lastButton.xMax + box.width * 0.05f, lastButton.yMin, lastButton.width, lastButton.height);
+        if (GUI.Button(lastButton, "T4B")) {
+            selectedTower = towerFourBurrelGun;
+        }
+
+        lastButton = new Rect(lastButton.xMax + box.width * 0.05f, lastButton.yMin, lastButton.width, lastButton.height);
+        if (GUI.Button(lastButton, "TN")) {
+            selectedTower = towerNova;
+        }
+ 
+        isHoverGUI = rect.Contains( Event.current.mousePosition );
+     * */
 }

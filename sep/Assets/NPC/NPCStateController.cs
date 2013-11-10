@@ -12,6 +12,7 @@ public class NPCStateController : MonoBehaviour {
     public NPCState State { 
         get { return state; } 
         set { state = value;
+        Debug.Log(value.ToString());
             switch (value) {
                 case NPCState.Unknown:
                     setLights(Color.white);
@@ -22,6 +23,7 @@ public class NPCStateController : MonoBehaviour {
                     setModel("goodmodel");
                     break;
                 case NPCState.Evil:
+                    Debug.Log("DDDDDD");
                     setLights(Color.red);
                     setModel("evilmodel");
                     break;

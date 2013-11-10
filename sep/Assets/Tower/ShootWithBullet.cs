@@ -22,12 +22,13 @@ public class ShootWithBullet : MonoBehaviour, IMakeDamage, IShootWith {
 	void Update () {
         if (npc == null) StopShooting();
 	}
+
     /// <summary>
     /// Initialize single shoot to one NPC
     /// </summary>
     /// <param name="npcEnemy"> target </param>
     /// <param name="towerWeapon"> weapon typ </param>
-    public void Shoot(GameObject npcEnemy, GameObject towerWeapon) {
+    public void Shoot(GameObject npcEnemy) {
         bullet = prefabSource.Bullet();
         npc = npcEnemy;
         npcHealth = npcEnemy.GetComponent<Health>();
@@ -37,7 +38,8 @@ public class ShootWithBullet : MonoBehaviour, IMakeDamage, IShootWith {
         Shoot script_b = bulletCopy.GetComponent<Shoot>();
         script_b.SetStart(transform, npcEnemy.transform, transform.gameObject); 
         
-        }
+    }
+
     /// <summary>
     /// Initialize shooting stop
     /// </summary>

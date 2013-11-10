@@ -3,7 +3,7 @@ using System.Collections;
 
 public interface IShootWith  {
 
-    void Shoot(GameObject npcEnemy, GameObject towerWeapon);
+    void Shoot(GameObject npcEnemy);
     
     void StopShooting();
 

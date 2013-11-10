@@ -21,7 +21,7 @@ public class ShootWithBurrelGun : MonoBehaviour, IShootWith {
        
 	}
 
-    public void Shoot(GameObject npcEnemy, GameObject towerWeapon) {
+    public void Shoot(GameObject npcEnemy) {
         foreach (SingleBurrel item in burrelsScripts) {
             item.Shoot(npcEnemy, transform.gameObject);
         }

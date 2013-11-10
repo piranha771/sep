@@ -33,7 +33,7 @@ public class ShootWithGatling : MonoBehaviour, IMakeDamage, IShootWith {
         }
 	}
 
-    public void Shoot(GameObject npcEnemy, GameObject towerWeapon) {
+    public void Shoot(GameObject npcEnemy) {
         npcState = false;
         bullet = prefabSource.Bullet();
         npc = npcEnemy;
