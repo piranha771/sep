@@ -10,6 +10,9 @@ TagManager:
   - tower
   - evilmodel
   - goodmodel
+  - unknown
+  - good
+  - enemy
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

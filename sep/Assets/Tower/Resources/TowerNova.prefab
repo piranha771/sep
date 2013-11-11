@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  towerTyp: 
+  attackTag: enemy
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

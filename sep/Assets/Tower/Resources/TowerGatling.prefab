@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: .200000003
-  towerTyp: 
+  attackTag: enemy
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
