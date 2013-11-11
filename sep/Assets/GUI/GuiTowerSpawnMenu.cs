@@ -20,6 +20,9 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     private bool isHoverGUI = false;
     private Rect rect = new Rect(10, 10, 110, 50);
 	
+	public bool buyMode = true;
+	public bool upMode = false;
+	
 
     public GameObject TowerBullet { get { return towerBullet; } set { towerBullet = value; } }
     public GameObject TowerLaser { get { return towerLaser; } set { towerLaser = value; } }
@@ -30,6 +33,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 
 
     void OnGUI() {
+		
+		if (buyMode) {
 		 CPUIncomeController controller = GameObject.Find("CPU").GetComponent<CPUIncomeController>();
 		 Cost costTable = GameObject.Find("CPU").GetComponent<Cost>();		
 		 int time = controller.AavailableComputingTime;
@@ -66,6 +71,25 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
  
         isHoverGUI = rect.Contains( Event.current.mousePosition );
     }
+		
+		if (upMode) {
+			 if (GUI.Button(new Rect(10, 60, 50, 50), "DMG")) {
+				//TODO
+		}
+			 if (GUI.Button(new Rect(60, 60, 50, 50), "RNG")) {
+				//TODO
+		}
+			 if (GUI.Button(new Rect(110, 60, 50, 50), "SPD")) {
+				//TODO
+		}
+			 if (GUI.Button(new Rect(160, 60, 50, 50), "SLL")) {
+				//TODO
+		}
+			
+		}
+	}
+	
+	
  
     void Update() {
         if (Input.GetMouseButtonDown(0) && !isHoverGUI) {
