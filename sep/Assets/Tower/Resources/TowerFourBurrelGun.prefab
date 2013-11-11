@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: .150000006
-  towerTyp: gatlingTower
+  attackTag: enemy
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

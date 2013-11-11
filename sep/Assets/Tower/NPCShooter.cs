@@ -8,31 +8,23 @@ public class NPCShooter : MonoBehaviour {
     private float attackDelay = 0;
     [SerializeField]
     private float delay = 1;
-    private int monster_on_target = 1;
     [SerializeField]
-    private string towerTyp;
+    private string attackTag;
 
     
     private GameObject targetMonster;
     private GameObject towerWeapon;
     private IWeapon scriptWeapon;
 
-    /// <summary>
-    /// Setter and getter for delay of attack.  
-    /// </summary>
     public float Delay { get { return delay; } set { delay = value; } }
-
-    /// <summary>
-    /// Setter and getter for tower typ. Not in use. 
-    /// Delete?
-    /// </summary>
-    public string TowerTyp { get { return towerTyp; } set { towerTyp = value; } }
+    public string AttackTag { get { return attackTag; } set { attackTag = value; } }
 
     /// <summary>
     /// Setter and getter fpr damage of weapon. Send method to IShootWith.
     /// </summary>
     public int WeaponDamage { get { return scriptWeapon.WeaponDamage; } set { scriptWeapon.WeaponDamage = value; } }
-	// Use this for initialization
+	
+    // Use this for initialization
 	void Start () {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
         scriptWeapon = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
@@ -59,12 +51,11 @@ public class NPCShooter : MonoBehaviour {
     }
 
     void AttackMonster(Collider monster) {
-
         attackDelay -= Time.deltaTime;
         if (monster == null)
             targetMonster = null;
         if (attackDelay < 0 && monster != null) {
-            if (monster.gameObject.tag == "EnemyMonster") {
+            if (monster.gameObject.tag == attackTag) {
                 scriptWeapon.Shoot(monster.gameObject);
                 attackDelay = delay;
             }

@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: .150000006
-  towerTyp: bulletTower
+  attackTag: enemy
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

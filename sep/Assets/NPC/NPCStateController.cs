@@ -6,6 +6,10 @@ using System.Collections;
 /// </summary>
 public class NPCStateController : MonoBehaviour {
 
+    private const string tagUnknown = "unknown";
+    private const string tagGood = "good";
+    private const string tagEvil = "enemy";
+
     [SerializeField]
     private NPCState state = NPCState.Unknown;
 
@@ -16,26 +20,32 @@ public class NPCStateController : MonoBehaviour {
                 case NPCState.Unknown:
                     setLights(Color.white);
                     setModel("goodmodel");
+                    tag = tagUnknown;
                     break;
                 case NPCState.Good:
                     setLights(new Color(0f, 202f / 255f, 1.0f));
                     setModel("goodmodel");
+                    tag = tagGood;
                     break;
                 case NPCState.Evil:
                     setLights(Color.red);
                     setModel("evilmodel");
+                    tag = tagEvil;
                     break;
                 case NPCState.SuperGood:
                     setLights(new Color(0f, 202f / 255f, 1.0f));
                     setModel("goodmodel");
+                    tag = tagGood;
                     break;
                 case NPCState.SuperEvil:
                     setLights(Color.red);
                     setModel("evilmodel");
+                    tag = tagEvil;
                     break;
                 default:
                     setLights(Color.white);
                     setModel("goodmodel");
+                    tag = tagUnknown;
                     break;
             }
         } 
