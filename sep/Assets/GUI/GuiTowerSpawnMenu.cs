@@ -35,7 +35,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     void OnGUI() {
 		
 		if (buyMode) {
-		 CPUIncomeController controller = GameObject.Find("CPU").GetComponent<CPUIncomeController>();
+            CPUComputeTimeController controller = GetComponent<CPUComputeTimeController>();
 		 Cost costTable = GameObject.Find("CPU").GetComponent<Cost>();		
 		int time = controller.CPUTime;
 

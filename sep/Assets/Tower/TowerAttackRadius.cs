@@ -37,7 +37,7 @@ public class TowerAttackRadius : MonoBehaviour {
 
     void isMouseOnMeClicked() {
 		
-		GuiTowerSpawnMenu guiMenu = GameObject.Find("BackGround").GetComponent<GuiTowerSpawnMenu>();
+		GuiTowerSpawnMenu guiMenu = GameObject.Find("CPU").GetComponent<GuiTowerSpawnMenu>();
     
         if(Input.GetMouseButtonDown(0)){
             
