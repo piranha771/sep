@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GUI\GuiCPUHeat.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Tower\Cost.cs">
     <Files>
-      <File FileName="Assets\CPU\CPUIncomeController.cs" Line="21" Column="3" />
-      <File FileName="Assets\GUI\GuiTowerSpawnMenu.cs" Line="17" Column="38" />
-      <File FileName="Assets\GUI\GuiCPUHeat.cs" Line="11" Column="84" />
-      <File FileName="Assets\CPU\CPUHeatController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Tower\Cost.cs" Line="15" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
