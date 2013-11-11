@@ -30,37 +30,37 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 
 
     void OnGUI() {
-		 CPUIncomeController controller = GameObject.Find("CPU").GetComponent<CPUIncomeController>();
-		 Cost costTable = GameObject.Find("CPU").GetComponent<Cost>();		
-		 int time = controller.AavailableComputingTime;
+        CPUComputeTimeController controller = GetComponent<CPUComputeTimeController>();
+		Cost costTable = GameObject.Find("CPU").GetComponent<Cost>();		
+		int time = controller.CPUTime;
 
-        if (GUI.Button(new Rect(10, 10, 50, 50), "TB") && time>=costTable.bulletCost ) {
-			controller.AavailableComputingTime -= costTable.bulletCost;
+        if (GUI.Button(new Rect(10, 10, 50, 50), "TB") && time >= costTable.bulletCost ) {
+            controller.CPUTime -= costTable.bulletCost;
             selectedTower = towerBullet;
 		}
 		
-        if (GUI.Button(new Rect(60, 10, 50, 50), "TL") && time>=costTable.laserCost) {
-				controller.AavailableComputingTime -= costTable.laserCost;
+        if (GUI.Button(new Rect(60, 10, 50, 50), "TL") && time >= costTable.laserCost) {
+            controller.CPUTime -= costTable.laserCost;
             selectedTower = towerLaser;
 		}
 
-        if (GUI.Button(new Rect(110, 10, 50, 50), "TG") && time>=costTable.gatlingCost) {
-				controller.AavailableComputingTime -= costTable.gatlingCost;
+        if (GUI.Button(new Rect(110, 10, 50, 50), "TG") && time >= costTable.gatlingCost) {
+            controller.CPUTime -= costTable.gatlingCost;
             selectedTower = towerGatling;
         }
 
-        if (GUI.Button(new Rect(160, 10, 50, 50), "T4B") && time>=costTable.fourBCost) {
-				controller.AavailableComputingTime -= costTable.fourBCost;
+        if (GUI.Button(new Rect(160, 10, 50, 50), "T4B") && time >= costTable.fourBCost) {
+            controller.CPUTime -= costTable.fourBCost;
             selectedTower = towerFourBurrelGun;
         }
 
-        if (GUI.Button(new Rect(210, 10, 50, 50), "TN") && time>=costTable.novaCost) {
-				controller.AavailableComputingTime -= costTable.novaCost;
+        if (GUI.Button(new Rect(210, 10, 50, 50), "TN") && time >= costTable.novaCost) {
+            controller.CPUTime -= costTable.novaCost;
             selectedTower = towerNova;
         }
  
-        if (GUI.Button(new Rect(260, 10, 50, 50), "TD") && time>=costTable.detectCost) {
-				controller.AavailableComputingTime -= costTable.detectCost;
+        if (GUI.Button(new Rect(260, 10, 50, 50), "TD") && time >= costTable.detectCost) {
+            controller.CPUTime -= costTable.detectCost;
             selectedTower = towerDetector;
         }
  

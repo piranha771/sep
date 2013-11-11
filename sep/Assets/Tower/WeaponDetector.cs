@@ -60,6 +60,11 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
 
     private void ApplyAction() {
         NPCStateController nsc = target.GetComponent<NPCStateController>();
-        nsc.State = NPCState.Evil;
+        int rnd = Random.Range(0, 100);
+        if (rnd < 50) {
+            nsc.State = NPCState.Evil;
+        } else {
+            nsc.State = NPCState.Good;
+        }
     }
 }

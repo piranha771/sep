@@ -50,8 +50,6 @@ public class CPUHeatController : MonoBehaviour {
         Health health = npcEvilBit.GetComponent<Health>();
         currentTemp += 10;//(health.CurrentHealth * NPCHealthMultiplier);
 
-
-
         GameObject[] go = GameObject.FindGameObjectsWithTag("cpuglowmodel");
         
         foreach (var obj in go) {
