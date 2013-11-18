@@ -6,9 +6,11 @@ public class CPUIncomeController : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
         switch (collider.gameObject.GetComponent<NPCStateController>().State) {
             case NPCState.Unknown:
+                gameObject.GetComponent<CPUHeatController>().ImpactUnknown();
+                break;
             case NPCState.Evil:
             case NPCState.SuperEvil:
-                gameObject.GetComponent<CPUHeatController>().Impact(collider.gameObject);
+                gameObject.GetComponent<CPUHeatController>().ImpactEvil();
                 break;
             case NPCState.Good:
             case NPCState.SuperGood:

@@ -10,62 +10,109 @@ public class CPUHeatController : MonoBehaviour {
     [SerializeField]
     private float meltdownTemp = 120;
     [SerializeField]
-    private float cooldownRatePerSecond = 1f;
+    private float cooldownRatePerSecond = 2f;
     [SerializeField]
+    private float additionalHeatOnEvilBit = 10f;
+    [SerializeField]
+    private float tempFreezeTimeOnUnknownBit = 10f;
+    
+    [SerializeField]
+    private Color coolColorGlowParts;
+    [SerializeField]
+    private Color hotColorGlowParts;
+    [SerializeField]
+    private Color coolColorSpriteParts;
+    [SerializeField]
+    private Color hotColorSpriteParts;
+    [SerializeField]
+    private Color coolColorLight;
+    [SerializeField]
+    private Color hotColorLight;
+
     private float currentTemp;
-    [SerializeField]
-    private Color coolColor;
-    [SerializeField]
-    private Color heatColor;
+    private float deltaTimeUpdateTemp = 0;
+    private float deltaTimeFreezeTemp = 0;
 
-    private float deltaTime = 0;
-    private Color currentColor;
-
+    #region Getter And Setter
     public float NormalHeat { get { return normalTemp; } set { normalTemp = value; } }
     public float MeltdownTemp { get { return meltdownTemp; } set { meltdownTemp = value; } }
     public float CooldownRatePerSecond { get { return cooldownRatePerSecond; } set { cooldownRatePerSecond = value; } }
+    public float AdditionalHeatOnEvilBit { get { return additionalHeatOnEvilBit; } set { additionalHeatOnEvilBit = value; } }
+    public float TempFreezeTimeOnUnknownBit { get { return tempFreezeTimeOnUnknownBit; } set { tempFreezeTimeOnUnknownBit = value; } }
     public float CurrentTemp { get { return currentTemp; } set { currentTemp = value; } }
-    public Color CoolColor { get { return coolColor; } set { coolColor = value; } }
-    public Color HeatColor { get { return heatColor; } set { heatColor = value; } }
 
-	void Start () {
+    public Color CoolColorGlowParts { get { return coolColorGlowParts; } set { coolColorGlowParts = value; } }
+    public Color HotColorGlowParts { get { return hotColorGlowParts; } set { hotColorGlowParts = value; } }
+    public Color CoolColorSpriteParts { get { return coolColorSpriteParts; } set { coolColorSpriteParts = value; } }
+    public Color HotColorSpriteParts { get { return hotColorSpriteParts; } set { hotColorSpriteParts = value; } }
+    public Color CoolColorLight { get { return coolColorLight; } set { coolColorLight = value; } }
+    public Color HotColorLight { get { return hotColorLight; } set { hotColorLight = value; } }
+    #endregion
+
+    void Start () {
         currentTemp = normalTemp;
+
 	}
 	
 	void Update () {
-        deltaTime += Time.deltaTime;
-        if (deltaTime >= 1.0) {
-            deltaTime = 0;
+        if (deltaTimeFreezeTemp > 0) {
+            deltaTimeFreezeTemp -= Time.deltaTime;
+            return;
+        }
+
+        deltaTimeUpdateTemp -= Time.deltaTime;
+        if (deltaTimeUpdateTemp <= 0) {
+            deltaTimeUpdateTemp = 1.0f;
 
             currentTemp -= cooldownRatePerSecond;
             currentTemp = Mathf.Max(currentTemp, normalTemp);
+            CalculateColors();
         }
 	}
 
     /// <summary>
     /// Called when a evil NPC bit hits the cpu
     /// </summary>
-    /// <param name="npcEvilBit"></param>
-    public void Impact(GameObject npcEvilBit) {
-        Health health = npcEvilBit.GetComponent<Health>();
-        currentTemp += 10;//(health.CurrentHealth * NPCHealthMultiplier);
+    public void ImpactEvil() {
+        currentTemp += additionalHeatOnEvilBit;
+    }
+
+
+
+    public void ImpactUnknown() {
+        deltaTimeFreezeTemp = tempFreezeTimeOnUnknownBit;
+    }
+
+    /// <summary>
+    /// Creates a gradient color upon two colors and a percentage
+    /// </summary>
+    /// <param name="startColor">First color the gradiend starts from</param>
+    /// <param name="endColor">Second color the gradient ends with</param>
+    /// <param name="modifier">Percentage with 1.0 means 100 percent</param>
+    /// <returns></returns>
+    private Color GetGradientColor(Color startColor, Color endColor, float modifier) {
+        return new Color(startColor.r * (1.0f - modifier) + endColor.r * modifier,
+            startColor.g * (1.0f - modifier) + endColor.g * modifier,
+            startColor.b * (1.0f - modifier) + endColor.b * modifier);
+    }
+
+    private void CalculateColors() {
+        float percentage = (currentTemp - normalTemp) / (meltdownTemp - normalTemp);
 
         GameObject[] go = GameObject.FindGameObjectsWithTag("cpuglowmodel");
-        
+
         foreach (var obj in go) {
-            Color oldCol = obj.renderer.material.color;
-            Color newCol =  new Color(oldCol.r * 1.1f, oldCol.g * 0.9f, oldCol.b * 0.9f);
-            obj.renderer.material.color = newCol;
-        
+            obj.renderer.material.color = GetGradientColor(coolColorGlowParts, hotColorGlowParts, percentage);
         }
+
         go = GameObject.FindGameObjectsWithTag("cpuglowparticle");
         foreach (var obj in go) {
             Color oldCol = obj.renderer.material.GetColor("_TintColor");
             Color newCol = new Color(oldCol.r * 1.1f, oldCol.g * 0.9f, oldCol.b * 0.9f);
-            obj.renderer.material.SetColor("_TintColor", newCol);
+            obj.renderer.material.SetColor("_TintColor", GetGradientColor(coolColorSpriteParts, hotColorSpriteParts, percentage));
         }
 
         Color oldCol2 = GetComponentInChildren<Light>().color;
-        GetComponentInChildren<Light>().color =  new Color(oldCol2.r + 0.1f, oldCol2.g * 0.9f, oldCol2.b * 0.9f);
+        GetComponentInChildren<Light>().color = GetGradientColor(coolColorLight, hotColorLight, percentage);
     }
 }

@@ -647,7 +647,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 78434743}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -.0803575516, y: 5.66015196, z: -9.05531579e-08}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: .25, y: .25, z: 2.49999976}
   m_Children: []
   m_Father: {fileID: 1785922801}
@@ -7474,10 +7474,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalTemp: 40
   meltdownTemp: 120
-  cooldownRatePerSecond: .100000001
-  currentTemp: 0
-  coolColor: {r: 0, g: 0, b: 0, a: 0}
-  heatColor: {r: 0, g: 0, b: 0, a: 0}
+  cooldownRatePerSecond: 2
+  additionalHeatOnEvilBit: 10
+  tempFreezeTimeOnUnknownBit: 10
+  coolColorGlowParts: {r: .286274523, g: .733333349, b: 1, a: 0}
+  hotColorGlowParts: {r: 1, g: .213235319, b: .213235319, a: 0}
+  coolColorSpriteParts: {r: .105882354, g: .184313729, b: .258823544, a: 0}
+  hotColorSpriteParts: {r: .551470578, g: .274085343, b: .109483138, a: 0}
+  coolColorLight: {r: 0, g: .792156875, b: 1, a: 0}
+  hotColorLight: {r: 1, g: .147058845, b: .147058845, a: 0}
 --- !u!114 &1785922803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7541,6 +7546,8 @@ MonoBehaviour:
   towerFourBurrelGun: {fileID: 100012, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
   towerNova: {fileID: 100004, guid: 3f7042ff98ca5734a8d2b8ba149cb385, type: 2}
   towerDetector: {fileID: 100002, guid: ee732237c2615cb4eb7024d950b2b812, type: 2}
+  buyMode: 1
+  upMode: 0
 --- !u!114 &1785922808
 MonoBehaviour:
   m_ObjectHideFlags: 0
