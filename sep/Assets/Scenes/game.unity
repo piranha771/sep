@@ -7559,12 +7559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a9ba3c233deb4e99c244595eba45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletCost: 10
-  laserCost: 20
-  gatlingCost: 30
-  fourBCost: 40
-  detectCost: 5
-  novaCost: 50
+  cpuTimeCost: 100
 --- !u!1 &1807418859
 GameObject:
   m_ObjectHideFlags: 0

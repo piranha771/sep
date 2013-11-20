@@ -14,7 +14,7 @@ public class NPCHealth : MonoBehaviour {
     private Dictionary<Light, Color> lightColors;
 
     //Colorisation
-    public int Health { get { return Mathf.Max(health, 0); } set { health = value; } }
+    public int Health { get { return Mathf.Max(currentHealth, 0); } set { currentHealth = value; } }
     public bool IsDead { get { return currentHealth == 0; } set { currentHealth = 0; } }
     public float Percentage { 
         get { return (float)currentHealth / (float)health; } 

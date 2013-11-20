@@ -16,7 +16,6 @@ public class NPCStateController : MonoBehaviour {
     public NPCState State { 
         get { return state; } 
         set { state = value;
-        MeshRenderer[] go;
         Color color;
             switch (value) {
                 case NPCState.Good:

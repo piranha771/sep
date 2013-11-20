@@ -31,6 +31,7 @@ GameObject:
   - 65: {fileID: 6500002}
   - 23: {fileID: 2300002}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400004}
   m_Layer: 2
   m_Name: TowerDetector
   m_TagString: Untagged
@@ -228,6 +229,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: .5
   attackTag: unknown
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667a9ba3c233deb4e99c244595eba45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cpuTimeCost: 100
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
