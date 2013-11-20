@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CPUHeatController : MonoBehaviour {
 
@@ -15,7 +16,14 @@ public class CPUHeatController : MonoBehaviour {
     private float additionalHeatOnEvilBit = 10f;
     [SerializeField]
     private float tempFreezeTimeOnUnknownBit = 10f;
-    
+
+    [SerializeField]
+    private List<GameObject> glowParts;
+    [SerializeField]
+    private List<GameObject> glowSprites;
+    [SerializeField]
+    private Light glowLight;
+
     [SerializeField]
     private Color coolColorGlowParts;
     [SerializeField]
@@ -40,13 +48,6 @@ public class CPUHeatController : MonoBehaviour {
     public float AdditionalHeatOnEvilBit { get { return additionalHeatOnEvilBit; } set { additionalHeatOnEvilBit = value; } }
     public float TempFreezeTimeOnUnknownBit { get { return tempFreezeTimeOnUnknownBit; } set { tempFreezeTimeOnUnknownBit = value; } }
     public float CurrentTemp { get { return currentTemp; } set { currentTemp = value; } }
-
-    public Color CoolColorGlowParts { get { return coolColorGlowParts; } set { coolColorGlowParts = value; } }
-    public Color HotColorGlowParts { get { return hotColorGlowParts; } set { hotColorGlowParts = value; } }
-    public Color CoolColorSpriteParts { get { return coolColorSpriteParts; } set { coolColorSpriteParts = value; } }
-    public Color HotColorSpriteParts { get { return hotColorSpriteParts; } set { hotColorSpriteParts = value; } }
-    public Color CoolColorLight { get { return coolColorLight; } set { coolColorLight = value; } }
-    public Color HotColorLight { get { return hotColorLight; } set { hotColorLight = value; } }
     #endregion
 
     void Start () {
@@ -57,6 +58,7 @@ public class CPUHeatController : MonoBehaviour {
 	void Update () {
         if (deltaTimeFreezeTemp > 0) {
             deltaTimeFreezeTemp -= Time.deltaTime;
+            CalculateColors();
             return;
         }
 
@@ -64,8 +66,7 @@ public class CPUHeatController : MonoBehaviour {
         if (deltaTimeUpdateTemp <= 0) {
             deltaTimeUpdateTemp = 1.0f;
 
-            currentTemp -= cooldownRatePerSecond;
-            currentTemp = Mathf.Max(currentTemp, normalTemp);
+            currentTemp = Mathf.Max(currentTemp - cooldownRatePerSecond, normalTemp);
             CalculateColors();
         }
 	}
@@ -74,10 +75,8 @@ public class CPUHeatController : MonoBehaviour {
     /// Called when a evil NPC bit hits the cpu
     /// </summary>
     public void ImpactEvil() {
-        currentTemp += additionalHeatOnEvilBit;
+        currentTemp = Mathf.Min(currentTemp + additionalHeatOnEvilBit, meltdownTemp);
     }
-
-
 
     public void ImpactUnknown() {
         deltaTimeFreezeTemp = tempFreezeTimeOnUnknownBit;
@@ -99,20 +98,14 @@ public class CPUHeatController : MonoBehaviour {
     private void CalculateColors() {
         float percentage = (currentTemp - normalTemp) / (meltdownTemp - normalTemp);
 
-        GameObject[] go = GameObject.FindGameObjectsWithTag("cpuglowmodel");
-
-        foreach (var obj in go) {
+        foreach (var obj in glowParts) {
             obj.renderer.material.color = GetGradientColor(coolColorGlowParts, hotColorGlowParts, percentage);
         }
 
-        go = GameObject.FindGameObjectsWithTag("cpuglowparticle");
-        foreach (var obj in go) {
-            Color oldCol = obj.renderer.material.GetColor("_TintColor");
-            Color newCol = new Color(oldCol.r * 1.1f, oldCol.g * 0.9f, oldCol.b * 0.9f);
+        foreach (var obj in glowSprites) {
             obj.renderer.material.SetColor("_TintColor", GetGradientColor(coolColorSpriteParts, hotColorSpriteParts, percentage));
         }
 
-        Color oldCol2 = GetComponentInChildren<Light>().color;
-        GetComponentInChildren<Light>().color = GetGradientColor(coolColorLight, hotColorLight, percentage);
+        glowLight.color = GetGradientColor(coolColorLight, hotColorLight, percentage);
     }
 }
