@@ -127,6 +127,7 @@ GameObject:
   - 23: {fileID: 2300012}
   - 114: {fileID: 11400014}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400016}
   m_Layer: 2
   m_Name: TowerFourBurrelGun
   m_TagString: Untagged
@@ -399,7 +400,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.5, y: 1, z: 2.5}
@@ -471,7 +472,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 3, z: 7}
@@ -543,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: .200000003
-  npcTag: EnemyMonster
+  npcTag: enemy
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -567,7 +568,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: .150000006
-  towerTyp: gatlingTower
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667a9ba3c233deb4e99c244595eba45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cpuTimeCost: 600
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

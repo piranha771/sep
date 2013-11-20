@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WeaponLaser : MonoBehaviour, IWeapon {
     LineRenderer lineBullet;
-    private Health npcHealth;
+    private NPCHealth npcHealth;
     private GameObject npc;
     [SerializeField]
     private int weaponDamage = 1;
@@ -18,6 +18,7 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
 
 	// Use this for initialization
 	void Start () {
+        npc = null;
         startRotation = transform.rotation;
         lineBullet = transform.GetComponent<LineRenderer>();
 	}
@@ -41,17 +42,19 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
     /// <param name="monster">target</param>
     /// <param name="towerWeapon">weapon</param>
 
+
     public void Shoot(GameObject npc) {
         this.npc = npc;
     }
 
 
     public void ShootAtNPC(){
-            npcHealth = npc.GetComponent<Health>();
+            npcHealth = npc.GetComponent<NPCHealth>();
             lineBullet.enabled = true;
             lineBullet.SetPosition(0, transform.position);
             lineBullet.SetPosition(1, npc.transform.position);
-            npcHealth.tackeDamage(weaponDamage);
+            npcHealth.TakeDamage(weaponDamage);
+
        
     }
 

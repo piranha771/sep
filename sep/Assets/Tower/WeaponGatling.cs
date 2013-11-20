@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
     private GameObject bullet;
-    private Health npcHealth;
+    private NPCHealth npcHealth;
     private GameObject npc;
     [SerializeField]
     private int weaponDamage = 0;
@@ -22,6 +22,7 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
 	// Use this for initialization
 	void Start () {
+        npc = null;
         GameObject gameController = GameObject.Find("GameController");
         prefabSource = gameController.GetComponent<PrefabSource>();
         gatlingControll = transform.GetComponentInChildren<GatlingControll>();
@@ -46,13 +47,14 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
         }
 	}
     public void Shoot(GameObject npc) {
+        
         this.npc = npc;
     }
 
     public void ShootAtNPC() {
         npcState = false;
         bullet = prefabSource.Bullet();
-        npcHealth = npc.GetComponent<Health>();
+        npcHealth = npc.GetComponent<NPCHealth>();
         GameObject bulletCopy = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
         bulletCopy.SetActive(true);
         Shoot script_b = bulletCopy.GetComponent<Shoot>();
@@ -69,7 +71,7 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
     }
 
     public void MakeDamage() {
-        npcHealth.tackeDamage(weaponDamage);
+        npcHealth.TakeDamage(weaponDamage);
     }
 
     void triggerShoot() {

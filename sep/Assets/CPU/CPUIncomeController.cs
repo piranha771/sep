@@ -2,23 +2,22 @@
 using System.Collections;
 
 public class CPUIncomeController : MonoBehaviour {
-	[SerializeField]
-    private int availableComputingTime;
-
-    public int AavailableComputingTime { get { return availableComputingTime; } set { availableComputingTime = value; } }
-
-	void Start () {
-		availableComputingTime = 0;
-	}
 
     void OnTriggerEnter(Collider collider) {
-        //TODO check if evil!
-        gameObject.GetComponent<CPUHeatController>().Impact(collider.gameObject);
-		availableComputingTime+=1;
+        switch (collider.gameObject.GetComponent<NPCStateController>().State) {
+            case NPCState.Unknown:
+                gameObject.GetComponent<CPUHeatController>().ImpactUnknown();
+                break;
+            case NPCState.Evil:
+            case NPCState.SuperEvil:
+                gameObject.GetComponent<CPUHeatController>().ImpactEvil();
+                break;
+            case NPCState.Good:
+            case NPCState.SuperGood:
+                gameObject.GetComponent<CPUComputeTimeController>().Impact(collider.gameObject);
+                break;
+            default:
+                break;
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

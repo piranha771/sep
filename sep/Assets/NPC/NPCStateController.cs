@@ -6,36 +6,36 @@ using System.Collections;
 /// </summary>
 public class NPCStateController : MonoBehaviour {
 
+    private const string tagUnknown = "unknown";
+    private const string tagGood = "good";
+    private const string tagEvil = "enemy";
+
     [SerializeField]
     private NPCState state = NPCState.Unknown;
 
     public NPCState State { 
         get { return state; } 
         set { state = value;
+        Color color;
             switch (value) {
-                case NPCState.Unknown:
-                    setLights(Color.white);
-                    setModel("goodmodel");
-                    break;
                 case NPCState.Good:
-                    setLights(new Color(0f, 202f / 255f, 1.0f));
-                    setModel("goodmodel");
+                case NPCState.SuperGood:
+                    color = new Color(0f, 202f / 255f, 1.0f);
+                    setLights(color);
+                    setModel("goodmodel", color);
+                    tag = tagGood;
                     break;
                 case NPCState.Evil:
-                    setLights(Color.red);
-                    setModel("evilmodel");
-                    break;
-                case NPCState.SuperGood:
-                    setLights(new Color(0f, 202f / 255f, 1.0f));
-                    setModel("goodmodel");
-                    break;
                 case NPCState.SuperEvil:
                     setLights(Color.red);
-                    setModel("evilmodel");
+                    setModel("evilmodel", Color.red);
+                    tag = tagEvil;
                     break;
+                case NPCState.Unknown:
                 default:
                     setLights(Color.white);
-                    setModel("goodmodel");
+                    setModel("goodmodel", Color.white);
+                    tag = tagUnknown;
                     break;
             }
         } 
@@ -61,10 +61,11 @@ public class NPCStateController : MonoBehaviour {
     /// Enables a child model by tag, while all others will be disabled
     /// </summary>
     /// <param name="tag">The tag of the model to enable</param>
-    private void setModel(string tag) {
+    private void setModel(string tag, Color color) {
         MeshRenderer[] renderer = GetComponentsInChildren<MeshRenderer>();
         foreach (var render in renderer) {
-            render.enabled =  render.gameObject.tag == tag;
+            render.renderer.material.color = color;
+            render.renderer.enabled = render.gameObject.tag == tag;  
         }
     }
 }

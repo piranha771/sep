@@ -11,8 +11,7 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     [SerializeField]
     private float delay;
     private float shootDelay;
-
-    private bool shooting;
+    private bool animationFlag;
     private float currentAnimationLength;
 
     public float AnimationLength { get { return animationLength; } set { animationLength = value; } }
@@ -20,6 +19,7 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     public int WeaponDamage { get { return 0; } set { return; } }
 
     void Start() {
+        animationFlag = false;
         laser = GetComponent<LineRenderer>();
     }
 
@@ -27,12 +27,11 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
         if (target == null) {
            
             StopShooting();
-        } else {
+        } else{
 
             transform.LookAt(target.transform);
             triggerShoot();
-
-        } 
+        }
         
     }
 
@@ -41,25 +40,24 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     /// </summary>
     /// <param name="npc"> target </param>
     public void Shoot(GameObject npc) {
-
-       
         target = npc;
     }
 
     private void ShootAtNPC() {
-        laser.enabled = true;
-      
-       
+        PlayAnimation();
     }
     /// <summary>
     /// Stops the shooting at the target
     /// </summary>
     public void StopShooting() {
         laser.enabled = false;
+        target = null;
+        currentAnimationLength = animationLength * 2;
         transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
     }
 
     private void PlayAnimation() {
+            laser.enabled = true;
             laser.SetPosition(0, transform.position);
             laser.SetPosition(1, target.transform.position);
            
@@ -67,23 +65,36 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
 
     private void ApplyAction() {
         NPCStateController nsc = target.GetComponent<NPCStateController>();
-        nsc.State = NPCState.Evil;
+        int rnd = Random.Range(0, 100);
+        if (target.tag == "unknown") {
+            if (rnd < 50 ) {
+                nsc.State = NPCState.Evil;
+            } else{
+                nsc.State = NPCState.Good;
+            }
+        } else {
+            StopShooting();
+        }
     }
 
     void triggerShoot() {
    
         shootDelay -= Time.deltaTime;
-        currentAnimationLength += Time.deltaTime;
-        if (shootDelay < 0 && target != null) {
-            ShootAtNPC();
-            currentAnimationLength = 0;
-            shootDelay = delay;
+       
+      
+        if (shootDelay < 0 && target != null) { 
+            animationFlag = true;
+        }
 
-        }
-        if (currentAnimationLength < (delay / 2)) {
+         if ((currentAnimationLength > animationLength) && animationFlag) {
+            animationFlag = false;
+            currentAnimationLength = 0;
+            ApplyAction();
+        } else if (animationFlag) {
             PlayAnimation();
-        } else {
-            laser.enabled = false;
-        }
+            currentAnimationLength += Time.deltaTime;
+        } 
+
+      
     }
 }

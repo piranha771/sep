@@ -18,6 +18,7 @@ public class WeaponBurrelGun : MonoBehaviour, IWeapon {
 	}; } }
 	// Use this for initialization
 	void Start () {
+        npc = null;
         burrelsScripts = transform.GetComponentsInChildren<SingleBurrel>();
         startRotation = transform.rotation;
 	}

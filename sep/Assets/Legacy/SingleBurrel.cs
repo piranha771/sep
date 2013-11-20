@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SingleBurrel : MonoBehaviour, IMakeDamage {
     private GameObject bullet;
-    private Health npcHealth;
+    private NPCHealth npcHealth;
     private GameObject npc;
     private int weaponDamage = 1;
     private Quaternion startRotation;
@@ -30,7 +30,7 @@ public class SingleBurrel : MonoBehaviour, IMakeDamage {
         bullet = prefabSource.Bullet();
         npc = npcEnemy;
         
-        npcHealth = npcEnemy.GetComponent<Health>();
+        npcHealth = npcEnemy.GetComponent<NPCHealth>();
         GameObject bullet_2 = (GameObject)Instantiate(bullet, transform.position, towerWeapon.transform.rotation);
         bullet_2.SetActive(true);
      
@@ -41,7 +41,7 @@ public class SingleBurrel : MonoBehaviour, IMakeDamage {
 
     public void MakeDamage() {
 
-        npcHealth.tackeDamage(weaponDamage);
+        npcHealth.TakeDamage(weaponDamage);
 
     }
     

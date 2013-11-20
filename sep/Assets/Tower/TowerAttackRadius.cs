@@ -10,10 +10,11 @@ public class TowerAttackRadius : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-    
+   
         colliderTower = transform.parent.GetComponent<BoxCollider>();
         GameObject gameCOntroller = GameObject.Find("GameController");
         prefabSource = gameCOntroller.GetComponent<PrefabSource>();
+	
         
 	}
 	
@@ -35,6 +36,8 @@ public class TowerAttackRadius : MonoBehaviour {
     }
 
     void isMouseOnMeClicked() {
+		
+		GuiTowerSpawnMenu guiMenu = GameObject.Find("CPU").GetComponent<GuiTowerSpawnMenu>();
     
         if(Input.GetMouseButtonDown(0)){
             
@@ -44,8 +47,12 @@ public class TowerAttackRadius : MonoBehaviour {
             if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "tower" && hit.transform == transform)) {
                 UpdateRadius();
                 towerRadius.SetActive(true);
+				guiMenu.buyMode =false;
+				guiMenu.upMode = true;
             } else {
                 if(towerRadius != null) towerRadius.SetActive(false);
+				guiMenu.buyMode =true;
+				guiMenu.upMode = false;
             }
         }
 

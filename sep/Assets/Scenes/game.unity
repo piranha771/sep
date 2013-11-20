@@ -647,7 +647,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 78434743}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -.0803575516, y: 5.66015196, z: -9.05531579e-08}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: .25, y: .25, z: 2.49999976}
   m_Children: []
   m_Father: {fileID: 1785922801}
@@ -6977,7 +6977,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1601326882}
-  - 114: {fileID: 1601326883}
   m_Layer: 9
   m_Name: BackGround
   m_TagString: Untagged
@@ -7001,23 +7000,6 @@ Transform:
   - {fileID: 1807418860}
   - {fileID: 1204439981}
   m_Father: {fileID: 0}
---- !u!114 &1601326883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1601326881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0f0c1937ee2ae4e868a472c70f6971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerBullet: {fileID: 100002, guid: 8209b2f5f901ec247a269163242744e6, type: 2}
-  towerLaser: {fileID: 100004, guid: c0c2e94d2bf4cf445bf28d0244cb24ef, type: 2}
-  towerGatling: {fileID: 100014, guid: 640204b09ff9f2044b562b46e58ac32a, type: 2}
-  towerFourBurrelGun: {fileID: 100012, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
-  towerNova: {fileID: 100004, guid: 3f7042ff98ca5734a8d2b8ba149cb385, type: 2}
-  towerDetector: {fileID: 100002, guid: ee732237c2615cb4eb7024d950b2b812, type: 2}
 --- !u!1 &1606321223
 GameObject:
   m_ObjectHideFlags: 0
@@ -7418,6 +7400,9 @@ GameObject:
   - 114: {fileID: 1785922803}
   - 114: {fileID: 1785922804}
   - 114: {fileID: 1785922805}
+  - 114: {fileID: 1785922806}
+  - 114: {fileID: 1785922807}
+  - 114: {fileID: 1785922808}
   m_Layer: 8
   m_Name: CPU
   m_TagString: Untagged
@@ -7493,10 +7478,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalTemp: 40
   meltdownTemp: 120
-  cooldownRatePerSecond: .100000001
-  currentTemp: 0
-  coolColor: {r: 0, g: 0, b: 0, a: 0}
-  heatColor: {r: 0, g: 0, b: 0, a: 0}
+  cooldownRatePerSecond: 2
+  additionalHeatOnEvilBit: 10
+  tempFreezeTimeOnUnknownBit: 10
+  coolColorGlowParts: {r: .286274523, g: .733333349, b: 1, a: 0}
+  hotColorGlowParts: {r: 1, g: .213235319, b: .213235319, a: 0}
+  coolColorSpriteParts: {r: .105882354, g: .184313729, b: .258823544, a: 0}
+  hotColorSpriteParts: {r: .551470578, g: .274085343, b: .109483138, a: 0}
+  coolColorLight: {r: 0, g: .792156875, b: 1, a: 0}
+  hotColorLight: {r: 1, g: .147058845, b: .147058845, a: 0}
 --- !u!114 &1785922803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7508,7 +7498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04aeb896c4e9e3a46bd21701e99c26fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableComputingTime: 0
 --- !u!114 &1785922804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7531,6 +7520,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73612048bfb8113439c746866e88f78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1785922806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785922797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5476430bd49b0af429dafbaee1c84b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCPUTimeMultiplier: 1
+  cpuTime: 100
+--- !u!114 &1785922807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785922797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0f0c1937ee2ae4e868a472c70f6971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerBullet: {fileID: 100002, guid: 8209b2f5f901ec247a269163242744e6, type: 2}
+  towerLaser: {fileID: 100004, guid: c0c2e94d2bf4cf445bf28d0244cb24ef, type: 2}
+  towerGatling: {fileID: 100014, guid: 640204b09ff9f2044b562b46e58ac32a, type: 2}
+  towerFourBurrelGun: {fileID: 100012, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
+  towerNova: {fileID: 100004, guid: 3f7042ff98ca5734a8d2b8ba149cb385, type: 2}
+  towerDetector: {fileID: 100002, guid: ee732237c2615cb4eb7024d950b2b812, type: 2}
+  buyMode: 1
+  upMode: 0
+--- !u!114 &1785922808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785922797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667a9ba3c233deb4e99c244595eba45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cpuTimeCost: 100
 --- !u!1 &1807418859
 GameObject:
   m_ObjectHideFlags: 0
