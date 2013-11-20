@@ -13,6 +13,6 @@ public class CPUComputeTimeController : MonoBehaviour {
     public float HealthCPUTimeMultiplier { get { return healthCPUTimeMultiplier; } set { healthCPUTimeMultiplier = value; } }
 
     public void Impact(GameObject npcGoodBit) {
-        cpuTime += Mathf.CeilToInt(npcGoodBit.GetComponent<Health>().CurrentHealth * healthCPUTimeMultiplier); 
+        cpuTime += Mathf.CeilToInt(npcGoodBit.GetComponent<NPCHealth>().Health * healthCPUTimeMultiplier); 
     }
 }

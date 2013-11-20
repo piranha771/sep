@@ -7556,7 +7556,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1785922797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829d8f1258925fe46872affc8f5841f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 667a9ba3c233deb4e99c244595eba45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletCost: 10

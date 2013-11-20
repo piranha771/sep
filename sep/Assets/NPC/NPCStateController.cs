@@ -19,33 +19,20 @@ public class NPCStateController : MonoBehaviour {
         MeshRenderer[] go;
         Color color;
             switch (value) {
-                case NPCState.Unknown:
-                    setLights(Color.white);
-                    setModel("goodmodel", Color.white);
-                    tag = tagUnknown;
-                    break;
                 case NPCState.Good:
-                    color = new Color(0f, 202f / 255f, 1.0f);
-                    setLights(color);
-                    setModel("goodmodel", color);
-                    tag = tagGood;
-                    break;
-                case NPCState.Evil:
-                    setLights(Color.red);
-                    setModel("evilmodel", Color.red);
-                    tag = tagEvil;
-                    break;
                 case NPCState.SuperGood:
                     color = new Color(0f, 202f / 255f, 1.0f);
                     setLights(color);
                     setModel("goodmodel", color);
                     tag = tagGood;
                     break;
+                case NPCState.Evil:
                 case NPCState.SuperEvil:
                     setLights(Color.red);
                     setModel("evilmodel", Color.red);
                     tag = tagEvil;
                     break;
+                case NPCState.Unknown:
                 default:
                     setLights(Color.white);
                     setModel("goodmodel", Color.white);

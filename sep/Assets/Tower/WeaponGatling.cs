@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
     private GameObject bullet;
-    private Health npcHealth;
+    private NPCHealth npcHealth;
     private GameObject npc;
     private int weaponDamage = 1;
     private Quaternion startRotation;
@@ -37,7 +37,7 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
         npcState = false;
         bullet = prefabSource.Bullet();
         npc = npcEnemy;
-        npcHealth = npcEnemy.GetComponent<Health>();
+        npcHealth = npcEnemy.GetComponent<NPCHealth>();
         GameObject bulletCopy = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
         bulletCopy.SetActive(true);
         Shoot script_b = bulletCopy.GetComponent<Shoot>();
@@ -52,6 +52,6 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
     }
 
     public void MakeDamage() {
-        npcHealth.tackeDamage(weaponDamage);
+        npcHealth.TakeDamage(weaponDamage);
     }
 }

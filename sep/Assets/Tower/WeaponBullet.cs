@@ -4,7 +4,7 @@ using System.Collections;
 public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
 
     private GameObject bullet;
-    private Health npcHealth;
+    private NPCHealth npcHealth;
     private GameObject npc;
     private int weaponDamage = 15;
     private Quaternion startRotation;
@@ -31,7 +31,7 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
     public void Shoot(GameObject npcEnemy) {
         bullet = prefabSource.Bullet();
         npc = npcEnemy;
-        npcHealth = npcEnemy.GetComponent<Health>();
+        npcHealth = npcEnemy.GetComponent<NPCHealth>();
         GameObject bulletCopy = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
         bulletCopy.SetActive(true);
 
@@ -51,6 +51,6 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
     /// Make damage on target. Target must have Health-Script with tackeDamage-Method.
     /// </summary>
     public void MakeDamage() {
-        npcHealth.tackeDamage(weaponDamage);
+        npcHealth.TakeDamage(weaponDamage);
     }
 }
