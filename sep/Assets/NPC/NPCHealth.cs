@@ -39,10 +39,10 @@ public class NPCHealth : MonoBehaviour {
    
         currentHealth = Mathf.Max(currentHealth - damage, 0);
 
-        if (rendererColors == null) setupColoring();
-        colorize();
-
-
+        if (!IsDead) {
+            if (rendererColors == null) setupColoring();
+            colorize();
+        }
     }
 
     /// <summary>
