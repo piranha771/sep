@@ -252,6 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1260f32bc822a4992086de566164ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponDamage: 1
+  delay: 0
+  npcTag: EnemyMonster
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class WeaponNova : MonoBehaviour, IWeapon {
     private GameObject npc;
+    [SerializeField]
     private int weaponDamage = 15;
     private bool npcState = true;
     private float radiusDelay = 1f;

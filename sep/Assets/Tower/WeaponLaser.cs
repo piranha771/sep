@@ -5,8 +5,14 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
     LineRenderer lineBullet;
     private Health npcHealth;
     private GameObject npc;
+    [SerializeField]
     private int weaponDamage = 1;
     private Quaternion startRotation;
+    [SerializeField]
+    private float delay;
+    private float shootDelay;
+    [SerializeField]
+    private string npcTag;
 
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
 
@@ -18,20 +24,33 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
 	
 	// Update is called once per frame
 	void Update () {
+        if (npc == null) {
+            StopShooting();
+        } else if (npc.tag == npcTag) {
 
-        if (npc == null) StopShooting();
+            transform.LookAt(npc.transform);
+            triggerShoot();
+
+        } else {
+            StopShooting();
+        }
 	}
     /// <summary>
     /// Initialize single shoot
     /// </summary>
     /// <param name="monster">target</param>
     /// <param name="towerWeapon">weapon</param>
-    public void Shoot(GameObject monster){
-            npc = monster;
-            npcHealth = monster.GetComponent<Health>();
+
+    public void Shoot(GameObject npc) {
+        this.npc = npc;
+    }
+
+
+    public void ShootAtNPC(){
+            npcHealth = npc.GetComponent<Health>();
             lineBullet.enabled = true;
             lineBullet.SetPosition(0, transform.position);
-            lineBullet.SetPosition(1, monster.transform.position);
+            lineBullet.SetPosition(1, npc.transform.position);
             npcHealth.tackeDamage(weaponDamage);
        
     }
@@ -39,8 +58,20 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
     public void StopShooting() {
         transform.rotation = startRotation;
         lineBullet.enabled = false;
+        npc = null;
+        transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
         //lineBullet.SetPosition(0, transform.position);
         //lineBullet.SetPosition(1, transform.position);
+    }
+
+    void triggerShoot() {
+
+        shootDelay -= Time.deltaTime;
+        if (shootDelay < 0 && npc != null) {
+            ShootAtNPC();
+            shootDelay = delay;
+
+        }
     }
 
 }

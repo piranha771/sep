@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿        using UnityEngine;
 using System.Collections;
 
 public class WeaponDetector : MonoBehaviour, IWeapon {
@@ -8,6 +8,9 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
 
     private GameObject target;
     private LineRenderer laser;
+    [SerializeField]
+    private float delay;
+    private float shootDelay;
 
     private bool shooting;
     private float currentAnimationLength;
@@ -21,17 +24,16 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     }
 
     void Update() {
-        if (shooting && target == null) {
+        if (target == null) {
+           
             StopShooting();
-        } else if (shooting) {
-            if (currentAnimationLength < animationLength) {
-                currentAnimationLength += Time.deltaTime;
-                PlayAnimation();
-            } else {
-                ApplyAction();
-                StopShooting();
-            }
-        }
+        } else {
+
+            transform.LookAt(target.transform);
+            triggerShoot();
+
+        } 
+        
     }
 
     /// <summary>
@@ -39,27 +41,49 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     /// </summary>
     /// <param name="npc"> target </param>
     public void Shoot(GameObject npc) {
+
+       
         target = npc;
-        currentAnimationLength = 0;
-        shooting = true;
-        laser.enabled = true;
     }
 
+    private void ShootAtNPC() {
+        laser.enabled = true;
+      
+       
+    }
     /// <summary>
     /// Stops the shooting at the target
     /// </summary>
     public void StopShooting() {
         laser.enabled = false;
-        shooting = false;
+        transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
     }
 
-    private void PlayAnimation() {        
-        laser.SetPosition(0, transform.position);
-        laser.SetPosition(1, target.transform.position);
+    private void PlayAnimation() {
+            laser.SetPosition(0, transform.position);
+            laser.SetPosition(1, target.transform.position);
+           
     }
 
     private void ApplyAction() {
         NPCStateController nsc = target.GetComponent<NPCStateController>();
         nsc.State = NPCState.Evil;
+    }
+
+    void triggerShoot() {
+   
+        shootDelay -= Time.deltaTime;
+        currentAnimationLength += Time.deltaTime;
+        if (shootDelay < 0 && target != null) {
+            ShootAtNPC();
+            currentAnimationLength = 0;
+            shootDelay = delay;
+
+        }
+        if (currentAnimationLength < (delay / 2)) {
+            PlayAnimation();
+        } else {
+            laser.enabled = false;
+        }
     }
 }

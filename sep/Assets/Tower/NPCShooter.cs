@@ -11,6 +11,8 @@ public class NPCShooter : MonoBehaviour {
     private int monster_on_target = 1;
     [SerializeField]
     private string towerTyp;
+    
+    private bool shootPermission;
 
     
     private GameObject targetMonster;
@@ -32,42 +34,39 @@ public class NPCShooter : MonoBehaviour {
     /// Setter and getter fpr damage of weapon. Send method to IShootWith.
     /// </summary>
     public int WeaponDamage { get { return scriptWeapon.WeaponDamage; } set { scriptWeapon.WeaponDamage = value; } }
+    /// <summary>
+    /// Setter and getter for shoot permission. 
+    /// </summary>
+    public bool ShootPermission { get { return shootPermission; } set { shootPermission = value; } }
 	// Use this for initialization
 	void Start () {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
         scriptWeapon = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
+        shootPermission = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (targetMonster != null) {
-            towerWeapon.transform.LookAt(targetMonster.transform);
-             AttackMonster(targetMonster.transform.collider);
+        if (targetMonster != null && shootPermission == true) {
+             AttackMonster(targetMonster);
         }
 	}
 
-    void OnTriggerStay(Collider monster) {
-    
-        if (targetMonster == null) {
-            targetMonster = monster.gameObject;
-        }
+    void OnTriggerEnter(Collider npc) {
+          if(targetMonster == null)  targetMonster = npc.gameObject;
     }
 
     void OnTriggerExit(Collider monster) {
-        targetMonster = null;
-        scriptWeapon.StopShooting();
-    }
-
-    void AttackMonster(Collider monster) {
-
-        attackDelay -= Time.deltaTime;
-        if (monster == null)
+        if (monster.gameObject.GetInstanceID() == targetMonster.GetInstanceID()) {
             targetMonster = null;
-        if (attackDelay < 0 && monster != null) {
-            if (monster.gameObject.tag == "EnemyMonster") {
-                scriptWeapon.Shoot(monster.gameObject);
-                attackDelay = delay;
-            }
+            
+            scriptWeapon.StopShooting();
         }
     }
+
+    void AttackMonster(GameObject npc) {
+        shootPermission = false;
+        scriptWeapon.Shoot(npc.gameObject);
+    }
+       
 }

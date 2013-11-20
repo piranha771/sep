@@ -2319,7 +2319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &468953506
 Renderer:
   m_ObjectHideFlags: 0
@@ -6301,6 +6301,10 @@ Prefab:
       propertyPath: m_Name
       value: TowerRadius
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9d3e5eace3801cb47bcc3c4088499769, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d3e5eace3801cb47bcc3c4088499769, type: 2}
   m_RootGameObject: {fileID: 468953505}
@@ -7594,7 +7598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1475bd3655e325449b9a3ce83171097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 100000, guid: 0091aa98db155334f977218b8e06f995, type: 2}
+  bullet: {fileID: 100000, guid: 241f8a27d511bc941bfcd5a8883d4158, type: 2}
   radiusRenderer: {fileID: 100000, guid: 9d3e5eace3801cb47bcc3c4088499769, type: 2}
 --- !u!1 &1813038268
 GameObject:
