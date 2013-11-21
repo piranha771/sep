@@ -29,7 +29,11 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	private float xPositionModifier;
 	private float yPositionModifier;
 	
-	public float scale;
+	public GUIStyle customGuiStyle;
+	
+	public float scaleInPercent = 100.0f;
+	private float scale;
+	private int buttonSize;
 
 
     public GameObject TowerBullet { get { return towerBullet; } set { towerBullet = value; } }
@@ -41,71 +45,40 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 
 
     void OnGUI() {
-		
+		int currentHeight = Screen.height;
+		int currentWidth = Screen.width;
+		int xPosition = (int)(currentWidth*xPositionModifier);
+		int yPosition = (int)(currentHeight*yPositionModifier);
+		buttonSize = (int) (currentWidth/16.5f*scale);
 		if (buyMode) {
             CPUComputeTimeController controller = GetComponent<CPUComputeTimeController>();
 			
-			int currentHeight = Screen.height;
-			int currentWidth = Screen.width;
-			int xPosition = (int)(currentWidth*xPositionModifier);
-			int yPosition = (int)(currentHeight*yPositionModifier);
-			
-			
 			//TowerBullet
-			TowerButtonCreate(towerBullet,"TB",xPosition,yPosition,controller);			
-			
+			TowerButtonCreate(towerBullet,"TB",xPosition+buttonSize*0,yPosition,controller);			
 			//TowerLaser
-			TowerButtonCreate(towerLaser,"TL",50+xPosition,yPosition,controller);
-			
+			TowerButtonCreate(towerLaser,"TL",xPosition+buttonSize*1,yPosition,controller);
 			//TowerGatling
-			TowerButtonCreate(towerGatling,"TG",100+xPosition,yPosition,controller);			
-			
+			TowerButtonCreate(towerGatling,"TG",xPosition+buttonSize*2,yPosition,controller);			
 			//TowerFourBarrel
-			TowerButtonCreate(towerFourBurrelGun,"T4",150+xPosition,yPosition,controller);		
-			
+			TowerButtonCreate(towerFourBurrelGun,"T4",xPosition+buttonSize*3,yPosition,controller);		
 			//TowerNova
-			TowerButtonCreate(towerNova,"TN",200+xPosition,yPosition,controller);		
-			
+			TowerButtonCreate(towerNova,"TN",xPosition+buttonSize*4,yPosition,controller);		
 			//TowerDetector
-			TowerButtonCreate(towerDetector,"TD",250+xPosition,yPosition,controller);
+			TowerButtonCreate(towerDetector,"TD",xPosition+buttonSize*5,yPosition,controller);
 		
  
             isHoverGUI = rect.Contains( Event.current.mousePosition );
         }
 		
 		if (upMode) {
-			
 			//DMG
-			if(false) {GUI.enabled = false;}
-			
-			 if (GUI.Button(new Rect(10, 60, 50, 50), "DMG")) {
-				//TODO
-			}
-			GUI.enabled = true;
-			
+			UpdateButtonCreate("DMG",xPosition+buttonSize*0, yPosition);
 			//RNG
-			if(false) {GUI.enabled = false;}
-			
-			 if (GUI.Button(new Rect(60, 60, 50, 50), "RNG")) {
-				//TODO
-			}
-			GUI.enabled = true;
-			
+			UpdateButtonCreate("RNG",xPosition+buttonSize*1, yPosition);
 			//SPD
-			if(false) {GUI.enabled = false;}
-			
-			 if (GUI.Button(new Rect(110, 60, 50, 50), "SPD")) {
-				//TODO
-			}
-			GUI.enabled = true;
-			
+			UpdateButtonCreate("SPD",xPosition+buttonSize*2, yPosition);
 			//SLL
-			if(false) {GUI.enabled = false;}
-			
-			 if (GUI.Button(new Rect(160, 60, 50, 50), "SLL")) {
-				//TODO
-			}
-			GUI.enabled = true;
+			UpdateButtonCreate("$$$",xPosition+buttonSize*3, yPosition);
 		}
 	}
 	
@@ -115,7 +88,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		if (time<cost) {
 				GUI.enabled = false;
 			}
-            if (GUI.Button(new Rect(x, y, 50, 50), name)) {
+            if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), name, customGuiStyle)) {
 						
                 controller.CPUTime -= cost;
                 selectedTower = tower;
@@ -126,6 +99,16 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	void Start () {
 		yPositionModifier = yPositionInPercent/100.0f;
 		xPositionModifier = xPositionInPercent/100.0f;
+		scale = scaleInPercent/100.0f;
+	}
+	
+	void UpdateButtonCreate(string name, int x, int y){
+		if(false) {GUI.enabled = false;}
+			
+			 if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), name, customGuiStyle)) {
+				//TODO
+			}
+			GUI.enabled = true;
 	}
  
     void Update() {

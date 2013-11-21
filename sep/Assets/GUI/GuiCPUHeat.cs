@@ -4,6 +4,7 @@ using System.Collections;
 public class GuiCPUHeat : MonoBehaviour {
 	
 	public float Scale;
+	private int size;
 	public float xPositionInPercent;
 	public float yPositionInPercent;
 	
@@ -16,10 +17,9 @@ public class GuiCPUHeat : MonoBehaviour {
 	public Texture[] bars;
 	
 	void OnGUI (){
-		int currentHeight = Screen.height;
-		int currentWidth = Screen.width;
-		int xPosition = (int)(currentWidth*xPositionModifier);
-		int yPosition = (int)(currentHeight*yPositionModifier);
+		int xPosition = (int)(Screen.width*xPositionModifier);
+		int yPosition = (int)(Screen.height*yPositionModifier);
+		size = (int) (Screen.width/13.75f*Scale);
 		
 		CPUHeatController controller = GameObject.Find("CPU").GetComponent<CPUHeatController>();
 		string heat = controller.CurrentTemp.ToString("0.0");//Current Heat with one fractional digit.
@@ -28,19 +28,19 @@ public class GuiCPUHeat : MonoBehaviour {
 		
 		float heatPerBar = (maxHeat-normalHeat)/(float)(bars.Length-minBars);
 		
-		string displayText = "CPU Heat\r\n" + heat + " C°";
+		string displayText = "CPU Heat\r\n" + size + " C° " + Screen.width/13.75f;
 		var centeredStyle = GUI.skin.GetStyle("Label");
 		centeredStyle.alignment = TextAnchor.UpperCenter;
 		
 		GUI.Label (new Rect (Screen.width-100, 10, 100, 50), displayText, centeredStyle);
-		GUI.DrawTexture(new Rect(xPosition,yPosition,60*Scale,60*Scale),TempDisplayContainer, ScaleMode.StretchToFill);
+		GUI.DrawTexture(new Rect(xPosition,yPosition,size,size),TempDisplayContainer, ScaleMode.StretchToFill);
 		for (int i = 0; i<minBars;i++){
-			GUI.DrawTexture(new Rect(xPosition,yPosition,60*Scale,60*Scale),bars[i], ScaleMode.StretchToFill);
+			GUI.DrawTexture(new Rect(xPosition,yPosition,size,size),bars[i], ScaleMode.StretchToFill);
 		}
 		
 		for (int i = minBars; i<bars.Length;i++){
 			if(controller.CurrentTemp-normalHeat>=heatPerBar*(i-minBars+1)){
-				GUI.DrawTexture(new Rect(xPosition,yPosition,60*Scale,60*Scale),bars[i], ScaleMode.StretchToFill);
+				GUI.DrawTexture(new Rect(xPosition,yPosition,size,size),bars[i], ScaleMode.StretchToFill);
 			}
 		}
     }
