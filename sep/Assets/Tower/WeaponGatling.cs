@@ -66,7 +66,7 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
     public void StopShooting() {
         npcState = true;
         npc = null;
-        transform.rotation = startRotation;
+        //transform.rotation = startRotation;
         transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
     }
 
