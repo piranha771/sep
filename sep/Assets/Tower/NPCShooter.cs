@@ -26,7 +26,9 @@ public class NPCShooter : MonoBehaviour {
     /// <summary>
     /// Setter and getter for shoot permission. 
     /// </summary>
-    public bool ShootPermission { get { return shootPermission; } set { shootPermission = value; } }
+    public bool ShootPermission { get { return shootPermission; } set {
+        targetMonster = null;
+        shootPermission = value; } }
 	// Use this for initialization
 
 	
@@ -50,11 +52,14 @@ public class NPCShooter : MonoBehaviour {
     }
 
     void OnTriggerExit(Collider monster) {
+        if((targetMonster != null)){
         if (monster.gameObject.GetInstanceID() == targetMonster.GetInstanceID()) {
 
             targetMonster = null;
             scriptWeapon.StopShooting();
         }
+        }
+
     }
 
 
