@@ -5,7 +5,7 @@ public class SingleBurrel : MonoBehaviour, IMakeDamage {
     private GameObject bullet;
     private NPCHealth npcHealth;
     private GameObject npc;
-    private int weaponDamage = 1;
+    private int weaponDamage = 3;
     private Quaternion startRotation;
     private PrefabSource prefabSource;
 

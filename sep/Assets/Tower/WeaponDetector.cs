@@ -55,6 +55,7 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     public void StopShooting() {
         laser.enabled = false;
         target = null;
+        shootDelay = delay;
         currentAnimationLength = 0;
         transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
     }

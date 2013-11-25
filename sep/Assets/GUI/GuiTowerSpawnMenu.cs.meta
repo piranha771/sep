@@ -7,7 +7,7 @@ MonoImporter:
   - towerLaser: {fileID: 100004, guid: c0c2e94d2bf4cf445bf28d0244cb24ef, type: 2}
   - towerGatling: {fileID: 100014, guid: 640204b09ff9f2044b562b46e58ac32a, type: 2}
   - towerFourBurrelGun: {fileID: 100012, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
-  - towerNova: {instanceID: 0}
+  - towerNova: {fileID: 100002, guid: f4e1c330212dc834c961e931ed5ebd05, type: 2}
   - towerDetector: {fileID: 100002, guid: ee732237c2615cb4eb7024d950b2b812, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

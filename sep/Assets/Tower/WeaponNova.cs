@@ -3,36 +3,63 @@ using System.Collections;
 
 public class WeaponNova : MonoBehaviour, IWeapon {
     private GameObject npc;
+    private float animationLength;
     [SerializeField]
     private int weaponDamage = 15;
     private bool npcState = true;
     private float radiusDelay = 1f;
-    private float delay = 1f;
+    [SerializeField]
+    private float delay;
+    private bool animationFlag;
+    private float currentAnimationLength;
+    private float shootDelay;
 
     public float Delay { get { return delay; } set { delay = value; } }
 	// Use this for initialization
 	void Start () {
-	
+        npcState = false;
+        npc = null;
+        animationLength = delay * 0.75f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+       
+        if (!npcState) {
 
-      
+            RStopShooting();
+            
+        } else if (npcState) {
+            triggerShoot();
+        } 
+        
 	
 	}
 
+    void OnTriggerEnter(Collider npc) {
+
+        if (npc.transform.tag == "enemy") {
+            npc.GetComponent<NPCHealth>().TakeDamage(weaponDamage);
+        }
+
+    }
+
     public void Shoot(GameObject npcEnemy) {
 
-       if(npcState) makeRadius();
+       if(npcEnemy.tag == "enemy") npcState = true;
         
     }
 
-    public void StopShooting() {
-        if (npcState) {
+    public void RStopShooting() {
+            npc = null;
             Vector3 oldScale = new Vector3(0.1f, 0.1f, 0.1f);
             transform.localScale = oldScale;
-        }
+            transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
+      
+    }
+
+    public void StopShooting() {
+
     }
 
     public int WeaponDamage {
@@ -45,16 +72,27 @@ public class WeaponNova : MonoBehaviour, IWeapon {
     }
 
     private void makeRadius() {
-        
-        while (radiusDelay > 0) {
-            npcState = false;
-            radiusDelay -= Time.deltaTime;
-            Vector3 newScale = new Vector3(0.0025f, 0.0025f, 0.0025f);
+  
+            Vector3 newScale = new Vector3(0.25f, 0.25f, 0.25f);
 
             transform.localScale = transform.localScale + newScale;
-        }
-        radiusDelay = delay;
+       
+    }
 
-        npcState = true;
+    void triggerShoot() {
+
+        shootDelay -= Time.deltaTime;
+
+
+        if (currentAnimationLength < animationLength) {
+            currentAnimationLength += Time.deltaTime;
+            makeRadius();
+        } else  {
+            npcState = false;
+            animationFlag = false;
+            currentAnimationLength = 0;
+        }
+
+
     }
 }

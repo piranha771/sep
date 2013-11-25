@@ -13,7 +13,7 @@ public class WayPointRunner : MonoBehaviour {
     [SerializeField]
     private float reachedPointEpsilon = 0.2f; 
     [SerializeField]
-    private List<Transform> waypoints;
+    private List<GameObject> waypoints;
     [SerializeField]
     private float waitAtPointTimeSeconds = 0f;
 
@@ -23,7 +23,7 @@ public class WayPointRunner : MonoBehaviour {
 
     public bool DoRun { get { return doRun; } set { doRun = value; } }
     public bool DieAtReachedEnd { get { return dieAtReachedEnd; } set { dieAtReachedEnd = value; } }
-    public List<Transform> Waypoints { get { return waypoints; } set { waypoints = value; } }
+    public List<GameObject> Waypoints { get { return waypoints; } set { waypoints = value; } }
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     public float WaitAtPointTimeSeconds { get { return waitAtPointTimeSeconds; } set { waitAtPointTimeSeconds = value; } }
 
