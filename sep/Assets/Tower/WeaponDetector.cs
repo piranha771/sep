@@ -3,9 +3,8 @@ using System.Collections;
 
 public class WeaponDetector : MonoBehaviour, IWeapon {
 
-    [SerializeField]
+ 
     private float animationLength;
-
     private GameObject target;
     private LineRenderer laser;
     [SerializeField]
@@ -17,9 +16,11 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     public float AnimationLength { get { return animationLength; } set { animationLength = value; } }
 
     public int WeaponDamage { get { return 0; } set { return; } }
+    public float Delay { get { return delay; } set { delay = value; } }
 
     void Start() {
         animationFlag = false;
+        animationLength = delay * 0.25f;
         laser = GetComponent<LineRenderer>();
     }
 
@@ -27,10 +28,12 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
         if (target == null) {
            
             StopShooting();
-        } else{
+        } else if (target.tag == "unknown") {
 
             transform.LookAt(target.transform);
             triggerShoot();
+        } else {
+            StopShooting();
         }
         
     }
@@ -52,7 +55,7 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     public void StopShooting() {
         laser.enabled = false;
         target = null;
-        currentAnimationLength = animationLength * 2;
+        currentAnimationLength = 0;
         transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
     }
 
@@ -82,18 +85,17 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
         shootDelay -= Time.deltaTime;
        
       
-        if (shootDelay < 0 && target != null) { 
+        if (shootDelay < 0 && target != null) {
             animationFlag = true;
-        }
-
-         if ((currentAnimationLength > animationLength) && animationFlag) {
+            shootDelay = delay;
+        }else if(animationFlag && currentAnimationLength < animationLength) {
+            currentAnimationLength += Time.deltaTime;
+            PlayAnimation();
+        } else if (animationFlag) {
             animationFlag = false;
             currentAnimationLength = 0;
             ApplyAction();
-        } else if (animationFlag) {
-            PlayAnimation();
-            currentAnimationLength += Time.deltaTime;
-        } 
+        }
 
       
     }

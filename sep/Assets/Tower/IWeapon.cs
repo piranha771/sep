@@ -8,4 +8,7 @@ public interface IWeapon {
     void StopShooting();
 
     int WeaponDamage{get; set;}
+
+    float Delay { get; set; }
+
 }

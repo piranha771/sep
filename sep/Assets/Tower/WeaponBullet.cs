@@ -17,6 +17,8 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
     private string npcTag;
 
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
+    public float Delay { get { return delay; } set { delay = value; } }
+
     // Use this for initialization
     void Start() {
         npc = null;

@@ -236,7 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d919516a89bb504fb6820356b4689a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: .5
+  hasDelay: 1
+  hasRadius: 0
+  hasDamage: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,8 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b95fdd9db7bd141b774be10865ea3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationLength: .100000001
-  delay: 1
+  delay: .100000001
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

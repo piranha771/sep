@@ -8,6 +8,8 @@ public class WeaponNova : MonoBehaviour, IWeapon {
     private bool npcState = true;
     private float radiusDelay = 1f;
     private float delay = 1f;
+
+    public float Delay { get { return delay; } set { delay = value; } }
 	// Use this for initialization
 	void Start () {
 	

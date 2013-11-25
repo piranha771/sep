@@ -61,10 +61,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 			TowerButtonCreate(towerGatling,"TG",xPosition+buttonSize*2,yPosition,controller);			
 			//TowerFourBarrel
 			TowerButtonCreate(towerFourBurrelGun,"T4",xPosition+buttonSize*3,yPosition,controller);		
-			//TowerNova
-			TowerButtonCreate(towerNova,"TN",xPosition+buttonSize*4,yPosition,controller);		
 			//TowerDetector
-			TowerButtonCreate(towerDetector,"TD",xPosition+buttonSize*5,yPosition,controller);
+			TowerButtonCreate(towerDetector,"TD",xPosition+buttonSize*4,yPosition,controller);
 		
  
             isHoverGUI = rect.Contains( Event.current.mousePosition );

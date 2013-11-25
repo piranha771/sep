@@ -6,8 +6,6 @@ using System;
 public class NPCShooter : MonoBehaviour {
 
     private float attackDelay = 0;
-    [SerializeField]
-    private float delay = 1;
     
     private bool shootPermission;
     private string attackTag;    
@@ -22,8 +20,11 @@ public class NPCShooter : MonoBehaviour {
     [SerializeField]
     private bool hasDamage;
     
-
-    public float Delay { get { return delay; } set { delay = value; } }
+    /// <summary>
+    /// Setter and getter for weapon delay. Also how often shoot it.
+    /// </summary>
+    public float Delay { get { return scriptWeapon.Delay; } set { scriptWeapon.Delay = value; } }
+   
     public string AttackTag { get { return attackTag; } set { attackTag = value; } }
 
     public bool HasDelay { get { return hasDelay; } set { hasDelay = value; } }
@@ -31,7 +32,7 @@ public class NPCShooter : MonoBehaviour {
     public bool HasDamage { get { return hasDamage; } set { hasDamage = value; } }
 
     /// <summary>
-    /// Setter and getter fpr damage of weapon. Send method to IShootWith.
+    /// Setter and getter for damage of weapon. Send method to IShootWith.
     /// </summary>
     public int WeaponDamage { get { return scriptWeapon.WeaponDamage; } set { scriptWeapon.WeaponDamage = value; } }
 
@@ -78,6 +79,14 @@ public class NPCShooter : MonoBehaviour {
     void AttackMonster(GameObject npc) {
         shootPermission = false;
         scriptWeapon.Shoot(npc.gameObject);
+    }
+
+    public void BiggerRadius(int value) {
+        Vector3 radius = new Vector3(0,0,0);
+        radius = transform.GetComponent<BoxCollider>().size;
+        radius.x += value;
+        radius.z += value;
+        transform.GetComponent<BoxCollider>().size = radius;
     }
        
 }

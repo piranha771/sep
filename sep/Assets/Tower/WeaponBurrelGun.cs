@@ -16,6 +16,7 @@ public class WeaponBurrelGun : MonoBehaviour, IWeapon {
 	{
         item.WeaponDamage = value;
 	}; } }
+   public float Delay { get { return delay; } set { delay = value; } }
 	// Use this for initialization
 	void Start () {
         npc = null;
