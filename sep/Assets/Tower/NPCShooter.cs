@@ -15,8 +15,20 @@ public class NPCShooter : MonoBehaviour {
     private GameObject towerWeapon;
     private IWeapon scriptWeapon;
 
+    [SerializeField]
+    private bool hasDelay;
+    [SerializeField]
+    private bool hasRadius;
+    [SerializeField]
+    private bool hasDamage;
+    
+
     public float Delay { get { return delay; } set { delay = value; } }
     public string AttackTag { get { return attackTag; } set { attackTag = value; } }
+
+    public bool HasDelay { get { return hasDelay; } set { hasDelay = value; } }
+    public bool HasRadius { get { return hasRadius; } set { hasRadius = value; } }
+    public bool HasDamage { get { return hasDamage; } set { hasDamage = value; } }
 
     /// <summary>
     /// Setter and getter fpr damage of weapon. Send method to IShootWith.
