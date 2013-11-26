@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GUI\GuiCPUHeat.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GUI\EndMenu.cs">
     <Files>
-      <File FileName="Assets\GUI\GuiTowerSpawnMenu.cs" Line="52" Column="35" />
-      <File FileName="Assets\GUI\GuiCPUHeat.cs" Line="19" Column="16" />
+      <File FileName="Assets\GUI\EndMenu.cs" Line="26" Column="27" />
+      <File FileName="Assets\GUI\EndMenu.cs" Line="26" Column="27" />
+      <File FileName="Assets\GUI\GuiTowerSpawnMenu.cs" Line="121" Column="45" />
+      <File FileName="Assets\Tower\TowerAttackRadius.cs" Line="40" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
