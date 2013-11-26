@@ -19,6 +19,14 @@ public class CameraController : MonoBehaviour {
     private float maxHeight = 40.0f;
     [SerializeField]
     private float minHeight = 10.0f;
+    [SerializeField]
+    private float frontBoundary = 40.0f;
+    [SerializeField]
+    private float backBoundary = 40.0f;
+    [SerializeField]
+    private float leftBoundary = 40.0f;
+    [SerializeField]
+    private float rightBoundary = 40.0f;
 
     #region Getter Setter
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
@@ -28,11 +36,15 @@ public class CameraController : MonoBehaviour {
     public float MouseBorder { get { return mouseBorder; } set { mouseBorder = value; } }
     public float MaxHeight { get { return maxHeight; } set { maxHeight = value; } }
     public float MinHeight { get { return minHeight; } set { minHeight = value; } }
+    public float FrontBoundary { get { return frontBoundary; } set { frontBoundary = value; } }
+    public float BackBoundary { get { return backBoundary; } set { backBoundary = value; } }
+    public float LeftBoundary { get { return leftBoundary; } set { leftBoundary = value; } }
+    public float RightBoundary { get { return rightBoundary; } set { rightBoundary = value; } }
     #endregion
 
-	void Start () {
+    void Start() {
 
-	}
+    }
 	
 	void Update () {
         flatMovement();
@@ -60,11 +72,14 @@ public class CameraController : MonoBehaviour {
         if ((useKeys && Input.GetKey(KeyCode.D)) || (useMouse && Input.mousePosition.x > screenWidth - areaLeftRightSize)) {
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime, Space.World);
         }
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -leftBoundary, rightBoundary), transform.position.y, Mathf.Clamp(transform.position.z, -backBoundary, frontBoundary));
     }
 
     private void zoomMovement() {
         transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * zoomSpeed * Time.deltaTime);
-        moveSpeed -= (Input.GetAxis("Mouse ScrollWheel") * 50);
-        // TODO implement min max height!
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, minHeight, maxHeight), transform.position.z);
+        moveSpeed = transform.position.y * 5;
+        
     }
 }
