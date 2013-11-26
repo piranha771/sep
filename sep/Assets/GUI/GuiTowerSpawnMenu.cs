@@ -122,7 +122,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
         } else {
             ghostOther.GetComponent<GuiGhosting>().GhostStatus = false;
         }
-        if (Input.GetMouseButtonDown(0) && !isHoverGUI) {
+        if (Input.GetMouseButtonDown(0) && !isHoverGUI &&buyMode) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 	        RaycastHit hit;
             
