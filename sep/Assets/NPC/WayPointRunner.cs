@@ -20,6 +20,7 @@ public class WayPointRunner : MonoBehaviour {
     private GameObject currentPoint;
     private float waitTime;
     private int nextCounter = 1;
+    private float lastDistance;
 
     public bool DoRun { get { return doRun; } set { doRun = value; } }
     public bool DieAtReachedEnd { get { return dieAtReachedEnd; } set { dieAtReachedEnd = value; } }
@@ -34,26 +35,30 @@ public class WayPointRunner : MonoBehaviour {
             return;
         }
         currentPoint = waypoints[0].gameObject;
+        lastDistance = float.MaxValue;
         transform.LookAt(currentPoint.transform.position); 
 	}
 	
 	void Update () {
         if (!doRun) return;
         float distance = Vector3.Distance(transform.position, currentPoint.transform.position);
-        if (distance > reachedPointEpsilon)
-            moveToNext(distance);
-        else
+        if (distance < lastDistance) {
+            moveToNext();
+            lastDistance = distance;
+        } else {
             reachedNext();
+        }
 	}
 
-    private void moveToNext(float distance) {
+    private void moveToNext() {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
     private void reachedNext() {
-        if (waitTime <= 0) {
-            waitTime = waitAtPointTimeSeconds;
-            
+        lastDistance = float.MinValue;
+        transform.position = currentPoint.transform.position;
+        waitTime = waitAtPointTimeSeconds;
+        if (waitTime <= 0) {            
             if ( nextCounter >= waypoints.Count) {
                 doRun = false;
                 reachedEnd();
@@ -62,8 +67,9 @@ public class WayPointRunner : MonoBehaviour {
             currentPoint = waypoints[nextCounter].gameObject;
             nextCounter++;
             transform.LookAt(currentPoint.transform.position);
+            lastDistance = float.MaxValue;
         } else {
-            waitTime -= Time.fixedDeltaTime;
+            waitTime -= Time.deltaTime;
         }
     }
 

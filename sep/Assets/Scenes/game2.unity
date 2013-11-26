@@ -878,7 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templateNPC: {fileID: 100008, guid: 57ba7af0814115d4ba34761421ee0eeb, type: 2}
-  spawnDelay: .5
+  spawnDelay: .00999999978
   traces:
   - {fileID: 773338286}
   - {fileID: 378614072}
