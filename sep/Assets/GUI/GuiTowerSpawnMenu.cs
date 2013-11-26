@@ -15,6 +15,9 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     private GameObject towerNova;
     [SerializeField]
     private GameObject towerDetector;
+    [SerializeField]
+    private GameObject ghostObject;
+    GameObject ghostOther;
 
     private GameObject selectedTower;
     private bool isHoverGUI = false;
@@ -97,6 +100,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	}
 	
 	void Start () {
+        Vector3 startPos = new Vector3(0, 0, 0);
+        ghostOther = (GameObject)Instantiate(ghostObject, startPos, Quaternion.identity);
 		yPositionModifier = yPositionInPercent/100.0f;
 		xPositionModifier = xPositionInPercent/100.0f;
 		scale = scaleInPercent/100.0f;
@@ -112,15 +117,21 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	}
  
     void Update() {
+        if (selectedTower != null) {
+            ghostOther.GetComponent<GuiGhosting>().GhostStatus = true;
+        } else {
+            ghostOther.GetComponent<GuiGhosting>().GhostStatus = false;
+        }
         if (Input.GetMouseButtonDown(0) && !isHoverGUI) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 	        RaycastHit hit;
- 
+            
             if (Physics.Raycast(ray, out hit) && hit.collider.tag == "spawnarea") {
                 Vector3 towerPosition = hit.point;
                 towerPosition.y += 0.4f;
                 if (selectedTower != null) Instantiate(selectedTower, towerPosition, Quaternion.identity);
                     selectedTower = null;
+                    
             }
         }
     }
