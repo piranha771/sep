@@ -44,7 +44,7 @@ public class TowerAttackRadius : MonoBehaviour {
             if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "tower" && hit.transform == transform)) {
                 UpdateRadius();
                 towerRadius.SetActive(true);
-				guiMenu.buyMode =false;
+				guiMenu.buyMode = false;
 				guiMenu.upMode = true;
             } else {
                 if(towerRadius != null) towerRadius.SetActive(false);

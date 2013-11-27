@@ -4,7 +4,9 @@ using System.Collections;
 public class CPUIncomeController : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider) {
-        switch (collider.gameObject.GetComponent<NPCStateController>().State) {
+        NPCStateController stateCon = collider.gameObject.GetComponent<NPCStateController>();
+        if (stateCon == null) return;
+        switch (stateCon.State) {
             case NPCState.Unknown:
                 gameObject.GetComponent<CPUHeatController>().ImpactUnknown();
                 break;

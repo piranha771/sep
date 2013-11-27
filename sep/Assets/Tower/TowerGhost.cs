@@ -62,6 +62,8 @@ public class TowerGhost : MonoBehaviour {
         GetComponent<NPCShooter>().enabled = true;
         // Enable selecting
         GetComponentInChildren<TowerAttackRadius>().enabled = true;
+        // Disable Perimeter
+        GetComponentInChildren<TowerGostSpaceChecker>().gameObject.SetActive(false);
         // Disable this script
         this.enabled = false;
     }

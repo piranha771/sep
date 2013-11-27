@@ -878,7 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templateNPC: {fileID: 100008, guid: 57ba7af0814115d4ba34761421ee0eeb, type: 2}
-  spawnDelay: .5
+  spawnDelay: 1
   traces:
   - {fileID: 773338286}
   - {fileID: 378614072}
@@ -34579,11 +34579,11 @@ MonoBehaviour:
   - {fileID: 23990520}
   glowLight: {fileID: 78434744}
   coolColorGlowParts: {r: .286274523, g: .733333349, b: 1, a: 0}
-  hotColorGlowParts: {r: 1, g: .213235319, b: .213235319, a: 0}
+  hotColorGlowParts: {r: 1, g: 0, b: 0, a: 0}
   coolColorSpriteParts: {r: .105882354, g: .184313729, b: .258823544, a: 0}
-  hotColorSpriteParts: {r: .551470578, g: .274085343, b: .109483138, a: 0}
+  hotColorSpriteParts: {r: .551470578, g: .109483138, b: .109483138, a: 0}
   coolColorLight: {r: 0, g: .792156875, b: 1, a: 0}
-  hotColorLight: {r: 1, g: .147058845, b: .147058845, a: 0}
+  hotColorLight: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &1785922803
 MonoBehaviour:
   m_ObjectHideFlags: 0
