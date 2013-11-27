@@ -10,6 +10,7 @@ public class NPCShooter : MonoBehaviour {
     private GameObject targetMonster;
     private GameObject towerWeapon;
     private IWeapon scriptWeapon;
+    private LinkedList<GameObject> attackList;
 
     [SerializeField]
     private bool hasDelay;
@@ -45,28 +46,26 @@ public class NPCShooter : MonoBehaviour {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
         scriptWeapon = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
         shootPermission = true;
+        attackList = new LinkedList<GameObject>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (targetMonster != null && shootPermission == true) {
-          
-             AttackMonster(targetMonster);
+        if (attackList.Count != 0 && shootPermission == true) {
+             AttackMonster(attackList.Last.Value);
         }
 	}
 
     void OnTriggerEnter(Collider npc) {
         if (npc.GetComponent<NPCStateController>() == null) return;
-        if (targetMonster == null)  targetMonster = npc.gameObject;
+        attackList.AddLast(npc.gameObject);
     }
 
     void OnTriggerExit(Collider npc) {
-        if((targetMonster != null)){
-            if (npc.gameObject.GetInstanceID() == targetMonster.GetInstanceID()) {
-
-                targetMonster = null;
+        if((attackList.Contains(npc.gameObject))){
+            attackList.Remove(npc.gameObject);
                 scriptWeapon.StopShooting();
-            }
+            
         }
     }
 
