@@ -39,6 +39,7 @@ public class NPCShooter : MonoBehaviour {
     /// </summary>
     public bool ShootPermission { get { return shootPermission; } set { shootPermission = value; } }
 	
+	
     // Use this for initialization
 	void Start () {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
@@ -49,15 +50,15 @@ public class NPCShooter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (targetMonster != null && shootPermission == true) {
-            Debug.LogWarning("EEEEEEEE");
-            AttackMonster(targetMonster);
+          
+             AttackMonster(targetMonster);
         }
 	}
 
     void OnTriggerEnter(Collider npc) {
         if (npc.GetComponent<NPCStateController>() == null) return;
         Debug.LogWarning("TAG: " + npc.tag + " NAME : " + npc.name);
-        if (targetMonster == null)  targetMonster = npc.gameObject;
+          if (targetMonster == null)  targetMonster = npc.gameObject;
     }
 
     void OnTriggerExit(Collider npc) {

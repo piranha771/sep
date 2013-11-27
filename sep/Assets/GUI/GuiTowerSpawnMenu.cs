@@ -47,9 +47,10 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     void OnGUI() {
 		int currentHeight = Screen.height;
 		int currentWidth = Screen.width;
+		buttonSize = (int) (currentWidth/16.5f*scale);
 		int xPosition = (int)(currentWidth*xPositionModifier);
 		int yPosition = (int)(currentHeight*yPositionModifier);
-		buttonSize = (int) (currentWidth/16.5f*scale);
+		yPosition = currentHeight-(yPosition+buttonSize);
 		
         if (buyMode) {
             CPUComputeTimeController controller = GetComponent<CPUComputeTimeController>();
@@ -84,12 +85,16 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	
 	void TowerButtonCreate(GameObject tower, string name, int x, int y, CPUComputeTimeController controller ){
 		int cost = tower.GetComponent<TowerCost>().CPUTimeCost;
+		string costString = cost.ToString();
 		int time = controller.CPUTime;
+		int fontSize =(int)(9.0f*scale);
 		if (time<cost) {
 				GUI.enabled = false;
 		}
-
-        if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), name, customGuiStyle)) {
+		GUI.skin.label.fontSize = fontSize;
+		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),name);
+		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y+(int)(buttonSize-fontSize*1.5f),buttonSize/2,buttonSize/3),costString);
+        if (GUI.Button(new Rect(x, y, buttonSize, buttonSize),"", customGuiStyle)) {
 						
             controller.CPUTime -= cost;
             selectedTower = (GameObject)Instantiate(tower, Vector3.zero, Quaternion.identity); ;

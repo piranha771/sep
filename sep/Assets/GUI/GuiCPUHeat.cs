@@ -17,9 +17,10 @@ public class GuiCPUHeat : MonoBehaviour {
 	public Texture[] bars;
 	
 	void OnGUI (){
+		size = (int) (Screen.width/13.75f*Scale);
 		int xPosition = (int)(Screen.width*xPositionModifier);
 		int yPosition = (int)(Screen.height*yPositionModifier);
-		size = (int) (Screen.width/13.75f*Scale);
+		yPosition = Screen.height-(yPosition+size);
 		
 		CPUHeatController controller = GameObject.Find("CPU").GetComponent<CPUHeatController>();
 		string heat = controller.CurrentTemp.ToString("0.0");//Current Heat with one fractional digit.
@@ -28,7 +29,7 @@ public class GuiCPUHeat : MonoBehaviour {
 		
 		float heatPerBar = (maxHeat-normalHeat)/(float)(bars.Length-minBars);
 		
-		string displayText = "CPU Heat\r\n" + size + " C° " + Screen.width/13.75f;
+		string displayText = "CPU Heat\r\n" + heat + " C° ";
 		var centeredStyle = GUI.skin.GetStyle("Label");
 		centeredStyle.alignment = TextAnchor.UpperCenter;
 		
