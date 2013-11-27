@@ -49,12 +49,15 @@ public class NPCShooter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (targetMonster != null && shootPermission == true) {
-             AttackMonster(targetMonster);
+            Debug.LogWarning("EEEEEEEE");
+            AttackMonster(targetMonster);
         }
 	}
 
     void OnTriggerEnter(Collider npc) {
-          if (targetMonster == null)  targetMonster = npc.gameObject;
+        if (npc.GetComponent<NPCStateController>() == null) return;
+        Debug.LogWarning("TAG: " + npc.tag + " NAME : " + npc.name);
+        if (targetMonster == null)  targetMonster = npc.gameObject;
     }
 
     void OnTriggerExit(Collider npc) {

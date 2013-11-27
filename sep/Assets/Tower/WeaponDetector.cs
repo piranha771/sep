@@ -25,11 +25,14 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     }
 
     void Update() {
+        if (target != null) {
+            Debug.LogWarning(target.tag);
+        }
         if (target == null) {
            
             StopShooting();
         } else if (target.tag == "unknown") {
-
+            Debug.LogWarning("DDDDDDDDDDD");
             transform.LookAt(target.transform);
             triggerShoot();
         } else {
