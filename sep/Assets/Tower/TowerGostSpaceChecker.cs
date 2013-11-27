@@ -15,7 +15,6 @@ public class TowerGostSpaceChecker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(numColliders);
         towerGhost.Placeable = numColliders == 3;
 	}
 

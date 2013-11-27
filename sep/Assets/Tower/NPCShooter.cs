@@ -57,8 +57,7 @@ public class NPCShooter : MonoBehaviour {
 
     void OnTriggerEnter(Collider npc) {
         if (npc.GetComponent<NPCStateController>() == null) return;
-        Debug.LogWarning("TAG: " + npc.tag + " NAME : " + npc.name);
-          if (targetMonster == null)  targetMonster = npc.gameObject;
+        if (targetMonster == null)  targetMonster = npc.gameObject;
     }
 
     void OnTriggerExit(Collider npc) {
