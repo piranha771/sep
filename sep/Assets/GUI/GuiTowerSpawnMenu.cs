@@ -15,9 +15,6 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     private GameObject towerNova;
     [SerializeField]
     private GameObject towerDetector;
-    [SerializeField]
-    private GameObject ghostObject;
-    GameObject ghostOther;
 
     private GameObject selectedTower;
     private bool isHoverGUI = false;
@@ -53,7 +50,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		int xPosition = (int)(currentWidth*xPositionModifier);
 		int yPosition = (int)(currentHeight*yPositionModifier);
 		buttonSize = (int) (currentWidth/16.5f*scale);
-		if (buyMode) {
+		
+        if (buyMode) {
             CPUComputeTimeController controller = GetComponent<CPUComputeTimeController>();
 			
 			//TowerBullet
@@ -69,7 +67,6 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
             //TowerDetector
             TowerButtonCreate(towerNova, "TN", xPosition + buttonSize * 5, yPosition, controller);
 		
- 
             isHoverGUI = rect.Contains( Event.current.mousePosition );
         }
 		
@@ -90,18 +87,18 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		int time = controller.CPUTime;
 		if (time<cost) {
 				GUI.enabled = false;
-			}
-            if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), name, customGuiStyle)) {
+		}
+
+        if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), name, customGuiStyle)) {
 						
-                controller.CPUTime -= cost;
-                selectedTower = tower;
-            }
-			GUI.enabled = true;
+            controller.CPUTime -= cost;
+            selectedTower = (GameObject)Instantiate(tower, Vector3.zero, Quaternion.identity); ;
+        }
+
+		GUI.enabled = true;
 	}
 	
 	void Start () {
-        Vector3 startPos = new Vector3(0, 0, 0);
-        ghostOther = (GameObject)Instantiate(ghostObject, startPos, Quaternion.identity);
 		yPositionModifier = yPositionInPercent/100.0f;
 		xPositionModifier = xPositionInPercent/100.0f;
 		scale = scaleInPercent/100.0f;
@@ -110,29 +107,9 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	void UpdateButtonCreate(string name, int x, int y){
 		if(false) {GUI.enabled = false;}
 			
-			 if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), name, customGuiStyle)) {
-				//TODO
-			}
-			GUI.enabled = true;
+		if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), name, customGuiStyle)) {
+		    //TODO
+		}
+		GUI.enabled = true;
 	}
- 
-    void Update() {
-        if (selectedTower != null) {
-            ghostOther.GetComponent<GuiGhosting>().GhostStatus = true;
-        } else {
-            ghostOther.GetComponent<GuiGhosting>().GhostStatus = false;
-        }
-        if (Input.GetMouseButtonDown(0) && !isHoverGUI &&buyMode) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-	        RaycastHit hit;
-            
-            if (Physics.Raycast(ray, out hit) && hit.collider.tag == "spawnarea") {
-                Vector3 towerPosition = hit.point;
-                towerPosition.y += 0.4f;
-                if (selectedTower != null) Instantiate(selectedTower, towerPosition, Quaternion.identity);
-                    selectedTower = null;
-                    
-            }
-        }
-    }
 }

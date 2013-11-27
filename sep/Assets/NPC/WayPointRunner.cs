@@ -11,8 +11,6 @@ public class WayPointRunner : MonoBehaviour {
     [SerializeField]
     private float moveSpeed = 3.0f;
     [SerializeField]
-    private float reachedPointEpsilon = 0.2f; 
-    [SerializeField]
     private List<GameObject> waypoints;
     [SerializeField]
     private float waitAtPointTimeSeconds = 0f;

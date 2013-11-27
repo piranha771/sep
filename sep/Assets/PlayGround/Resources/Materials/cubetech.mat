@@ -9,6 +9,7 @@ Material:
   m_Name: cubetech
   m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -28,6 +29,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _DecalTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Illum
         second:
           m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,7 +43,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ParallaxMap
+          name: _Cube
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -49,14 +57,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Cube
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DecalTex
+          name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -64,20 +65,20 @@ Material:
     m_Floats:
       data:
         first:
-          name: _EmissionLM
-        second: 255
-      data:
-        first:
           name: _Shininess
         second: .156861946
       data:
         first:
-          name: _Parallax
-        second: .0199999996
+          name: _EmissionLM
+        second: 255
       data:
         first:
           name: _InvFade
         second: 1.8479104
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
     m_Colors:
       data:
         first:
@@ -89,13 +90,13 @@ Material:
         second: {r: 1, g: .0441176295, b: .0441176295, a: 1}
       data:
         first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
-      data:
-        first:
           name: _TintColor
         second: {r: .5, g: .5, b: .5, a: .5}
       data:
         first:
           name: _ReflectColor
         second: {r: 1, g: 1, b: 1, a: .5}
+      data:
+        first:
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 0}

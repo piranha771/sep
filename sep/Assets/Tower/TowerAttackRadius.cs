@@ -22,6 +22,7 @@ public class TowerAttackRadius : MonoBehaviour {
 	void Update () {
         isMouseOnMeClicked();
 	}
+
     /// <summary>
     /// Update radius renderer. Is equal to colliderbox size
     /// </summary>
@@ -32,16 +33,12 @@ public class TowerAttackRadius : MonoBehaviour {
         workScale.y = colliderTower.size.z;
         workScale.x = colliderTower.size.x;
         towerRadius.transform.localScale = (workScale/2);
-       
     }
 
-    void isMouseOnMeClicked() {
-		
+    void isMouseOnMeClicked() {		
 		GuiTowerSpawnMenu guiMenu = GameObject.Find("CPU").GetComponent<GuiTowerSpawnMenu>();
     
-        if(Input.GetMouseButtonDown(0)){
-            
-            
+        if(Input.GetMouseButtonDown(0)){     
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "tower" && hit.transform == transform)) {
@@ -55,6 +52,5 @@ public class TowerAttackRadius : MonoBehaviour {
 				guiMenu.upMode = false;
             }
         }
-
     }
 }
