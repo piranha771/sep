@@ -34608,7 +34608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scale: 1.60000002
   xPositionInPercent: 1
-  yPositionInPercent: 75
+  yPositionInPercent: 0
   TempDisplayContainer: {fileID: 2800000, guid: 02efd19f6ea966e45bceb6799eac3d17,
     type: 3}
   bars:
@@ -34699,20 +34699,20 @@ MonoBehaviour:
   buyMode: 1
   upMode: 0
   xPositionInPercent: 15
-  yPositionInPercent: 84.5
+  yPositionInPercent: 0
   customGuiStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: a7adc0d061f40f44b853baa67508d2be, type: 3}
+      m_Background: {fileID: 2800000, guid: a6eb4487646464e4b81183d29586f2f9, type: 3}
       m_TextColor: {r: .286764681, g: .286764681, b: .286764681, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: 4f2f4f61a1a7f6d4883ad3305dbff98a, type: 3}
+      m_Background: {fileID: 2800000, guid: 81a693e2054cce448b0dc1e9dd1530fb, type: 3}
       m_TextColor: {r: .286274523, g: .286274523, b: .286274523, a: 1}
     m_Active:
-      m_Background: {fileID: 2800000, guid: 4f2f4f61a1a7f6d4883ad3305dbff98a, type: 3}
+      m_Background: {fileID: 2800000, guid: e460e7d497735ad40943398f3ac815bc, type: 3}
       m_TextColor: {r: .286274523, g: .286274523, b: .286274523, a: 1}
     m_Focused:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: e460e7d497735ad40943398f3ac815bc, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnNormal:
       m_Background: {fileID: 0}
