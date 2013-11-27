@@ -40,7 +40,6 @@ public class NPCShooter : MonoBehaviour {
     /// Setter and getter for shoot permission. 
     /// </summary>
     public bool ShootPermission { get { return shootPermission; } set {
-        targetMonster = null;
         shootPermission = value; } }
 	// Use this for initialization
 
@@ -55,12 +54,15 @@ public class NPCShooter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+       
         if (targetMonster != null && shootPermission == true) {
+          
              AttackMonster(targetMonster);
         }
 	}
 
     void OnTriggerEnter(Collider npc) {
+           
           if(targetMonster == null)  targetMonster = npc.gameObject;
     }
 

@@ -19,6 +19,7 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     public float Delay { get { return delay; } set { delay = value; } }
 
     void Start() {
+       
         animationFlag = false;
         animationLength = delay * 0.25f;
         laser = GetComponent<LineRenderer>();
@@ -26,13 +27,14 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
 
     void Update() {
         if (target == null) {
-           
+            
             StopShooting();
         } else if (target.tag == "unknown") {
-
+          
             transform.LookAt(target.transform);
             triggerShoot();
         } else {
+           
             StopShooting();
         }
         
@@ -82,7 +84,7 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     }
 
     void triggerShoot() {
-   
+       
         shootDelay -= Time.deltaTime;
        
       
