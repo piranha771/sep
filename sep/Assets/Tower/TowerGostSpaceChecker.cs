@@ -6,16 +6,13 @@ public class TowerGostSpaceChecker : MonoBehaviour {
     [SerializeField]
     private TowerGhost towerGhost;
 
+    public TowerGhost TowerGhost { get { return towerGhost; } set { towerGhost = value; } }
+
     private int numColliders = 0;
-
-	// Use this for initialization
-	void Start () {
-
-	}
 	
 	// Update is called once per frame
 	void Update () {
-        towerGhost.Placeable = numColliders == 3;
+        towerGhost.Placeable = numColliders == 0;
 	}
 
     void OnTriggerEnter(Collider coll) {

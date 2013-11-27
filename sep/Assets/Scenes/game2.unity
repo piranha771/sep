@@ -2364,7 +2364,7 @@ GameObject:
   - 23: {fileID: 97725808}
   m_Layer: 10
   m_Name: PlaygoundCube
-  m_TagString: Untagged
+  m_TagString: spawnarea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4723,7 +4723,7 @@ GameObject:
   - 33: {fileID: 244823292}
   - 64: {fileID: 244823291}
   - 23: {fileID: 244823290}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CPUSandwichPlane
   m_TagString: cpuglowmodel
   m_Icon: {fileID: 0}
@@ -14212,7 +14212,7 @@ MeshFilter:
 --- !u!1 &751894215
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100006, guid: f6930fd9676c20b40a4fd0ed259cd625, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
@@ -14229,8 +14229,7 @@ GameObject:
 --- !u!65 &751894216
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500006, guid: f6930fd9676c20b40a4fd0ed259cd625,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751894215}
   m_Material: {fileID: 0}
@@ -14242,15 +14241,14 @@ BoxCollider:
 --- !u!33 &751894217
 MeshFilter:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300006, guid: f6930fd9676c20b40a4fd0ed259cd625,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751894215}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &751894218
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400006, guid: f6930fd9676c20b40a4fd0ed259cd625, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751894215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -24987,7 +24985,7 @@ GameObject:
   - 33: {fileID: 1304980801}
   - 65: {fileID: 1304980800}
   - 23: {fileID: 1304980799}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CPUDie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28141,7 +28139,7 @@ GameObject:
   - 33: {fileID: 1453874905}
   - 65: {fileID: 1453874904}
   - 23: {fileID: 1453874903}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CPUFrame
   m_TagString: cpuglowmodel
   m_Icon: {fileID: 0}
@@ -34490,7 +34488,7 @@ GameObject:
   - 114: {fileID: 1785922807}
   - 114: {fileID: 1785922808}
   - 114: {fileID: 1785922809}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CPU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34678,7 +34676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cpuTimePerBit: 100
-  cpuTime: 200
+  cpuTime: 20000
 --- !u!114 &1785922807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34690,12 +34688,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0f0c1937ee2ae4e868a472c70f6971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerBullet: {fileID: 100002, guid: 8209b2f5f901ec247a269163242744e6, type: 2}
-  towerLaser: {fileID: 100006, guid: c0c2e94d2bf4cf445bf28d0244cb24ef, type: 2}
-  towerGatling: {fileID: 100026, guid: 640204b09ff9f2044b562b46e58ac32a, type: 2}
-  towerFourBurrelGun: {fileID: 100014, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
-  towerNova: {fileID: 100006, guid: f4e1c330212dc834c961e931ed5ebd05, type: 2}
-  towerDetector: {fileID: 100004, guid: f6930fd9676c20b40a4fd0ed259cd625, type: 2}
+  towerBullet: {fileID: 100006, guid: 8209b2f5f901ec247a269163242744e6, type: 2}
+  towerLaser: {fileID: 100008, guid: c0c2e94d2bf4cf445bf28d0244cb24ef, type: 2}
+  towerGatling: {fileID: 100028, guid: 640204b09ff9f2044b562b46e58ac32a, type: 2}
+  towerFourBurrelGun: {fileID: 100016, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
+  towerNova: {fileID: 100008, guid: f4e1c330212dc834c961e931ed5ebd05, type: 2}
+  towerDetector: {fileID: 100008, guid: f6930fd9676c20b40a4fd0ed259cd625, type: 2}
   buyMode: 1
   upMode: 0
   xPositionInPercent: 15
@@ -35147,6 +35145,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1812726310}
   - 114: {fileID: 1812726311}
+  - 114: {fileID: 1812726312}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -35178,6 +35177,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 100000, guid: 241f8a27d511bc941bfcd5a8883d4158, type: 2}
   radiusRenderer: {fileID: 100000, guid: 9d3e5eace3801cb47bcc3c4088499769, type: 2}
+--- !u!114 &1812726312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1812726309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b12af44c5314d4fb33c9e407460c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  listenOnMouseButtonNr: 0
 --- !u!1 &1815999951
 GameObject:
   m_ObjectHideFlags: 0

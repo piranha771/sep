@@ -9,16 +9,16 @@ public class TowerGhost : MonoBehaviour {
 
     [SerializeField]
     private Material ghostMaterial;
+    [SerializeField]
+    private LayerMask placeableOnLayer;
 
     private Dictionary<GameObject, Material> stdMaterials;
-    private LayerMask layermask = 1 << 10;
+    
     private bool placeable = false;
 
     public Material GhostMaterial { get { return ghostMaterial; } set { ghostMaterial = value; } }
     public bool Placeable { get { return placeable; } set { placeable = value; } }
     
-
-	// Use this for initialization
 	void Start () {
         stdMaterials = new Dictionary<GameObject, Material>();
         // Save all normal Materials and replace them with ghost material
@@ -32,16 +32,16 @@ public class TowerGhost : MonoBehaviour {
         // Deny shooting
         GetComponent<NPCShooter>().enabled = false;
         // Disable selecting
-        GetComponentInChildren<TowerAttackRadius>().enabled = false;
+        GetComponentInChildren<TowerSelect>().Selectable = false;
 	}
 
     void Update() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, float.MaxValue, layermask)) {
+        if (Physics.Raycast(ray, out hit, float.MaxValue, placeableOnLayer)) {
             Vector3 towerPosition = hit.point;
-            towerPosition.y += 0.25f;
+            towerPosition.y += 0.26f;
             transform.position = towerPosition;
         }
 
@@ -61,9 +61,7 @@ public class TowerGhost : MonoBehaviour {
         // Allow shooting
         GetComponent<NPCShooter>().enabled = true;
         // Enable selecting
-        GetComponentInChildren<TowerAttackRadius>().enabled = true;
-        // Disable Perimeter
-        GetComponentInChildren<TowerGostSpaceChecker>().gameObject.SetActive(false);
+        GetComponentInChildren<TowerSelect>().Selectable = true;
         // Disable this script
         this.enabled = false;
     }
