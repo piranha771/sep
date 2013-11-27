@@ -5,8 +5,6 @@ using System;
 
 public class NPCShooter : MonoBehaviour {
 
-    private float attackDelay = 0;
-    
     private bool shootPermission;
     private string attackTag;    
     private GameObject targetMonster;
@@ -39,14 +37,9 @@ public class NPCShooter : MonoBehaviour {
     /// <summary>
     /// Setter and getter for shoot permission. 
     /// </summary>
-    public bool ShootPermission { get { return shootPermission; } set {
-        targetMonster = null;
-        shootPermission = value; } }
-	// Use this for initialization
-
+    public bool ShootPermission { get { return shootPermission; } set { shootPermission = value; } }
 	
     // Use this for initialization
-
 	void Start () {
         towerWeapon = transform.FindChild("TowerWeapon").gameObject;
         scriptWeapon = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
@@ -61,20 +54,18 @@ public class NPCShooter : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider npc) {
-          if(targetMonster == null)  targetMonster = npc.gameObject;
+          if (targetMonster == null)  targetMonster = npc.gameObject;
     }
 
-    void OnTriggerExit(Collider monster) {
+    void OnTriggerExit(Collider npc) {
         if((targetMonster != null)){
-        if (monster.gameObject.GetInstanceID() == targetMonster.GetInstanceID()) {
+            if (npc.gameObject.GetInstanceID() == targetMonster.GetInstanceID()) {
 
-            targetMonster = null;
-            scriptWeapon.StopShooting();
+                targetMonster = null;
+                scriptWeapon.StopShooting();
+            }
         }
-        }
-
     }
-
 
     void AttackMonster(GameObject npc) {
         shootPermission = false;

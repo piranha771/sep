@@ -53,6 +53,7 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
   
         this.npc = npc;
     }
+
     private void ShootAtNPC() {
       
         bullet = prefabSource.Bullet();
