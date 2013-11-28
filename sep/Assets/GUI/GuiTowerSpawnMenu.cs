@@ -100,8 +100,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 				GUI.enabled = false;
 		}
 		GUI.skin.label.fontSize = fontSize;
-		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),name);
-		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y+(int)(buttonSize-fontSize*1.5f),buttonSize/2,buttonSize/3),costString);
+		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y-5,buttonSize/2,buttonSize/3),name);
+		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y+(int)(buttonSize-fontSize*1.6f),buttonSize/2,buttonSize/3),costString);
 		if (GUI.Button(new Rect(x, y, buttonSize, buttonSize),new GUIContent("",(name+"label")), customGuiStyle)) {
 						
             controller.CPUTime -= cost;

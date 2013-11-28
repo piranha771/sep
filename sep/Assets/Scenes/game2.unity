@@ -34604,7 +34604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7141569caac8af4ea900b22ce1c3170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scale: 1.60000002
+  scaleInPercent: 160
   xPositionInPercent: 1
   yPositionInPercent: 0
   TempDisplayContainer: {fileID: 2800000, guid: 02efd19f6ea966e45bceb6799eac3d17,
@@ -34664,6 +34664,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73612048bfb8113439c746866e88f78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleInPercent: 100
+  xPositionInPercent: 1
+  yPositionInPercent: 18
+  oktagon: {fileID: 2800000, guid: b54760737ee600147b85e85a14dfea9a, type: 3}
 --- !u!114 &1785922806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34780,9 +34784,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1785922797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0334e99e95412824e8d4bf5a2c1f5506, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a741c407d1cc3446985726923a77caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleInPercent: 100
 --- !u!1 &1786792751
 GameObject:
   m_ObjectHideFlags: 0
