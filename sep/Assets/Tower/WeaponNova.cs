@@ -45,7 +45,7 @@ public class WeaponNova : MonoBehaviour, IWeapon {
     }
 
     public void Shoot(GameObject npcEnemy) {
-
+        if (npcEnemy == null) return;
        if(npcEnemy.tag == "enemy") npcState = true;
         
     }
