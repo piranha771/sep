@@ -67,10 +67,14 @@ public class NPCHealth : MonoBehaviour {
     /// </summary>
     private void colorize() {
         foreach (var item in rendererColors) {
-            item.Key.material.color = new Color(item.Value.r * Percentage + 0.1f, item.Value.g * Percentage, item.Value.b * Percentage);
+            if (!item.Equals(null)) {
+                item.Key.material.color = new Color(item.Value.r * Percentage + 0.1f, item.Value.g * Percentage, item.Value.b * Percentage);
+            }
         }
         foreach (var item in lightColors) {
+            if (!item.Equals(null)) {
             item.Key.color = new Color(item.Value.r * Percentage + 0.1f, item.Value.g * Percentage, item.Value.b * Percentage);
+            }
         }
     }
 
