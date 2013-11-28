@@ -79,16 +79,16 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		GUI.skin.textField.fontSize = fontSize;
 		switch (GUI.tooltip)
 		{
-		case "TBlabel" : GUI.TextField (new Rect (xPosition+buttonSize*0,yPosition-80*scale,120*scale,80*scale), "0"); break;
-		case "TLlabel" : GUI.TextField (new Rect (xPosition+buttonSize*1,yPosition-80*scale,120*scale,80*scale), "1"); break;
-		case "TGlabel" : GUI.TextField (new Rect (xPosition+buttonSize*2,yPosition-80*scale,120*scale,80*scale), "2"); break;
-		case "T4label" : GUI.TextField (new Rect (xPosition+buttonSize*3,yPosition-80*scale,120*scale,80*scale), "3"); break;
-		case "TDlabel" : GUI.TextField (new Rect (xPosition+buttonSize*4,yPosition-80*scale,120*scale,80*scale), "4"); break;
-		case "TNlabel" : GUI.TextField (new Rect (xPosition+buttonSize*5,yPosition-80*scale,120*scale,80*scale), "5"); break;
-		case "DMGlabel" : GUI.TextField (new Rect (xPosition+buttonSize*0,yPosition-80*scale,120*scale,80*scale), "6");break;
-		case "RNGlabel" : GUI.TextField (new Rect (xPosition+buttonSize*1,yPosition-80*scale,120*scale,80*scale), "7"); break;
-		case "SPDlabel" : GUI.TextField (new Rect (xPosition+buttonSize*2,yPosition-80*scale,120*scale,80*scale), "8"); break;
-		case "SLLlabel" : GUI.TextField (new Rect (xPosition+buttonSize*3,yPosition-80*scale,120*scale,80*scale), "9"); break;
+		case "TBlabel" : GUI.TextField (new Rect (xPosition+buttonSize*0,yPosition-80*scale,120*scale,80*scale), "Cheap Tower \nCost: " +towerBullet.GetComponent<TowerCost>().CPUTimeCost); break;
+		case "TLlabel" : GUI.TextField (new Rect (xPosition+buttonSize*1,yPosition-80*scale,120*scale,80*scale), "Laser Tower \nCost: "+towerLaser.GetComponent<TowerCost>().CPUTimeCost); break;
+		case "TGlabel" : GUI.TextField (new Rect (xPosition+buttonSize*2,yPosition-80*scale,120*scale,80*scale), "Fast Firing Tower \nCost: " +towerGatling.GetComponent<TowerCost>().CPUTimeCost); break;
+		case "T4label" : GUI.TextField (new Rect (xPosition+buttonSize*3,yPosition-80*scale,120*scale,80*scale), "Tower with four Barrels \nCost: " +towerFourBurrelGun.GetComponent<TowerCost>().CPUTimeCost); break;
+		case "TDlabel" : GUI.TextField (new Rect (xPosition+buttonSize*4,yPosition-80*scale,120*scale,80*scale), "Tower that identifies \npackages \nCost: " +towerDetector.GetComponent<TowerCost>().CPUTimeCost ); break;
+		case "TNlabel" : GUI.TextField (new Rect (xPosition+buttonSize*5,yPosition-80*scale,120*scale,80*scale), "Tower that damages all \nenemies within range \nCost: " +towerNova.GetComponent<TowerCost>().CPUTimeCost); break;
+		case "DMGlabel" : GUI.TextField (new Rect (xPosition+buttonSize*0,yPosition-80*scale,120*scale,80*scale), "Increases damage");break;
+		case "RNGlabel" : GUI.TextField (new Rect (xPosition+buttonSize*1,yPosition-80*scale,120*scale,80*scale), "Incrases Range"); break;
+		case "SPDlabel" : GUI.TextField (new Rect (xPosition+buttonSize*2,yPosition-80*scale,120*scale,80*scale), "Increases Attack Speed"); break;
+		case "SLLlabel" : GUI.TextField (new Rect (xPosition+buttonSize*3,yPosition-80*scale,120*scale,80*scale), "Sells"); break;
 		}
 	}
 	
