@@ -16,14 +16,13 @@ public class GuiCPUHeat : MonoBehaviour {
 	
 	public Texture TempDisplayContainer;
 	public Texture[] bars;
+	private CPUHeatController controller;
 	
 	void OnGUI (){
 		size = (int) (Screen.width/13.75f*scale);
 		int xPosition = (int)(Screen.width*xPositionModifier);
 		int yPosition = (int)(Screen.height*yPositionModifier);
 		yPosition = Screen.height-(yPosition+size);
-		
-		CPUHeatController controller = GameObject.Find("CPU").GetComponent<CPUHeatController>();
 		//string heat = controller.CurrentTemp.ToString("0.0");//Current Heat with one fractional digit.
 		float normalHeat = controller.NormalHeat;
 		float maxHeat = controller.MeltdownTemp;
@@ -50,6 +49,7 @@ public class GuiCPUHeat : MonoBehaviour {
     }
 	
 	void Start () {
+		controller = GameObject.Find("CPU").GetComponent<CPUHeatController>();
 		yPositionModifier = yPositionInPercent/100.0f;
 		xPositionModifier = xPositionInPercent/100.0f;
 		scale = scaleInPercent/100.0f;

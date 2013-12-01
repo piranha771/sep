@@ -34606,7 +34606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleInPercent: 160
   xPositionInPercent: 1
-  yPositionInPercent: 0
+  yPositionInPercent: 1
   TempDisplayContainer: {fileID: 2800000, guid: 02efd19f6ea966e45bceb6799eac3d17,
     type: 3}
   bars:
@@ -34664,9 +34664,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73612048bfb8113439c746866e88f78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleInPercent: 100
-  xPositionInPercent: 1
-  yPositionInPercent: 18
+  scaleInPercent: 123
+  xPositionInPercent: 13
+  yPositionInPercent: 1
   oktagon: {fileID: 2800000, guid: b54760737ee600147b85e85a14dfea9a, type: 3}
 --- !u!114 &1785922806
 MonoBehaviour:
@@ -34700,9 +34700,9 @@ MonoBehaviour:
   towerDetector: {fileID: 100008, guid: f6930fd9676c20b40a4fd0ed259cd625, type: 2}
   currentTower: {fileID: 0}
   buyMode: 1
-  upMode: 0
-  xPositionInPercent: 15
-  yPositionInPercent: 0
+  upMode: 1
+  xPositionInPercent: 22.5
+  yPositionInPercent: 1
   customGuiStyle:
     m_Name: 
     m_Normal:

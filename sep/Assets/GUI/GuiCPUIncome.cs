@@ -13,6 +13,8 @@ public class GuiCPUIncome : MonoBehaviour {
 	private float yPositionModifier;
 	
 	public Texture oktagon;
+
+	CPUComputeTimeController controller;
 	
 	void OnGUI (){
 		int xSize = (int) (Screen.width/13.75f*scale);
@@ -20,7 +22,6 @@ public class GuiCPUIncome : MonoBehaviour {
 		int xPosition = (int)(Screen.width*xPositionModifier);
 		int yPosition = (int)(Screen.height*yPositionModifier);
 		yPosition = Screen.height-(yPosition+ySize);
-        CPUComputeTimeController controller = GetComponent<CPUComputeTimeController>();
         string displayText = "Computing time\r\n" + controller.CPUTime + " ms";
         var centeredStyle = GUI.skin.GetStyle("Label");
 		centeredStyle.alignment = TextAnchor.MiddleCenter;
@@ -29,6 +30,7 @@ public class GuiCPUIncome : MonoBehaviour {
     }
 
 	void Start () {
+		controller = GetComponent<CPUComputeTimeController>();
 		scale = scaleInPercent/100.0f;
 		yPositionModifier = yPositionInPercent/100.0f;
 		xPositionModifier = xPositionInPercent/100.0f;

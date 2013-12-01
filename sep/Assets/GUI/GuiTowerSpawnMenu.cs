@@ -36,6 +36,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	public float scaleInPercent = 100.0f;
 	private float scale;
 	private int buttonSize;
+	private CPUComputeTimeController controller;
 
 
     public GameObject TowerBullet { get { return towerBullet; } set { towerBullet = value; } }
@@ -54,9 +55,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		int yPosition = (int)(currentHeight*yPositionModifier);
 		yPosition = currentHeight-(yPosition+buttonSize);
 		
-        if (buyMode) {
-            CPUComputeTimeController controller = GetComponent<CPUComputeTimeController>();
-			
+        if (buyMode) {			
 			//TowerBullet
 			TowerButtonCreate(towerBullet,"TB",xPosition+buttonSize*0,yPosition,controller);			
 			//TowerLaser
@@ -112,6 +111,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	}
 	
 	void Start () {
+		controller = GetComponent<CPUComputeTimeController>();
 		yPositionModifier = yPositionInPercent/100.0f;
 		xPositionModifier = xPositionInPercent/100.0f;
 		scale = scaleInPercent/100.0f;
