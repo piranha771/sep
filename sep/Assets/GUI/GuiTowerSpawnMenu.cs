@@ -18,6 +18,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 
     private GameObject selectedTower;
 	private NPCShooter upgradeComp;
+	private TowerSelect temp;
     private bool isHoverGUI = false;
     private Rect rect = new Rect(10, 10, 110, 50);
 
@@ -48,7 +49,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     public GameObject TowerDetector { get { return towerDetector; } set { towerDetector = value; } }
 
 
-    void OnGUI() {
+    void OnGUI() {	
 		int currentHeight = Screen.height;
 		int currentWidth = Screen.width;
 		buttonSize = (int) (currentWidth/16.5f*scale);
@@ -93,6 +94,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 	}
 	
 	void TowerButtonCreate(GameObject tower, string name, int x, int y, CPUComputeTimeController controller ){
+
 		int cost = tower.GetComponent<TowerCost>().CPUTimeCost;
 		string costString = cost.ToString();
 		int time = controller.CPUTime;
@@ -103,9 +105,10 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y-5,buttonSize/2,buttonSize/3),name);
 		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y+(int)(buttonSize-fontSize*1.6f),buttonSize/2,buttonSize/3),costString);
 		if (GUI.Button(new Rect(x, y, buttonSize, buttonSize),new GUIContent("",(name+"label")), customGuiStyle)) {
+
 						
             controller.CPUTime -= cost;
-            selectedTower = (GameObject)Instantiate(tower, Vector3.zero, Quaternion.identity); ;
+            selectedTower = (GameObject)Instantiate(tower, Vector3.zero, Quaternion.identity);	
         }
 
 		GUI.enabled = true;
@@ -123,8 +126,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		if(false) {GUI.enabled = false;}
 
 		GUI.skin.label.fontSize = fontSize;
-		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),"DMG");
-		if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), new GUIContent("",("DMGlabel")), customGuiStyle)) {
+		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"DMG");
+		if (GUI.Button(new Rect(x, y-buttonSize, buttonSize, buttonSize), new GUIContent("",("DMGlabel")), customGuiStyle)) {
 			//Increase DMG
 			upgradeComp =tower.GetComponent<NPCShooter>();
 			if(upgradeComp.HasDamage) upgradeComp.WeaponDamage += 1;
@@ -134,8 +137,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		if(false) {GUI.enabled = false;}
 		
 		GUI.skin.label.fontSize = fontSize;
-		GUI.Label(new Rect(x+buttonSize+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),"RNG");
-		if (GUI.Button(new Rect(x+buttonSize, y, buttonSize, buttonSize), new GUIContent("",("RNGlabel")), customGuiStyle)) {
+		GUI.Label(new Rect(x+buttonSize+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"RNG");
+		if (GUI.Button(new Rect(x+buttonSize, y-buttonSize, buttonSize, buttonSize), new GUIContent("",("RNGlabel")), customGuiStyle)) {
 			//increase Range
 			upgradeComp =tower.GetComponent<NPCShooter>();
 			if(upgradeComp.HasRadius) upgradeComp.BiggerRadius(1);
@@ -145,8 +148,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		if(false) {GUI.enabled = false;}
 		
 		GUI.skin.label.fontSize = fontSize;
-		GUI.Label(new Rect(x+buttonSize*2+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),"SPD");
-		if (GUI.Button(new Rect(x+buttonSize*2, y, buttonSize, buttonSize), new GUIContent("",("SPDlabel")), customGuiStyle)) {
+		GUI.Label(new Rect(x+buttonSize*2+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"SPD");
+		if (GUI.Button(new Rect(x+buttonSize*2, y-buttonSize, buttonSize, buttonSize), new GUIContent("",("SPDlabel")), customGuiStyle)) {
 			//increase Speed
 			upgradeComp =tower.GetComponent<NPCShooter>();
 			if(upgradeComp.HasDelay) tower.GetComponent<NPCShooter>().Delay /= 1.1f;
@@ -156,10 +159,11 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		if(false) {GUI.enabled = false;}
 		
 		GUI.skin.label.fontSize = fontSize;
-		GUI.Label(new Rect(x+buttonSize*3+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),"SLL");
-		if (GUI.Button(new Rect(x+buttonSize*3, y, buttonSize, buttonSize), new GUIContent("",("SLLlabel")), customGuiStyle)) {
-			//TODO Sell
-		}
+		GUI.Label(new Rect(x+buttonSize*3+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"SLL");
+		if (GUI.Button(new Rect(x+buttonSize*3, y-buttonSize, buttonSize, buttonSize), new GUIContent("",("SLLlabel")), customGuiStyle)) {
+			//sell tower
+			//controller.CPUTime +=	tower.GetComponent<TowerCost>().CPUTimeCost;		
+			//Destroy(tower);
 		GUI.enabled = true;
 	}
-}
+	}}

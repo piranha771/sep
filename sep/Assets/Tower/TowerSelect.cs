@@ -32,24 +32,25 @@ public class TowerSelect : MonoBehaviour, ISelectable {
     public void OnSelect() {
         if (!selectable) return;
 		gui = GameObject.Find("CPU").GetComponent<GuiTowerSpawnMenu>();
-		//gui.buyMode = false;
-		//gui.upMode = true;
+	
 		gui.currentTower = this.transform.parent.gameObject;
+	
         isSelected = true;
         towerRadius.SetActive(true);
         UpdateRadius();
-	
+		gui.upMode = true;
 	
 
     }
 
     public void OnDeselect() {
 		gui = GameObject.Find("CPU").GetComponent<GuiTowerSpawnMenu>();	
-
+	
         isSelected = false;
         towerRadius.SetActive(false);
 		//gui.upMode = false;
-		//gui.buyMode = true;
+	
+	
 
     }
 
