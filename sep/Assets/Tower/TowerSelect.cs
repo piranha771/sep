@@ -14,6 +14,7 @@ public class TowerSelect : MonoBehaviour, ISelectable {
 
     private Selecter selecter;
     private bool isSelected;
+	private GuiTowerSpawnMenu gui;
 
     public GameObject TowerRadius { get { return towerRadius; } set { towerRadius = value; } }
     public bool Selectable {  get { return selectable; }  set {  selectable = value; } }
@@ -30,14 +31,26 @@ public class TowerSelect : MonoBehaviour, ISelectable {
 
     public void OnSelect() {
         if (!selectable) return;
+		gui = GameObject.Find("CPU").GetComponent<GuiTowerSpawnMenu>();
+		//gui.buyMode = false;
+		//gui.upMode = true;
+		gui.currentTower = this.transform.parent.gameObject;
         isSelected = true;
         towerRadius.SetActive(true);
         UpdateRadius();
+	
+	
+
     }
 
     public void OnDeselect() {
+		gui = GameObject.Find("CPU").GetComponent<GuiTowerSpawnMenu>();	
+
         isSelected = false;
         towerRadius.SetActive(false);
+		//gui.upMode = false;
+		//gui.buyMode = true;
+
     }
 
     public void OnDrestroy() {

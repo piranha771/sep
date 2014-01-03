@@ -17,6 +17,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     private GameObject towerDetector;
 
     private GameObject selectedTower;
+	private NPCShooter upgradeComp;
     private bool isHoverGUI = false;
     private Rect rect = new Rect(10, 10, 110, 50);
 
@@ -124,7 +125,9 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),"DMG");
 		if (GUI.Button(new Rect(x, y, buttonSize, buttonSize), new GUIContent("",("DMGlabel")), customGuiStyle)) {
-		    //TODO increase Damage
+			//Increase DMG
+			upgradeComp =tower.GetComponent<NPCShooter>();
+			if(upgradeComp.HasDamage) upgradeComp.WeaponDamage += 1;
 		}
 		GUI.enabled = true;
 
@@ -133,7 +136,9 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+buttonSize+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),"RNG");
 		if (GUI.Button(new Rect(x+buttonSize, y, buttonSize, buttonSize), new GUIContent("",("RNGlabel")), customGuiStyle)) {
-			//TODO increase Range
+			//increase Range
+			upgradeComp =tower.GetComponent<NPCShooter>();
+			if(upgradeComp.HasRadius) upgradeComp.BiggerRadius(1);
 		}
 		GUI.enabled = true;
 
@@ -142,7 +147,9 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+buttonSize*2+((int)buttonSize*0.65f),y,buttonSize/2,buttonSize/3),"SPD");
 		if (GUI.Button(new Rect(x+buttonSize*2, y, buttonSize, buttonSize), new GUIContent("",("SPDlabel")), customGuiStyle)) {
-			//TODO increase Speed
+			//increase Speed
+			upgradeComp =tower.GetComponent<NPCShooter>();
+			if(upgradeComp.HasDelay) tower.GetComponent<NPCShooter>().Delay /= 1.1f;
 		}
 		GUI.enabled = true;
 
