@@ -14,7 +14,7 @@ public class ScoreController : MonoBehaviour {
 
     public void AddScore(int scoreToAdd) {
         score += scoreToAdd;
-        difficultyController.ScoreChanged(score);
+        difficultyController.ScoreChanged(scoreToAdd);
     }
     
 }

@@ -37,18 +37,18 @@ public class DifficultyController : MonoBehaviour {
             spawner.OpenRandomTrace();
         }
 
-        //// Harder NPC check
-        //if (healthCounter >= scoreToHarderNpc) {
-        //    healthCounter = 0;
-        //    var npch = spawner.TemplateNPC.GetComponent<NPCHealth>();
-        //    npch.Health = (int)(npch.Health * harderNpcMultiplier);
-        //}
+        // Harder NPC check
+        if (healthCounter >= scoreToHarderNpc) {
+            healthCounter = 0;
+            var npch = spawner.TemplateNPC.GetComponent<NPCHealth>();
+            npch.Health = (int)(npch.Health * harderNpcMultiplier);
+        }
 
-        //// Higher NPC Frequency check
-        //if (freqCounter >= scoreHigherNpcFrequency) {
-        //    freqCounter = 0;
-        //    spawner.SpawnDelay = spawner.SpawnDelay * npcFrequencyMultiplier;
-        //}
+        // Higher NPC Frequency check
+        if (freqCounter >= scoreHigherNpcFrequency) {
+            freqCounter = 0;
+            spawner.SpawnDelay = spawner.SpawnDelay * npcFrequencyMultiplier;
+        }
     }
 	
 	
