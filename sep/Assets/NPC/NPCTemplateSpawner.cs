@@ -25,10 +25,8 @@ public class NPCTemplateSpawner : MonoBehaviour {
     }
 
     public float SpawnDelay { get { return spawnDelay; } set { spawnDelay = value; } }
-
     public List<Trace> Traces { get { return traces; } }
 
-    // Use this for initialization
     void Start() {
         if (null == templateNPC.GetComponent<WayPointRunner>()) {
             throw new InvalidOperationException("template is invalid! Missing component");
@@ -37,7 +35,6 @@ public class NPCTemplateSpawner : MonoBehaviour {
         delay = spawnDelay;
     }
 
-    // Update is called once per frame
     void Update() {
         if (delay <= 0) {
             delay = spawnDelay;
@@ -51,7 +48,7 @@ public class NPCTemplateSpawner : MonoBehaviour {
         currentNPC = (GameObject)Instantiate(templateNPC);
         currentNPC.SetActive(true);
 
-        Trace currentTrace = GetRandomTrace();
+        Trace currentTrace = GetRandomOnlineTrace();
 
         currentNPC.transform.position = currentTrace.Waypoints[0].transform.position;
         WayPointRunner wpr = currentNPC.GetComponent<WayPointRunner>();
@@ -63,12 +60,25 @@ public class NPCTemplateSpawner : MonoBehaviour {
     /// Selects a random trace that is online
     /// </summary>
     /// <returns>The selected trace</returns>
-    private Trace GetRandomTrace() {
+    private Trace GetRandomOnlineTrace() {
         List<Trace> onlineTraces = new List<Trace>();
         foreach (var item in traces) {
             if (item.Online) onlineTraces.Add(item);
         }
 
         return onlineTraces[UnityEngine.Random.Range(0, onlineTraces.Count)];
+    }
+
+    /// <summary>
+    /// Sets a random offline trace to online
+    /// </summary>
+    public void OpenRandomTrace() {
+        List<Trace> offlineTraces = new List<Trace>();
+        foreach (var item in traces) {
+            if (!item.Online) offlineTraces.Add(item);
+        }
+        if (offlineTraces.Count > 0) {
+            offlineTraces[UnityEngine.Random.Range(0, offlineTraces.Count)].Online = true;
+        }
     }
 }

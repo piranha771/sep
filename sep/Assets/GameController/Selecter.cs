@@ -16,15 +16,16 @@ public class Selecter : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+		//TODO ignore GUI-Clicks
         if (Input.GetMouseButtonDown(listenOnMouseButtonNr)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, float.MaxValue, selectLayer)) {
                 ISelectable selected = (ISelectable)hit.collider.GetComponent(typeof(ISelectable));
                 if (selected != null) {
-                    selectSingle(selected);
+                    selectSingle(selected);				
                 } else deselectAll();
-            } else deselectAll();
+            } //else deselectAll();
         }
     }
 
