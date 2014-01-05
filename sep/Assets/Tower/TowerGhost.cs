@@ -41,7 +41,6 @@ public class TowerGhost : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, float.MaxValue, placeableOnLayer)) {
             Vector3 towerPosition = hit.point;
-            towerPosition.y += 0.26f;
             transform.position = towerPosition;
         }
 

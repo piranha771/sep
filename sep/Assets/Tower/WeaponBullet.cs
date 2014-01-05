@@ -15,6 +15,10 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
     private float shootDelay;
     [SerializeField]
     private string npcTag;
+    [SerializeField]
+    private NPCShooter npcShooter;
+    [SerializeField]
+    private GameObject plate;
 
     public int WeaponDamage { get { return weaponDamage; } set { weaponDamage = value; } }
     public float Delay { get { return delay; } set { delay = value; } }
@@ -33,8 +37,9 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
         if (npc == null) {
             StopShooting();
         } else if (npc.tag == npcTag) {
-          
             transform.LookAt(npc.transform);
+            plate.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+            //transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);           
             triggerShoot();
 
         } else {
@@ -72,8 +77,7 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
     /// </summary>
     public void StopShooting() {
         npc = null;
-        transform.rotation = startRotation;
-        transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
+        npcShooter.ShootPermission = true;
     }
 
     /// <summary>

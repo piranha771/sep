@@ -152,7 +152,8 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		if (GUI.Button(new Rect(x+buttonSize*2, y-buttonSize, buttonSize, buttonSize), new GUIContent("",("SPDlabel")), customGuiStyle)) {
 			//increase Speed
 			upgradeComp =tower.GetComponent<NPCShooter>();
-			if(upgradeComp.HasDelay) tower.GetComponent<NPCShooter>().Delay /= 1.1f;
+            // TODO: Creates an exception if the script hasnt been started!
+			//if(upgradeComp.HasDelay) tower.GetComponent<NPCShooter>().Delay /= 1.1f;
 		}
 		GUI.enabled = true;
 

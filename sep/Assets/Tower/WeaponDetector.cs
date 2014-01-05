@@ -12,6 +12,10 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
     private float shootDelay;
     private bool animationFlag;
     private float currentAnimationLength;
+    [SerializeField]
+    private NPCShooter npcShooter;
+    [SerializeField]
+    private GameObject plate;
 
     public float AnimationLength { get { return animationLength; } set { animationLength = value; } }
 
@@ -29,8 +33,8 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
            
             StopShooting();
         } else if (target.tag == "unknown") {
-
             transform.LookAt(target.transform);
+            plate.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);      
             triggerShoot();
         } else {
             StopShooting();
@@ -57,7 +61,7 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
         target = null;
         shootDelay = delay;
         currentAnimationLength = 0;
-        transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
+        npcShooter.ShootPermission = true;
     }
 
     private void PlayAnimation() {

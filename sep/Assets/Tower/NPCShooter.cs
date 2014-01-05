@@ -8,10 +8,12 @@ public class NPCShooter : MonoBehaviour {
     private bool shootPermission;
     private string attackTag;    
     private GameObject targetMonster;
-    private GameObject towerWeapon;
+    
     private IWeapon scriptWeapon;
     private LinkedList<GameObject> attackList;
 
+    [SerializeField]
+    private GameObject towerWeapon;
     [SerializeField]
     private bool hasDelay;
     [SerializeField]
@@ -43,7 +45,6 @@ public class NPCShooter : MonoBehaviour {
 	
     // Use this for initialization
 	void Start () {
-        towerWeapon = transform.FindChild("TowerWeapon").gameObject;
         scriptWeapon = (IWeapon)towerWeapon.GetComponent(typeof(IWeapon));
         shootPermission = true;
         attackList = new LinkedList<GameObject>();
