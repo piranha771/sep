@@ -40343,7 +40343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleInPercent: 160
   xPositionInPercent: 1
-  yPositionInPercent: 1
+  yPositionInPercent: 2
   TempDisplayContainer: {fileID: 2800000, guid: 02efd19f6ea966e45bceb6799eac3d17,
     type: 3}
   bars:
@@ -40929,6 +40929,8 @@ GameObject:
   - 4: {fileID: 1812726310}
   - 114: {fileID: 1812726311}
   - 114: {fileID: 1812726312}
+  - 114: {fileID: 1812726314}
+  - 114: {fileID: 1812726313}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -40975,6 +40977,33 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   listenOnMouseButtonNr: 0
+--- !u!114 &1812726313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1812726309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76603faaeebcd7548ac593ee748a58f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleInPercent: 123
+  xPositionInPercent: 9.5
+  yPositionInPercent: 13.3000002
+  oktagon: {fileID: 2800000, guid: b54760737ee600147b85e85a14dfea9a, type: 3}
+--- !u!114 &1812726314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1812726309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8248558cfcefdfe4dbfc8e2386bcf315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
 --- !u!1 &1815999951
 GameObject:
   m_ObjectHideFlags: 0

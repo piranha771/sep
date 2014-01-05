@@ -345,7 +345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4036c78991de4ce4fbcd4fbc9e7833fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 100
+  scoreOnDeath: 100
+  gameControllerName: GameController
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

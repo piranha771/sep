@@ -6,6 +6,10 @@ public class NPCHealth : MonoBehaviour {
 
     [SerializeField]
     private int health = 100;
+    [SerializeField]
+    private int scoreOnDeath = 100;
+    [SerializeField]
+    private string gameControllerName;
 
     private int currentHealth;
     private ParticleSystem npcParticle;
@@ -13,8 +17,9 @@ public class NPCHealth : MonoBehaviour {
     private Dictionary<MeshRenderer, Color> rendererColors;
     private Dictionary<Light, Color> lightColors;
 
-    //Colorisation
     public int Health { get { return Mathf.Max(currentHealth, 0); } set { currentHealth = value; } }
+    public int ScoreOnDeath { get { return scoreOnDeath; } set { scoreOnDeath = value; } }
+    public string GameControllerName { get { return GameControllerName; }set { GameControllerName = value; } }
     public bool IsDead { get { return currentHealth == 0; } set { currentHealth = 0; } }
     public float Percentage { 
         get { return (float)currentHealth / (float)health; } 
@@ -27,7 +32,8 @@ public class NPCHealth : MonoBehaviour {
 	}
 	
 	void Update () {     
-        if (currentHealth == 0) {         
+        if (IsDead) {
+            GameObject.Find(gameControllerName).GetComponent<ScoreController>().AddScore(scoreOnDeath);
             Destroy(gameObject);
         }
 	}
