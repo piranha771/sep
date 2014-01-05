@@ -87,6 +87,9 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
         npcHealth.TakeDamage(weaponDamage);
     }
 
+    /// <summary>
+    /// Start shooting
+    /// </summary>
     void triggerShoot() {
 
         shootDelay -= Time.deltaTime;

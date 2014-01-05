@@ -52,6 +52,9 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
         this.npc = npc;
     }
 
+    /// <summary>
+    /// Make an hit on other gameobject. 
+    /// </summary>
     public void ShootAtNPC() {
         npcState = false;
         bullet = prefabSource.Bullet();
@@ -64,6 +67,9 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
         if (delay <= 0.22f && delay > 0.05f) delay = delay - 0.01f;
     }
 
+    /// <summary>
+    /// Stops the shooting at the target
+    /// </summary>
     public void StopShooting() {
         npcState = true;
         npc = null;
@@ -75,6 +81,9 @@ public class WeaponGatling : MonoBehaviour, IMakeDamage, IWeapon {
         npcHealth.TakeDamage(weaponDamage);
     }
 
+    /// <summary>
+    /// Start shooting
+    /// </summary>
     void triggerShoot() {
 
         shootDelay -= Time.deltaTime;
