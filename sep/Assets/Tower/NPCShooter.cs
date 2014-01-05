@@ -69,11 +69,19 @@ public class NPCShooter : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Send a gameobject to a tower. Shiefted in wait-modus.
+    /// </summary>
+    /// <param name="npc"></param>
     void AttackMonster(GameObject npc) {
         shootPermission = false;
         scriptWeapon.Shoot(npc.gameObject);
     }
 
+    /// <summary>
+    /// Make attack-radius bigger
+    /// </summary>
+    /// <param name="value"></param>
     public void BiggerRadius(int value) {
         Vector3 radius = new Vector3(0,0,0);
         radius = transform.GetComponent<BoxCollider>().size;

@@ -46,6 +46,9 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
         target = npc;
     }
 
+    /// <summary>
+    /// Make an hit on other gameobject. 
+    /// </summary>
     private void ShootAtNPC() {
         PlayAnimation();
     }
@@ -60,6 +63,9 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
         transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
     }
 
+    /// <summary>
+    /// Line is drawn.
+    /// </summary>
     private void PlayAnimation() {
             laser.enabled = true;
             laser.SetPosition(0, transform.position);
@@ -81,6 +87,9 @@ public class WeaponDetector : MonoBehaviour, IWeapon {
         }
     }
 
+    /// <summary>
+    /// Start shooting
+    /// </summary>
     void triggerShoot() {
    
         shootDelay -= Time.deltaTime;

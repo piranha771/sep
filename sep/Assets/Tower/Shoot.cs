@@ -25,6 +25,9 @@ public class Shoot : MonoBehaviour {
     }
 
     // Update is called once per frame
+    /// <summary>
+    /// If other gameobject is reached tower make damage on it.
+    /// </summary>
     void Update() {
 
         if (reachTarget == 1 || (endPoint == null && next == 1)) {
@@ -47,7 +50,9 @@ public class Shoot : MonoBehaviour {
 
 
     }
-   
+   /// <summary>
+   /// Self tried to reach other gameobject.
+   /// </summary>
     void Walk() {
         Vector3 targetPosition = endPoint.position;
         Vector3 velocity;

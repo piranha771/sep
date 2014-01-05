@@ -48,7 +48,9 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
         this.npc = npc;
     }
 
-
+    /// <summary>
+    /// Make an hit on other gameobject. 
+    /// </summary>
     public void ShootAtNPC(){
             npcHealth = npc.GetComponent<NPCHealth>();
             lineBullet.enabled = true;
@@ -59,6 +61,9 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
        
     }
 
+    /// <summary>
+    /// Stops the shooting at the target
+    /// </summary>
     public void StopShooting() {
         transform.rotation = startRotation;
         lineBullet.enabled = false;
@@ -68,6 +73,9 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
         //lineBullet.SetPosition(1, transform.position);
     }
 
+    /// <summary>
+    /// Start shooting
+    /// </summary>
     void triggerShoot() {
 
         shootDelay -= Time.deltaTime;

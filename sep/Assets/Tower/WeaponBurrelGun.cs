@@ -43,18 +43,29 @@ public class WeaponBurrelGun : MonoBehaviour, IWeapon {
         this.npc = npc;
     }
 
+    /// <summary>
+    /// Initialize single shoot to one NPC
+    /// </summary>
+    /// <param name="npcEnemy"> target </param>
+    ///
     public void ShootAtNPC() {
         foreach (SingleBurrel item in burrelsScripts) {
             item.Shoot(npc, transform.gameObject);
         }
     }
 
+    /// <summary>
+    /// Initialize shooting stop
+    /// </summary>
     public void StopShooting() {
         npc = null;
         transform.rotation = startRotation;
         transform.parent.GetComponent<NPCShooter>().ShootPermission = true;
     }
 
+    /// <summary>
+    /// Start shooting
+    /// </summary>
     void triggerShoot() {
 
         shootDelay -= Time.deltaTime;
