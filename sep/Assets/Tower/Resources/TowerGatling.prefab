@@ -423,7 +423,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.27195549, y: .25, z: -5.19881916}
+  m_LocalPosition: {x: -10.7230492, y: .25, z: -17.7984543}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400026}
@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d919516a89bb504fb6820356b4689a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerWeapon: {fileID: 100024}
   hasDelay: 0
   hasRadius: 1
   hasDamage: 1

@@ -40978,8 +40978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleInPercent: 123
-  xPositionInPercent: 9.5
-  yPositionInPercent: 13.3000002
+  xPositionInPercent: 11.5
+  yPositionInPercent: 1.29999995
   oktagon: {fileID: 2800000, guid: b54760737ee600147b85e85a14dfea9a, type: 3}
 --- !u!114 &1812726314
 MonoBehaviour:

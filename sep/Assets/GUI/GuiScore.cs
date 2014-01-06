@@ -23,7 +23,7 @@ public class GuiScore : MonoBehaviour {
         int ySize = (int)(Screen.width / 20.625f * scale);
         int xPosition = (int)(Screen.width * xPositionModifier);
         int yPosition = (int)(Screen.height * yPositionModifier);
-        yPosition = Screen.height - (yPosition + ySize);
+        yPosition = Screen.height - (yPosition + ySize*2);
         string displayText = "Score\r\n"  + controller.Score;
         var centeredStyle = GUI.skin.GetStyle("Label");
         centeredStyle.alignment = TextAnchor.MiddleCenter;
