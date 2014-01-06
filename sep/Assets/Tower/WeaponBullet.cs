@@ -43,7 +43,7 @@ public class WeaponBullet : MonoBehaviour, IMakeDamage, IWeapon {
             triggerShoot();
 
         } else {
-            StopShooting();
+           if(npc.tag == "good") StopShooting();
         }
 
     }
