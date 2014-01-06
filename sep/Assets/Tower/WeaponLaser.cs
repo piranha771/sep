@@ -34,7 +34,7 @@ public class WeaponLaser : MonoBehaviour, IWeapon {
             triggerShoot();
 
         } else {
-            StopShooting();
+            if (npc.tag == "good") StopShooting();
         }
 	}
     /// <summary>
