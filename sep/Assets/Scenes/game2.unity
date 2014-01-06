@@ -41009,11 +41009,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 1109867606}
-  scoreToNextTrace: 5000
+  scoreToNextTrace: 4000
   scoreToHarderNpc: 1000
-  harderNpcMultiplier: 1.20000005
-  scoreHigherNpcFrequency: 2000
-  npcFrequencyMultiplier: 1.04999995
+  harderNpcMultiplier: 1.10000002
+  scoreHigherNpcFrequency: 4000
+  npcFrequencyMultiplier: .5
 --- !u!1 &1815999951
 GameObject:
   m_ObjectHideFlags: 0
