@@ -40423,6 +40423,9 @@ MonoBehaviour:
   towerFourBurrelGun: {fileID: 100016, guid: 23cb536ba21aab04b89e16cdbab0982e, type: 2}
   towerNova: {fileID: 100008, guid: f4e1c330212dc834c961e931ed5ebd05, type: 2}
   towerDetector: {fileID: 100008, guid: f6930fd9676c20b40a4fd0ed259cd625, type: 2}
+  RangePrice: 10
+  DMGPrice: 30
+  SpeedPrice: 20
   currentTower: {fileID: 0}
   buyMode: 1
   upMode: 1

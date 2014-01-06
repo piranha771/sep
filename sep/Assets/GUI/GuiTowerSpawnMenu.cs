@@ -15,6 +15,13 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     private GameObject towerNova;
     [SerializeField]
     private GameObject towerDetector;
+	[SerializeField]
+	private int RangePrice =10;
+	[SerializeField]
+	private int DMGPrice =30;
+	[SerializeField]
+	private int SpeedPrice =20;
+
 
     private GameObject selectedTower;
 	private NPCShooter upgradeComp;
@@ -75,7 +82,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
         }
 		
 		if (upMode) {
-			UpdateButtonsCreate(currentTower,xPosition, yPosition);
+			UpdateButtonsCreate(currentTower,xPosition, yPosition, controller);
 		}
 		GUI.skin.textField.fontSize = fontSize;
 		switch (GUI.tooltip)
@@ -104,9 +111,7 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y-5,buttonSize/2,buttonSize/3),name);
 		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y+(int)(buttonSize-fontSize*1.6f),buttonSize/2,buttonSize/3),costString);
-		if (GUI.Button(new Rect(x, y, buttonSize, buttonSize),new GUIContent("",(name+"label")), customGuiStyle)) {
-
-						
+		if (GUI.Button(new Rect(x, y, buttonSize, buttonSize),new GUIContent("",(name+"label")), customGuiStyle)) {						
             controller.CPUTime -= cost;
             selectedTower = (GameObject)Instantiate(tower, Vector3.zero, Quaternion.identity);	
         }
@@ -122,30 +127,34 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 		fontSize =(int)(9.0f*scale);
 	}
 	
-	void UpdateButtonsCreate(GameObject tower, int x, int y){
-		if(false) {GUI.enabled = false;}
+	void UpdateButtonsCreate(GameObject tower, int x, int y, CPUComputeTimeController controller ){
 
+		if(controller.CPUTime<DMGPrice) {GUI.enabled = false;}
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"DMG");
 		if (GUI.Button(new Rect(x, y-buttonSize, buttonSize, buttonSize), new GUIContent("",("DMGlabel")), customGuiStyle)) {
 			//Increase DMG
 			upgradeComp =tower.GetComponent<NPCShooter>();
-			if(upgradeComp.HasDamage) upgradeComp.WeaponDamage += 1;
+			if(upgradeComp.HasDamage){
+				controller.CPUTime -= DMGPrice;
+				upgradeComp.WeaponDamage += 1;}
 		}
 		GUI.enabled = true;
 
-		if(false) {GUI.enabled = false;}
+		if(controller.CPUTime<DMGPrice) {GUI.enabled = false;}
 		
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+buttonSize+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"RNG");
 		if (GUI.Button(new Rect(x+buttonSize, y-buttonSize, buttonSize, buttonSize), new GUIContent("",("RNGlabel")), customGuiStyle)) {
 			//increase Range
 			upgradeComp =tower.GetComponent<NPCShooter>();
-			if(upgradeComp.HasRadius) upgradeComp.BiggerRadius(1);
+			if(upgradeComp.HasRadius && controller.CPUTime>RangePrice) {
+				controller.CPUTime -= RangePrice;
+				upgradeComp.BiggerRadius(1);}
 		}
 		GUI.enabled = true;
 
-		if(false) {GUI.enabled = false;}
+		if(controller.CPUTime<DMGPrice) {GUI.enabled = false;}
 		
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+buttonSize*2+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"SPD");
@@ -153,11 +162,13 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
 			//increase Speed
 			upgradeComp =tower.GetComponent<NPCShooter>();
             // TODO: Creates an exception if the script hasnt been started!
-			//if(upgradeComp.HasDelay) tower.GetComponent<NPCShooter>().Delay /= 1.1f;
+			if(upgradeComp.HasDelay && controller.CPUTime>SpeedPrice) {
+				controller.CPUTime -= SpeedPrice;
+				tower.GetComponent<NPCShooter>().Delay /= 1.1f;}
 		}
 		GUI.enabled = true;
 
-		if(false) {GUI.enabled = false;}
+		if(true) {GUI.enabled = false;}
 		
 		GUI.skin.label.fontSize = fontSize;
 		GUI.Label(new Rect(x+buttonSize*3+((int)buttonSize*0.65f),y-buttonSize,buttonSize/2,buttonSize/3),"SLL");
