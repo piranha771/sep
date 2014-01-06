@@ -16,11 +16,11 @@ public class GuiTowerSpawnMenu : MonoBehaviour {
     [SerializeField]
     private GameObject towerDetector;
 	[SerializeField]
-	private int RangePrice =10;
+	private int RangePrice =100;
 	[SerializeField]
-	private int DMGPrice =30;
+	private int DMGPrice =300;
 	[SerializeField]
-	private int SpeedPrice =20;
+	private int SpeedPrice =200;
 
 
     private GameObject selectedTower;
